@@ -1,4 +1,4 @@
-package com.example.core.util;
+package com.example.core.util.file;
 
 import android.content.ContentResolver;
 import android.content.Context;

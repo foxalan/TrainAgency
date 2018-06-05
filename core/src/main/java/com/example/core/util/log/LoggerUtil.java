@@ -5,13 +5,14 @@ import android.util.Log;
 /**
  * @author alan
  *         Date  2018/6/5.
- *         Function :
+ *         Function : 获取打印Log的位置
+ *                          使用方法:TAG为当前类的名字
  *         Issue :
  */
 
 public class LoggerUtil {
 
-
+    @SuppressWarnings("unused")
     public static String TAG = "LogUtils";
     private static final boolean DEBUG = true;
     private static final int D = 745;
@@ -19,6 +20,7 @@ public class LoggerUtil {
     private static final int V = 674;
     private static final String CUT_OFF = "--------";
     private static final String CUT_OFF_END = "-------";
+    @SuppressWarnings("unused")
     private static final String SPACE_9 = "";
 
 
@@ -40,13 +42,13 @@ public class LoggerUtil {
         }
 
         //需要打印的内容
-        StringBuffer value = new StringBuffer();
+        StringBuffer stringBuffer = new StringBuffer();
         for (int i = 0; i < values.length; i++) {
-            value.append(values[i]);
+            stringBuffer.append(values[i]);
             if (i == values.length - 1) {
                 break;
             }
-            value.append(", ");
+            stringBuffer.append(", ");
         }
 
         // 打印
@@ -54,20 +56,20 @@ public class LoggerUtil {
             case D:
 
                 printfLine(D, tag);
-                Log.d(tag, value.toString());
+                Log.d(tag, stringBuffer.toString());
                 Log.d(tag, CUT_OFF_END);
 
                 break;
             case E:
                 printfLine(E, tag);
 
-                Log.e(tag, value.toString());
+                Log.e(tag, stringBuffer.toString());
                 Log.e(tag, CUT_OFF_END);
 
                 break;
             case V:
                 printfLine(V, tag);
-                Log.v(tag,  value.toString());
+                Log.v(tag,  stringBuffer.toString());
                 Log.v(tag, CUT_OFF_END);
 
                 break;
@@ -86,9 +88,6 @@ public class LoggerUtil {
             return null;
         }
 
-        // sb.append(".");
-        // 我电脑的AndroidStudio有点问题，必须在这加个点，
-        // 在logcat中才能定位。Androidstudio升级后，这个问题不存在了。
         sb.append("(")
                 .append(element.getFileName())
                 .append(":")

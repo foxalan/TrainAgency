@@ -44,6 +44,8 @@ dependencies {
     api 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
     //Log
     api 'com.orhanobut:logger:2.2.0'
+    //Loader依赖
+    api 'com.wang.avi:library:2.1.3'
 
 
 
