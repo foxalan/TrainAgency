@@ -2,7 +2,9 @@ package com.example.alan.trainagency.app;
 
 import android.app.Application;
 
+import com.example.alan.trainagency.R;
 import com.example.core.app.Latte;
+import com.example.core.net.interceptors.DebugInterceptor;
 import com.example.ec.icon.FontEcModule;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
@@ -10,7 +12,7 @@ import com.joanzapata.iconify.fonts.FontAwesomeModule;
  * @author alan
  *         Date  2018/6/4.
  *         Function : 初始化一些基本设置
- *         Issue :
+ *         Issue : Interceptor
  */
 
 public class TrainApplication extends Application {
@@ -29,6 +31,7 @@ public class TrainApplication extends Application {
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontEcModule())
                 .withJavascriptInterface(JAVA_INTERFACE)
+                .withInterceptor(new DebugInterceptor("test", R.raw.test))
                 .configure();
     }
 }
