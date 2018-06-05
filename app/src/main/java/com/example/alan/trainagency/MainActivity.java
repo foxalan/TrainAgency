@@ -7,6 +7,7 @@ import com.example.core.activity.ProxyActivity;
 import com.example.core.app.Latte;
 import com.example.core.delegate.LatteDelegate;
 import com.example.ec.main.EcBottomDelegate;
+import com.example.ec.sign.SignInDelegate;
 
 import qiu.niorgai.StatusBarCompat;
 
