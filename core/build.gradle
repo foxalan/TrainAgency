@@ -42,6 +42,8 @@ dependencies {
     //字体图标
     api 'com.joanzapata.iconify:android-iconify-ionicons:2.2.2'
     api 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
+    //Log
+    api 'com.orhanobut:logger:2.2.0'
 
 
 
