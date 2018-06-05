@@ -3,6 +3,7 @@ package com.example.alan.trainagency.app;
 import android.app.Application;
 
 import com.example.core.app.Latte;
+import com.example.ec.icon.FontEcModule;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
 /**
@@ -26,7 +27,7 @@ public class TrainApplication extends Application {
                 .withApiHost(API_HOST)
                 .withLoaderDelayed(DELAY_TIME)
                 .withIcon(new FontAwesomeModule())
-             //   .withIcon(new FontEcModule())
+                .withIcon(new FontEcModule())
                 .withJavascriptInterface(JAVA_INTERFACE)
                 .configure();
     }
