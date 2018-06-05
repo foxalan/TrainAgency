@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.example.core.activity.ProxyActivity;
 import com.example.core.delegate.LatteDelegate;
+import com.example.ec.main.EcBottomDelegate;
 
 /**
  * @author alan
@@ -15,7 +16,7 @@ public class MainActivity extends ProxyActivity {
 
     @Override
     public LatteDelegate setRootDelegate() {
-        return new ExpDelegate();
+        return new EcBottomDelegate();
     }
 
     @Override
