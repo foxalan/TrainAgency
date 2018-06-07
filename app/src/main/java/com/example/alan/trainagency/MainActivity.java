@@ -7,8 +7,11 @@ import com.example.core.activity.ProxyActivity;
 import com.example.core.app.Latte;
 import com.example.core.delegate.LatteDelegate;
 import com.example.ec.bluetooth.BlueToothPrintDelegate;
+import com.example.ec.launcher.LauncherDelegate;
 import com.example.ec.main.EcBottomDelegate;
 import com.example.ec.sign.SignInDelegate;
+import com.example.ui.launcher.ILauncherListener;
+import com.example.ui.launcher.OnLauncherFinishTag;
 
 import qiu.niorgai.StatusBarCompat;
 
@@ -18,12 +21,12 @@ import qiu.niorgai.StatusBarCompat;
  *
  */
 
-public class MainActivity extends ProxyActivity {
+public class MainActivity extends ProxyActivity implements ILauncherListener {
 
     @Override
     public LatteDelegate setRootDelegate() {
 
-        return new BlueToothPrintDelegate();
+        return new LauncherDelegate();
     }
 
     @Override
@@ -43,5 +46,19 @@ public class MainActivity extends ProxyActivity {
     @Override
     public void post(Runnable runnable) {
 
+    }
+
+    @Override
+    public void onLauncherFinish(OnLauncherFinishTag tag) {
+        switch (tag){
+            case SIGNED:
+
+                break;
+            case NOT_SIGNED:
+
+                break;
+                default:
+
+        }
     }
 }
