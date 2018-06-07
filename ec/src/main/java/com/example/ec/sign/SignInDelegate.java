@@ -20,9 +20,6 @@ public class SignInDelegate extends LatteDelegate {
 
     @Override
     public Object setLayout() {
-
-        getSupportDelegate().startWithPop(new EcBottomDelegate());
-
         return R.layout.delegate_sign_in;
     }
 

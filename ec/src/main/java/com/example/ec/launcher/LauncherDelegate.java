@@ -101,27 +101,29 @@ public class LauncherDelegate extends LatteDelegate {
     private void checkIsShowScroll() {
 
         //检查用户是否是第一次登入
-        if (!LattePreference.getAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name())) {
-            getSupportDelegate().start(new LauncherScrollDelegate(), SINGLETASK);
-        } else {
-
-            AccountManager.checkAccount(new IUserChecker() {
-                @Override
-                public void onSignIn() {
-                    if (mILauncherListener != null) {
-                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.SIGNED);
-                    }
+        AccountManager.checkAccount(new IUserChecker() {
+            @Override
+            public void onSignIn() {
+                if (mILauncherListener != null) {
+                    mILauncherListener.onLauncherFinish(OnLauncherFinishTag.SIGNED);
                 }
+            }
 
-                @Override
-                public void onNotSignIn() {
-                    if (mILauncherListener != null) {
-                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.NOT_SIGNED);
-                    }
+            @Override
+            public void onNotSignIn() {
+                if (mILauncherListener != null) {
+                    mILauncherListener.onLauncherFinish(OnLauncherFinishTag.NOT_SIGNED);
                 }
-            });
+            }
+        });
 
-        }
+
+
+//        if (!LattePreference.getAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name())) {
+//            getSupportDelegate().start(new LauncherScrollDelegate(), SINGLETASK);
+//        } else {
+//
+//        }
     }
 
     /**

@@ -52,10 +52,10 @@ public class MainActivity extends ProxyActivity implements ILauncherListener {
     public void onLauncherFinish(OnLauncherFinishTag tag) {
         switch (tag){
             case SIGNED:
-
+                getSupportDelegate().startWithPop(new EcBottomDelegate());
                 break;
             case NOT_SIGNED:
-
+                getSupportDelegate().startWithPop(new SignInDelegate());
                 break;
                 default:
 
