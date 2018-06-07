@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBar;
 import com.example.core.activity.ProxyActivity;
 import com.example.core.app.Latte;
 import com.example.core.delegate.LatteDelegate;
+import com.example.ec.bluetooth.BlueToothPrintDelegate;
 import com.example.ec.main.EcBottomDelegate;
 import com.example.ec.sign.SignInDelegate;
 
@@ -21,7 +22,8 @@ public class MainActivity extends ProxyActivity {
 
     @Override
     public LatteDelegate setRootDelegate() {
-        return new EcBottomDelegate();
+
+        return new BlueToothPrintDelegate();
     }
 
     @Override

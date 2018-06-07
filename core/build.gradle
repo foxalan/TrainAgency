@@ -59,6 +59,13 @@ dependencies {
     //沉浸式状态栏
     api 'com.github.niorgai:StatusBarCompat:2.1.4'
 
+    //eventBus
+    compile 'de.greenrobot:eventbus:2.2.1'
+
+    //rxJava
+    compile 'io.reactivex:rxjava:1.0.14'
+    compile 'io.reactivex:rxandroid:1.0.1'
+
 
 
 

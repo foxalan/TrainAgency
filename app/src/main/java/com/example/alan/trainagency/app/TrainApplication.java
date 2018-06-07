@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.example.alan.trainagency.R;
 import com.example.core.app.Latte;
+import com.example.core.bluetooth.AppInfo;
 import com.example.core.net.interceptors.DebugInterceptor;
 import com.example.ec.icon.FontEcModule;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
@@ -24,6 +25,8 @@ public class TrainApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        AppInfo.init(getApplicationContext());
 
         Latte.init(this)
                 .withApiHost(API_HOST)
