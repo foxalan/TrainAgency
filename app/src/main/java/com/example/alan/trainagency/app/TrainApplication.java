@@ -8,6 +8,7 @@ import com.example.core.bluetooth.AppInfo;
 import com.example.core.net.interceptors.DebugInterceptor;
 import com.example.ec.icon.FontEcModule;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
+import com.mob.MobSDK;
 
 /**
  * @author alan
@@ -36,5 +37,7 @@ public class TrainApplication extends Application {
                 .withJavascriptInterface(JAVA_INTERFACE)
                 .withInterceptor(new DebugInterceptor("test", R.raw.test))
                 .configure();
+
+        MobSDK.init(this);
     }
 }
