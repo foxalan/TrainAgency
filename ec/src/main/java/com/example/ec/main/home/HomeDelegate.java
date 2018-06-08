@@ -24,5 +24,7 @@ public class HomeDelegate extends BottomItemDelegate {
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
 
+
+
     }
 }

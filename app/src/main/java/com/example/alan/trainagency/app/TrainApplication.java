@@ -1,6 +1,7 @@
 package com.example.alan.trainagency.app;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.example.alan.trainagency.R;
 import com.example.core.app.Latte;
@@ -9,6 +10,9 @@ import com.example.core.net.interceptors.DebugInterceptor;
 import com.example.ec.icon.FontEcModule;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.mob.MobSDK;
+
+
+
 
 /**
  * @author alan
@@ -40,4 +44,5 @@ public class TrainApplication extends Application {
 
         MobSDK.init(this);
     }
+
 }

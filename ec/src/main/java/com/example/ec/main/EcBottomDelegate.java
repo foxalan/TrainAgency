@@ -43,6 +43,6 @@ public class EcBottomDelegate extends BaseBottomDelegate {
 
     @Override
     public int setClickedColor() {
-        return 0;
+        return 0xff33b5e5;
     }
 }

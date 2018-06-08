@@ -1,26 +1,27 @@
-package com.example.ec.sign;
+package com.example.alan.trainagency.sign;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.annotation.RawRes;
+import android.support.test.espresso.remote.EspressoRemoteMessage;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.example.alan.trainagency.R;
+import com.example.alan.trainagency.sms.MsgProveHandler;
+import com.example.core.app.AccountManager;
 import com.example.core.app.Latte;
 import com.example.core.delegate.LatteDelegate;
-import com.example.core.net.callback.IFailure;
 import com.example.core.util.log.LoggerUtil;
-import com.example.ec.R;
 import com.example.ec.main.EcBottomDelegate;
 
-import java.util.Timer;
+
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -32,7 +33,7 @@ import java.util.concurrent.TimeUnit;
  *         Issue : mBtProve有问题
  */
 
-public class SignInDelegate extends LatteDelegate implements View.OnClickListener {
+public class SignInDelegate extends LatteDelegate implements View.OnClickListener ,ISignInListener{
 
     private static final String TAG = "SignInDelegate";
     private EditText mEdPhone;
@@ -46,6 +47,9 @@ public class SignInDelegate extends LatteDelegate implements View.OnClickListene
 
     private static final int STATE_CLICK = 0;
     private static final int STATE_UNCLICK = 1;
+
+
+    private SignInPresenterImpl signInPresenter;
 
     @Override
     public Object setLayout() {
@@ -70,6 +74,8 @@ public class SignInDelegate extends LatteDelegate implements View.OnClickListene
 
         initEvents();
         scheduledExecutorService = Executors.newScheduledThreadPool(2);
+
+        signInPresenter = new SignInPresenterImpl(this);
     }
 
     /**
@@ -92,15 +98,16 @@ public class SignInDelegate extends LatteDelegate implements View.OnClickListene
     }
 
     /**
-     * 设置登入不可以点击
+     * 设置验证不可以点击
      */
     private void setProveClickedState(int state) {
+
         switch (state) {
             case STATE_CLICK:
-                if (!"".equals(mBtProve.getText().toString())){
+                if ("".equals(mBtProve.getText().toString())){
                     return;
                 }
-                if (!"".equals(mEdPhone.getText().toString())){
+                if ("".equals(mEdPhone.getText().toString())){
                     return;
                 }
                 mBtProve.setEnabled(true);
@@ -191,14 +198,15 @@ public class SignInDelegate extends LatteDelegate implements View.OnClickListene
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.bt_prove) {
-            sendProveMsg();
+            String phone = mEdPhone.getText().toString();
+            sendProveMsg(phone);
         } else if (i == R.id.btn_sign_in) {
             checkMsg();
         } else if (i == R.id.delete_phone) {
             //清空文字，设置图标不可以见，设置登入不可点击,设置BUTTON颜色
             mEdPhone.setText("");
             mIbClearPhone.setVisibility(View.INVISIBLE);
-           setLoginClickedState(STATE_UNCLICK);
+            setLoginClickedState(STATE_UNCLICK);
             if (!isProve) {
                 setProveClickedState(STATE_UNCLICK);
             }
@@ -214,12 +222,12 @@ public class SignInDelegate extends LatteDelegate implements View.OnClickListene
      * 检查并登录
      */
     private void checkMsg() {
-
+        signInPresenter.submit(mEdPhone.getText().toString(),mEdProv.getText().toString());
     }
 
     private int totalTime;
 
-    private void sendProveMsg() {
+    private void sendProveMsg(String phone) {
         LoggerUtil.e(TAG, "sendProveMsg" + "===" + isProve);
         if (!isProve) {
             totalTime = 10;
@@ -228,7 +236,7 @@ public class SignInDelegate extends LatteDelegate implements View.OnClickListene
             }
             //设置当前状态为
             isProve = true;
-
+            signInPresenter.sendCode(mEdPhone.getText().toString());
             //检查是否可以发送信息
             scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
                 @Override
@@ -257,6 +265,27 @@ public class SignInDelegate extends LatteDelegate implements View.OnClickListene
                 }
             }, 0, 1000, TimeUnit.MILLISECONDS);
         }
+
+    }
+
+    @Override
+    public void phoneError() {
+        Toast.makeText(getContext(),"手机格式不正确", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void proveError() {
+        Toast.makeText(getContext(),"验证失败，", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void success() {
+        AccountManager.setSignState(true);
+        getSupportDelegate().startWithPop(new EcBottomDelegate());
+    }
+
+    @Override
+    public void fail() {
 
     }
 }

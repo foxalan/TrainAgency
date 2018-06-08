@@ -38,7 +38,7 @@ public class LauncherDelegate extends LatteDelegate {
     private AppCompatTextView mTvLauncherTimer;
     private ScheduledExecutorService executorService;
     private long period = 1000;
-    private int mCount = 3;
+    private int mCount = 4;
     private ILauncherListener mILauncherListener = null;
 
     @Override
@@ -76,7 +76,7 @@ public class LauncherDelegate extends LatteDelegate {
                     });
 
                     mCount--;
-                    if (mCount <= 0) {
+                    if (mCount <= 1) {
                         if (executorService != null) {
                             executorService.shutdown();
                             executorService = null;

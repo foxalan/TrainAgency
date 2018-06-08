@@ -1,4 +1,4 @@
-package com.example.ec.sign;
+package com.example.alan.trainagency.sign;
 
 /**
  * @author alan
@@ -23,4 +23,11 @@ public interface ISignInListener {
      * 登入成功
      */
     void success();
+
+    /**
+     * 登入失败
+     *
+     */
+
+    void fail();
 }

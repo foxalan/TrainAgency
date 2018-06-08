@@ -10,9 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
         <android.support.v7.widget.AppCompatTextView
-            android:textSize="20sp"
+
+            android:textSize="18sp"
             android:text="登入"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
@@ -75,7 +76,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:background="@android:color/transparent"
-                        android:src="@drawable/ic_edittext_clear"
+                        android:src="@mipmap/ic_edittext_clear"
                         android:layout_marginRight="5dp"
                         android:visibility="invisible" />
 
@@ -123,7 +124,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:background="@android:color/transparent"
-                        android:src="@drawable/ic_edittext_clear"
+                        android:src="@mipmap/ic_edittext_clear"
                         android:layout_marginRight="15dp"
                         android:visibility="invisible" />
 
