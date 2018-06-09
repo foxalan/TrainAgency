@@ -1,5 +1,7 @@
 package com.example.alan.trainagency;
 
+import android.Manifest;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 
@@ -35,6 +37,11 @@ public class MainActivity extends ProxyActivity implements ILauncherListener {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.hide();
+        }
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION},2);
         }
         Latte.getConfigurator().withActivity(this);
         //设置沉浸式状态栏

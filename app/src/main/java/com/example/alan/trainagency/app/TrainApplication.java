@@ -3,6 +3,8 @@ package com.example.alan.trainagency.app;
 import android.app.Application;
 import android.util.Log;
 
+import com.baidu.mapapi.SDKInitializer;
+import com.baidu.mapapi.map.BaiduMap;
 import com.example.alan.trainagency.R;
 import com.example.core.app.Latte;
 import com.example.core.bluetooth.AppInfo;
@@ -43,6 +45,8 @@ public class TrainApplication extends Application {
                 .configure();
 
         MobSDK.init(this);
+
+        SDKInitializer.initialize(this);
     }
 
 }
