@@ -50,4 +50,7 @@ dependencies {
     api project(':ui')
     implementation files('libs/BaiduLBS_Android.jar')
     implementation files('libs/IndoorscapeAlbumPlugin.jar')
+
+    compile 'q.rorbin:badgeview:1.1.2'
+
 }

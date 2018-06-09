@@ -29,7 +29,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:paddingRight="2dp"
-                android:text="{icon-scan}"
+                android:text="{fa-map-marker}"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 

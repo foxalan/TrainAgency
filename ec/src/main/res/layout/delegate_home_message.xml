@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:contentInsetEnd="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetStart="0dp">
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:paddingTop="10dp"
+            android:background="@android:color/holo_blue_light"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.joanzapata.iconify.widget.IconTextView
+                android:id="@+id/icon_back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:text="{fa-arrow-left}"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+            <android.support.v7.widget.AppCompatTextView
+
+                android:paddingLeft="25dp"
+                android:gravity="center_vertical"
+                android:text="通知中心"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+    </android.support.v7.widget.Toolbar>
+
+
+
+</android.support.v7.widget.LinearLayoutCompat>
