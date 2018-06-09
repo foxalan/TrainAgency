@@ -61,7 +61,7 @@ public class BaiDuMapClient implements IOpenLocationListener ,IDealLocationListe
 
     @Override
     public void Location(BDLocation location) {
-        Log.e("location",location.getLocationDescribe());
-        homeLocationListener.getCurrentLocation(location.getAddrStr());
+        Log.e("location",location.getLocationDescribe()+"==="+location.getAddrStr());
+        homeLocationListener.getCurrentLocation(location.getLocationDescribe());
     }
 }

@@ -56,7 +56,6 @@ public class HomeDelegate extends BottomItemDelegate implements View.OnClickList
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.icon_location) {
-            LocationDelegate locationDelegate = LocationDelegate.create("武汉");
             getParentDelegate().getSupportDelegate().start(new MapDelegate());
         } else if (i == R.id.tv_location) {
 
