@@ -11,6 +11,7 @@ import com.example.core.app.Latte;
 import com.example.core.delegate.bottom.BottomItemDelegate;
 import com.example.ec.R;
 import com.example.ec.main.home.map.MapDelegate;
+import com.example.ec.main.home.search.SearchDelegate;
 import com.joanzapata.iconify.widget.IconTextView;
 
 /**
@@ -45,6 +46,9 @@ public class HomeDelegate extends BottomItemDelegate implements View.OnClickList
         mIconLocation.setOnClickListener(this);
         mTvLocation.setOnClickListener(this);
         mIconMsg.setOnClickListener(this);
+
+        //Search
+        mEtSearch.setOnClickListener(v -> getParentDelegate().start(new SearchDelegate()));
 
         baiDuMapClient = BaiDuMapClient.create(getContext(),this);
         baiDuMapClient.startRequestLocation();

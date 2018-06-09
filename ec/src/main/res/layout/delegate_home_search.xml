@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.Toolbar
+        android:background="@android:color/holo_blue_light"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:contentInsetEnd="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetStart="0dp">
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:gravity="center_vertical"
+            android:paddingTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <com.joanzapata.iconify.widget.IconTextView
+                android:id="@+id/icon_back"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingRight="2dp"
+                android:text="{fa-arrow-left}"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_search_view"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:background="@android:color/white"
+                android:gravity="center_vertical"
+                android:hint="搜索"
+                android:paddingLeft="20dp" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:text="搜索"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+        </android.support.v7.widget.LinearLayoutCompat>
+    </android.support.v7.widget.Toolbar>
+
+
+    <LinearLayout
+        android:id="@+id/ll_search_history"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.AppCompatTextView
+            android:gravity="left|center_vertical"
+            android:textSize="15sp"
+            android:textColor="@android:color/black"
+            android:text="历史记录"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_delete_search_history"
+            android:gravity="right|center_vertical"
+            android:textSize="15sp"
+            android:textColor="@android:color/black"
+            android:text="删除"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <com.example.ui.widget.FlowLayout
+        android:id="@+id/fl_search_history"
+        android:padding="5dp"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.example.ui.widget.FlowLayout>
+
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.AppCompatTextView
+            android:gravity="left|center_vertical"
+            android:textSize="15sp"
+            android:textColor="@android:color/black"
+            android:text="热门搜索"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <com.example.ui.widget.FlowLayout
+        android:id="@+id/fl_search_hot"
+        android:padding="5dp"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.example.ui.widget.FlowLayout>
+
+
+
+
+
+
+</LinearLayout>

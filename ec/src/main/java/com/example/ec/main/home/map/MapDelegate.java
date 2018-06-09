@@ -105,6 +105,7 @@ public class MapDelegate extends LatteDelegate {
     private void initBaiduMap() {
         mLocationClient = new LocationClient(getContext());
         locationListener = new MyLocationListener();
+
         // 开启定位图层
         mBaiduMap.setMyLocationEnabled(true);
         mapInitializeImpl = new MapInitializeImpl();

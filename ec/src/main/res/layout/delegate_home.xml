@@ -8,7 +8,7 @@
     <android.support.v7.widget.Toolbar
         android:background="@android:color/holo_blue_light"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="80dp"
         app:contentInsetEnd="0dp"
         app:contentInsetLeft="0dp"
         app:contentInsetRight="0dp"
@@ -46,6 +46,9 @@
                 android:layout_height="match_parent" />
 
             <android.support.v7.widget.AppCompatEditText
+                android:cursorVisible="true"
+                android:textCursorDrawable="@null"
+                android:focusable="false"
                 android:id="@+id/et_search_view"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
@@ -64,7 +67,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:paddingLeft="10dp"
-                android:text="{fa-bullhorn}"
+                android:text="{fa-bell}"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
