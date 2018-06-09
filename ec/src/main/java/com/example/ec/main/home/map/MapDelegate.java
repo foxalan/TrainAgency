@@ -21,10 +21,17 @@ import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.OverlayOptions;
+import com.baidu.mapapi.map.TextOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.example.core.delegate.LatteDelegate;
 import com.example.ec.R;
+import com.example.ec.main.home.map.bean.TrainBean;
+import com.example.ec.main.home.map.bean.TrainDataConverter;
 import com.example.ec.main.home.map.impl.MapInitializeImpl;
+
+import java.util.List;
+
+
 
 
 /**
@@ -45,6 +52,7 @@ public class MapDelegate extends LatteDelegate {
     private LocationClient mLocationClient;
     private MyLocationListener locationListener;
 
+    private List<TrainBean> trainBeanList;
 
     @Override
     public Object setLayout() {
@@ -64,14 +72,34 @@ public class MapDelegate extends LatteDelegate {
         //获取当前设置的位置
 
         //获取所有的培训机构的坐标信息
-
-        //
+        trainBeanList = new TrainDataConverter().convert();
+        //标出所有的位置
+        setTrainTitle();
         mBaiduMap.setOnMarkerClickListener(marker -> {
 
             //
 
             return false;
         });
+    }
+
+    private void setTrainTitle() {
+        for (TrainBean trainBean:trainBeanList){
+            LatLng p = new LatLng(trainBean.getLatitude(),trainBean.getLongitude());
+            //补充一下p是这个
+            BitmapDescriptor bitmap = BitmapDescriptorFactory
+                    .fromResource(R.drawable.maker);
+
+            OverlayOptions option = new MarkerOptions().position(p).icon(bitmap);
+            mBaiduMap.addOverlay(option);
+            //加图片
+            OverlayOptions textOption = new TextOptions().bgColor(0xFFE33539)
+                    .fontSize(32).fontColor(0xFFFFFFFF).text(trainBean.getTitle()).rotate(0)
+                    .position(p);
+            mBaiduMap.addOverlay(textOption);
+            //在地图上添加Marker，并显示
+            mBaiduMap.addOverlay(option);
+        }
     }
 
     private void initBaiduMap() {

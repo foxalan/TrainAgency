@@ -238,31 +238,18 @@ public class SignInDelegate extends LatteDelegate implements View.OnClickListene
             isProve = true;
             signInPresenter.sendCode(mEdPhone.getText().toString());
             //检查是否可以发送信息
-            scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
-                @Override
-                public void run() {
-                    LoggerUtil.e(TAG, "run");
+            scheduledExecutorService.scheduleAtFixedRate(() -> {
+                LoggerUtil.e(TAG, "run");
 
-                    totalTime--;
-                    Latte.getHandler().post(new Runnable() {
-                        @Override
-                        public void run() {
-                            mBtProve.setText(String.valueOf(totalTime + "s后重新获取"));
-                        }
-                    });
+                totalTime--;
+                Latte.getHandler().post(() -> mBtProve.setText(String.valueOf(totalTime + "s后重新获取")));
 
-                    if (totalTime == 0) {
-                        isProve = false;
-                        scheduledExecutorService.shutdownNow();
-                        Latte.getHandler().post(new Runnable() {
-                            @Override
-                            public void run() {
-                                mBtProve.setText(String.valueOf("获取验证码"));
-                            }
-                        });
-                    }
-
+                if (totalTime == 0) {
+                    isProve = false;
+                    scheduledExecutorService.shutdownNow();
+                    Latte.getHandler().post(() -> mBtProve.setText(String.valueOf("获取验证码")));
                 }
+
             }, 0, 1000, TimeUnit.MILLISECONDS);
         }
 
@@ -270,12 +257,14 @@ public class SignInDelegate extends LatteDelegate implements View.OnClickListene
 
     @Override
     public void phoneError() {
+
         Toast.makeText(getContext(),"手机格式不正确", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void proveError() {
-        Toast.makeText(getContext(),"验证失败，", Toast.LENGTH_LONG).show();
+
+        Latte.getHandler().post(() -> Toast.makeText(getContext(),"验证失败，", Toast.LENGTH_LONG).show());
     }
 
     @Override
