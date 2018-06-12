@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <com.baidu.mapapi.map.MapView
         android:id="@+id/id_mapView"
@@ -12,112 +9,60 @@
         android:layout_height="fill_parent"
         android:clickable="true" />
 
-    <RelativeLayout
+    <LinearLayout
+
         android:id="@+id/id_maker_ly"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="260dp"
         android:layout_alignParentBottom="true"
-        android:background="#cc4e5a6b"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/bg_home_map_search_layout"
         android:clickable="true"
-        android:visibility="gone" >
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/id_info_img"
-            android:layout_width="fill_parent"
-            android:layout_height="150dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
+        <View
+            android:layout_width="50dp"
+            android:layout_height="5dp"
+            android:layout_gravity="center"
             android:layout_marginTop="10dp"
+            android:background="@drawable/bg_home_map_search_view" />
 
-            android:scaleType="fitXY"
-            android:src="@drawable/a01" >
-        </ImageView>
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_width="270dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_home_map_search_et"
+            android:drawableLeft="@mipmap/search"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical|left"
+            android:hint="搜索地点或小区"
+            android:paddingLeft="30dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20sp" />
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/bg_map_bottom" >
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"/>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
-                android:orientation="vertical" >
+    </LinearLayout>
 
-                <TextView
-                    android:id="@+id/id_info_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="老米家泡馍"
-                    android:textColor="#fff5eb" />
-
-                <TextView
-                    android:id="@+id/id_info_distance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="距离200米"
-                    android:textColor="#fff5eb" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="20dp"
-                android:orientation="horizontal" >
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/map_zan"
-                    android:clickable="true" />
-
-                <TextView
-                    android:id="@+id/id_info_zan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="789"
-                    android:textColor="#fff5eb" />
-            </LinearLayout>
-        </RelativeLayout>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:visibility="gone"
-        android:background="@color/colorAccent"
+    <com.joanzapata.iconify.widget.IconTextView
+        android:id="@+id/tv_map_back"
+        android:background="@drawable/bg_home_map_search_back"
+        android:padding="2dp"
+        android:gravity="center"
+        android:text="{fa-angle-left}"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
         android:layout_alignParentTop="true"
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_alignParentLeft="true"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
 
-        <EditText
-            android:hint="城市"
-            android:layout_margin="5dp"
-            android:id="@+id/et_city"
-            android:layout_alignParentLeft="true"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content" />
 
-        <EditText
-
-            android:layout_toRightOf="@id/et_city"
-            android:hint="详细地址"
-            android:layout_margin="5dp"
-            android:id="@+id/et_address"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/bt_search"
-            android:text="查找"
-            android:layout_margin="5dp"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </RelativeLayout>
 </RelativeLayout>

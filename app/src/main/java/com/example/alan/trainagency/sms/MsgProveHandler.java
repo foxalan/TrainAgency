@@ -46,7 +46,7 @@ public class MsgProveHandler {
                 if (result == SMSSDK.RESULT_COMPLETE) {
                     Log.e(TAG, "result:" + result);
                     // TODO 处理成功得到验证码的结果
-                    signInPresenter.phoneError();
+                 //   signInPresenter.phoneError();
                 } else {
                     // TODO 处理错误的结果
 

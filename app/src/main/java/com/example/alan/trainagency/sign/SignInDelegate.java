@@ -258,7 +258,7 @@ public class SignInDelegate extends LatteDelegate implements View.OnClickListene
     @Override
     public void phoneError() {
 
-        Toast.makeText(getContext(),"手机格式不正确", Toast.LENGTH_LONG).show();
+//        Toast.makeText(getContext(),"手机格式不正确", Toast.LENGTH_LONG).show();
     }
 
     @Override

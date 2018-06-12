@@ -28,6 +28,7 @@ import com.example.ec.R;
 import com.example.ec.main.home.map.bean.TrainBean;
 import com.example.ec.main.home.map.bean.TrainDataConverter;
 import com.example.ec.main.home.map.impl.MapInitializeImpl;
+import com.joanzapata.iconify.widget.IconTextView;
 
 import java.util.List;
 
@@ -46,13 +47,14 @@ public class MapDelegate extends LatteDelegate {
     private MapView mMapView;
     private BaiduMap mBaiduMap = null;
 
-    private RelativeLayout mMarkerLy;
     private MapInitializeImpl mapInitializeImpl;
 
     private LocationClient mLocationClient;
     private MyLocationListener locationListener;
-
     private List<TrainBean> trainBeanList;
+
+    private IconTextView mItvMapBack;
+
 
     @Override
     public Object setLayout() {
@@ -62,10 +64,10 @@ public class MapDelegate extends LatteDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
-        mMapView = rootView.findViewById(R.id.id_mapView);
-        mBaiduMap = mMapView.getMap();
 
-        mMarkerLy = rootView.findViewById(R.id.id_maker_ly);
+        mMapView = rootView.findViewById(R.id.id_mapView);
+        mItvMapBack = rootView.findViewById(R.id.tv_map_back);
+        mBaiduMap = mMapView.getMap();
 
         //初始化BaiDu地图
         initBaiduMap();
