@@ -40,9 +40,7 @@ public class DiscoverDelegate extends BottomItemDelegate {
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
 
         rvDiscover = rootView.findViewById(R.id.ryc_discover);
-
         List<ListBean> listBeanList = new ArrayList<>();
-
         ListBean organization = new ListBean.Builder()
                 .setItemType(ListItemType.ITEM_NORMAL)
                 .setImageUrl(R.mipmap.ic_discover_organization)

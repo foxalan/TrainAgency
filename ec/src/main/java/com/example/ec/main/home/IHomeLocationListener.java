@@ -1,5 +1,9 @@
 package com.example.ec.main.home;
 
+import android.location.Location;
+
+import com.baidu.location.BDLocation;
+
 /**
  * @author alan
  *         Date  2018/6/9.
@@ -13,7 +17,7 @@ public interface IHomeLocationListener {
      * 第一次进入，得到当前的位置
      * @return
      */
-    void getCurrentLocation(String string);
+    void getCurrentLocation(BDLocation location);
 
     /**
      * 重新定位的地址

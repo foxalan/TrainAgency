@@ -14,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
+import com.baidu.location.BDLocation;
 import com.example.core.app.Latte;
 import com.example.core.delegate.bottom.BottomItemDelegate;
 import com.example.ec.R;
@@ -36,21 +37,16 @@ import q.rorbin.badgeview.QBadgeView;
 
 public class HomeDelegate extends BottomItemDelegate implements View.OnClickListener,IHomeLocationListener{
 
-
     private AppCompatTextView mTvLocation;
     private AppCompatEditText mEtSearch;
     private IconTextView mIconMsg;
 
     private BaiDuMapClient baiDuMapClient;
-
     private QBadgeView mQBadgeView;
-
 
     private RecyclerView mRecyclerView = null;
     private SwipeRefreshLayout mRefreshLayout = null;
     private RefreshHandler mRefreshHandler = null;
-
-
 
     @Override
     public Object setLayout() {
@@ -63,20 +59,13 @@ public class HomeDelegate extends BottomItemDelegate implements View.OnClickList
         mRecyclerView = $(R.id.rv_index);
         mRefreshLayout = $(R.id.srl_index);
 
-
         mTvLocation = rootView.findViewById(R.id.tv_location);
         mEtSearch = rootView.findViewById(R.id.et_search_view);
         mIconMsg = rootView.findViewById(R.id.icon_index_message);
 
         mTvLocation.setOnClickListener(this);
 
-        mIconMsg.setOnClickListener(v -> {
-            Log.e("message","message");
-            getParentDelegate().getSupportDelegate().start(new MessageDelegate());
-        });
-
         mRefreshHandler = RefreshHandler.create(mRefreshLayout, mRecyclerView, new HomeDataConverter());
-
         //Search
         mEtSearch.setOnClickListener(v -> getParentDelegate().start(new SearchDelegate()));
 
@@ -88,32 +77,24 @@ public class HomeDelegate extends BottomItemDelegate implements View.OnClickList
         baiDuMapClient.startRequestLocation();
     }
 
-
-
     @Override
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.tv_location) {
             getParentDelegate().getSupportDelegate().start(new MapDelegate());
         } else if (i == R.id.icon_index_message){
-
-           // getParentDelegate().getSupportDelegate().start(new MessageDelegate());
+             getParentDelegate().getSupportDelegate().start(new MessageDelegate());
         } else {
 
         }
     }
 
-
-    /**
-     * 显示当前位置
-     * @param string
-     */
     @Override
-    public void getCurrentLocation(String string) {
+    public void getCurrentLocation(BDLocation location) {
+        //得到当前的位置信息
         Latte.getHandler().post(() -> {
-            mTvLocation.setText(string.substring(1,4));
+            mTvLocation.setText(location.getAddrStr().substring(1,4));
         });
-
         baiDuMapClient.stopRequestLocation();
     }
 
@@ -126,7 +107,6 @@ public class HomeDelegate extends BottomItemDelegate implements View.OnClickList
     public void reChooseLocation() {
 
     }
-
 
     private void initRefreshLayout() {
         mRefreshLayout.setColorSchemeResources(

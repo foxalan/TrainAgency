@@ -20,7 +20,6 @@ public class MyLocationListener extends BDAbstractLocationListener {
         this.dealLocationListener = dealLocationListener;
     }
 
-
     @Override
     public void onReceiveLocation(BDLocation bdLocation) {
         dealLocationListener.Location(bdLocation);

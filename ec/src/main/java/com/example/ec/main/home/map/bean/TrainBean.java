@@ -67,10 +67,5 @@ public class TrainBean {
         public TrainBean build(){
             return new TrainBean(latitude,longitude,title);
         }
-
-
-
-
-
     }
 }

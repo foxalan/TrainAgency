@@ -12,9 +12,6 @@ import com.baidu.location.LocationClientOption;
 
 public class MyLocationClient implements ILocationClientListener {
 
-
-
-
     @Override
     public LocationClient initLocationClient(LocationClient locationClient) {
 

@@ -21,9 +21,20 @@ public class BaiDuMapClient implements IOpenLocationListener ,IDealLocationListe
     private LocationClient locationClient;
     private MyLocationListener locationListener;
     private IHomeLocationListener homeLocationListener;
+    /**
+     * 当前的位置信息
+     */
+    private BDLocation currentLocation;
 
+    public BDLocation getCurrentLocation() {
+        return currentLocation;
+    }
 
-    public BaiDuMapClient(Context context,IHomeLocationListener homeLocationListener){
+    public void setCurrentLocation(BDLocation currentLocation) {
+        this.currentLocation = currentLocation;
+    }
+
+    public BaiDuMapClient(Context context, IHomeLocationListener homeLocationListener){
         locationClient = new LocationClient(context);
         this.homeLocationListener = homeLocationListener;
         myLocationClient = new MyLocationClient();
@@ -36,7 +47,6 @@ public class BaiDuMapClient implements IOpenLocationListener ,IDealLocationListe
         if (baiDuMapClient == null){
             baiDuMapClient = new BaiDuMapClient(context,homeLocationListener);
         }
-
         return baiDuMapClient;
     }
 
@@ -59,15 +69,14 @@ public class BaiDuMapClient implements IOpenLocationListener ,IDealLocationListe
     }
 
 
+
     @Override
     public void Location(BDLocation location) {
-
-        //30.622694===114.359512
-        location.getLatitude();
-        location.getLongitude();
+       //30.622694===114.359512
 
         Log.e("location","latitude:"+location.getLatitude()+"==="+location.getLongitude());
         Log.e("location",location.getLocationDescribe()+"==="+location.getAddrStr());
-        homeLocationListener.getCurrentLocation(location.getLocationDescribe());
+        homeLocationListener.getCurrentLocation(location);
+        setCurrentLocation(location);
     }
 }
