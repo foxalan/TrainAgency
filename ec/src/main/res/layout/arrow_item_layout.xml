@@ -4,8 +4,7 @@
     android:layout_height="50dp"
     android:background="@android:color/white">
 
-    <android.support.v7.widget.AppCompatTextView
-        android:text="HI"
+    <ImageView
         android:id="@+id/tv_arrow_text"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
