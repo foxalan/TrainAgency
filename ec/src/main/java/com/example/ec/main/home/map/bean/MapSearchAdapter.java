@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * @author alan
  *         Date  2018/6/13.
- *         Function :
+ *         Function : 搜索位置结果的ListView
  *         Issue :
  */
 

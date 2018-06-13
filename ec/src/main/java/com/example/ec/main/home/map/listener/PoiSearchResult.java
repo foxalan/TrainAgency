@@ -1,5 +1,6 @@
 package com.example.ec.main.home.map.listener;
 
+
 import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,14 +10,23 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.baidu.mapapi.map.BaiduMap;
+import com.baidu.mapapi.map.BitmapDescriptor;
+import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.MapStatusUpdate;
+import com.baidu.mapapi.map.MapStatusUpdateFactory;
+import com.baidu.mapapi.map.MarkerOptions;
+import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.search.core.PoiInfo;
+import com.baidu.mapapi.search.core.SearchResult;
 import com.baidu.mapapi.search.poi.OnGetPoiSearchResultListener;
 import com.baidu.mapapi.search.poi.PoiDetailResult;
+import com.baidu.mapapi.search.poi.PoiDetailSearchOption;
 import com.baidu.mapapi.search.poi.PoiIndoorResult;
 import com.baidu.mapapi.search.poi.PoiNearbySearchOption;
 import com.baidu.mapapi.search.poi.PoiResult;
 import com.baidu.mapapi.search.poi.PoiSearch;
+import com.example.ec.R;
 import com.example.ec.main.home.map.bean.MapSearchAdapter;
 import com.example.ec.main.home.map.option.PoiSearchOptionCreator;
 
@@ -41,11 +51,12 @@ public class PoiSearchResult implements OnGetPoiSearchResultListener, TextWatche
     private LatLng currentLatLng;
 
     private PoiSearchOptionCreator poiSearchOptionCreator;
-    private PoiSearch search ;
+    private PoiSearch search;
     private PoiNearbySearchOption nearbySearchOption;
+    private PoiDetailSearchOption detailSearchOption;
 
 
-    public PoiSearchResult(ListView listView, MapSearchAdapter mapSearchAdapter, AppCompatEditText compatEditText, BaiduMap baiduMap,List<PoiInfo> poiInfoList) {
+    public PoiSearchResult(ListView listView, MapSearchAdapter mapSearchAdapter, AppCompatEditText compatEditText, BaiduMap baiduMap, List<PoiInfo> poiInfoList) {
         this.listView = listView;
         this.mapSearchAdapter = mapSearchAdapter;
         this.compatEditText = compatEditText;
@@ -53,47 +64,33 @@ public class PoiSearchResult implements OnGetPoiSearchResultListener, TextWatche
         this.poiInfoList = poiInfoList;
     }
 
-    public static PoiSearchResult create(ListView listView,MapSearchAdapter mapSearchAdapter,AppCompatEditText appCompatEditText,BaiduMap baiduMap,List<PoiInfo> poiInfoList){
-        return new PoiSearchResult(listView,mapSearchAdapter,appCompatEditText,baiduMap,poiInfoList);
+    public static PoiSearchResult create(ListView listView, MapSearchAdapter mapSearchAdapter, AppCompatEditText appCompatEditText, BaiduMap baiduMap, List<PoiInfo> poiInfoList) {
+        return new PoiSearchResult(listView, mapSearchAdapter, appCompatEditText, baiduMap, poiInfoList);
     }
 
     /**
      * 设置当前位置
      */
 
-    public void init(){
-        search =  PoiSearch.newInstance();
+    public void init() {
+        search = PoiSearch.newInstance();
         poiSearchOptionCreator = PoiSearchOptionCreator.create();
 
         nearbySearchOption = poiSearchOptionCreator.getPoiNearbySearchOption();
+        detailSearchOption = poiSearchOptionCreator.getDetailSearchOption();
 
         compatEditText.addTextChangedListener(this);
         listView.setOnItemClickListener(this);
         search.setOnGetPoiSearchResultListener(this);
     }
 
-    public void setCurrentLatLng(LatLng latLng){
+    public void setCurrentLatLng(LatLng latLng) {
         this.currentLatLng = latLng;
     }
 
-
-    /**
-     * 附近搜索
-     */
-    public void nearbySearch(){
-        compatEditText.addTextChangedListener(this);
-    }
-
-    /**
-     * 精确搜索
-     */
-    public void detailBySearch(){
-
-    }
-
-
     /**
      * 大致的搜索结果
+     *
      * @param poiResult
      */
     @Override
@@ -105,34 +102,39 @@ public class PoiSearchResult implements OnGetPoiSearchResultListener, TextWatche
             poiInfoList.addAll(poiResult.getAllPoi());
             mapSearchAdapter.notifyDataSetChanged();
 
-            Log.e("location","address:success poi"+poiResult.toString());
-            for(PoiInfo info:poiResult.getAllPoi()){
-                Log.e("location",info.address);
+            Log.e("location", "address:success poi" + poiResult.toString());
+            for (PoiInfo info : poiResult.getAllPoi()) {
+                Log.e("location", info.address);
             }
-
-//                    MyOverLay overlay = new MyOverLay(mBaiduMap, search);
-//                    //这传入search对象，因为一般搜索到后，点击时方便发出详细搜索
-//                    //设置数据,这里只需要一步，
-//                    overlay.setData(poiResult);
-//                    //添加到地图
-//                    overlay.addToMap();
-//                    //将显示视图拉倒正好可以看到所有POI兴趣点的缩放等级
-//                    overlay.zoomToSpan();//计算工具
-//                    //设置标记物的点击监听事件
-//                    mBaiduMap.setOnMarkerClickListener(overlay);
         } else {
-            //   Toast.makeText(getApplication(), "搜索不到你需要的信息！", Toast.LENGTH_SHORT).show();
+
         }
     }
 
 
     /**
      * 具体的搜索
+     *
      * @param poiDetailResult
      */
     @Override
     public void onGetPoiDetailResult(PoiDetailResult poiDetailResult) {
+        if (poiDetailResult.error != SearchResult.ERRORNO.NO_ERROR) {
+            Log.e("location", "address:error");
+        } else {
+            // 正常返回结果的时候，此处可以获得很多相关信息
+            String address = poiDetailResult.address;
+            Log.e("location", "address:" + address);
+            LatLng latLng = poiDetailResult.location;
+            MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(latLng);
+            baiduMap.animateMapStatus(msu);
 
+            BitmapDescriptor bitmap = BitmapDescriptorFactory
+                    .fromResource(R.drawable.maker);
+
+            OverlayOptions option = new MarkerOptions().position(latLng).icon(bitmap);
+            baiduMap.addOverlay(option);
+        }
     }
 
     @Override
@@ -149,12 +151,12 @@ public class PoiSearchResult implements OnGetPoiSearchResultListener, TextWatche
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
         String value = compatEditText.getText().toString();
-        if (currentLatLng !=null){
+        if (currentLatLng != null) {
             nearbySearchOption.keyword(value);
             nearbySearchOption.location(currentLatLng);
             search.searchNearby(nearbySearchOption);
         }
-        Log.e("location","value:"+value);
+        Log.e("location", "value:" + value);
 
     }
 
@@ -165,6 +167,11 @@ public class PoiSearchResult implements OnGetPoiSearchResultListener, TextWatche
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        //进行具体定位
 
+        PoiInfo info = poiInfoList.get(position);
+
+        detailSearchOption.poiUid(info.uid);
+        search.searchPoiDetail(detailSearchOption);
     }
 }

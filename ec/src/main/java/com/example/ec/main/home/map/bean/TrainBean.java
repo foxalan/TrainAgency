@@ -3,7 +3,7 @@ package com.example.ec.main.home.map.bean;
 /**
  * @author alan
  *         Date  2018/6/9.
- *         Function : 培训机构
+ *         Function : 培训机构位置信息
  *         Issue :
  */
 

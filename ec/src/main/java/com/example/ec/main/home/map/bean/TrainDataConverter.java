@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * @author alan
  *         Date  2018/6/9.
- *         Function :
+ *         Function : 网络请求培训机构信息
  *         Issue :
  */
 
