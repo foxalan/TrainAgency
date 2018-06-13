@@ -36,7 +36,7 @@ import q.rorbin.badgeview.QBadgeView;
 
 public class HomeDelegate extends BottomItemDelegate implements View.OnClickListener,IHomeLocationListener{
 
-    private IconTextView mIconLocation;
+
     private AppCompatTextView mTvLocation;
     private AppCompatEditText mEtSearch;
     private IconTextView mIconMsg;
@@ -63,12 +63,11 @@ public class HomeDelegate extends BottomItemDelegate implements View.OnClickList
         mRecyclerView = $(R.id.rv_index);
         mRefreshLayout = $(R.id.srl_index);
 
-        mIconLocation = rootView.findViewById(R.id.icon_location);
+
         mTvLocation = rootView.findViewById(R.id.tv_location);
         mEtSearch = rootView.findViewById(R.id.et_search_view);
         mIconMsg = rootView.findViewById(R.id.icon_index_message);
 
-        mIconLocation.setOnClickListener(this);
         mTvLocation.setOnClickListener(this);
 
         mIconMsg.setOnClickListener(v -> {
@@ -94,10 +93,8 @@ public class HomeDelegate extends BottomItemDelegate implements View.OnClickList
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        if (i == R.id.icon_location) {
+        if (i == R.id.tv_location) {
             getParentDelegate().getSupportDelegate().start(new MapDelegate());
-        } else if (i == R.id.tv_location) {
-
         } else if (i == R.id.icon_index_message){
 
            // getParentDelegate().getSupportDelegate().start(new MessageDelegate());

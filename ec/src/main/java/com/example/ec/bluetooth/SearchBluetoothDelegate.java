@@ -113,7 +113,7 @@ public class SearchBluetoothDelegate extends BluetoothDelegate implements Adapte
 
     /**
      * 开始搜索
-     * search device
+     * ic_home_search device
      */
     private void searchDeviceOrOpenBluetooth() {
         if (BtUtil.isOpen(bluetoothAdapter)) {
@@ -129,7 +129,7 @@ public class SearchBluetoothDelegate extends BluetoothDelegate implements Adapte
 
     /**
      * 关闭搜索
-     * cancel search
+     * cancel ic_home_search
      */
 
     @Override
