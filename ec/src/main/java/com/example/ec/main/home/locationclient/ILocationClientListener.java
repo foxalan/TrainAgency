@@ -1,6 +1,7 @@
 package com.example.ec.main.home.locationclient;
 
 import com.baidu.location.LocationClient;
+import com.baidu.mapapi.map.BaiduMap;
 
 /**
  * @author alan
@@ -16,4 +17,11 @@ public interface ILocationClientListener {
      * @param locationClient
      */
     LocationClient initLocationClient(LocationClient locationClient);
+
+    /**
+     * 初始化地图操作
+     * @param baiduMap
+     */
+    void initBaiduMap(BaiduMap baiduMap);
+
 }

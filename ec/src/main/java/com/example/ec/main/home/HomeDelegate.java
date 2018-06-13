@@ -19,6 +19,7 @@ import com.example.core.app.Latte;
 import com.example.core.delegate.bottom.BottomItemDelegate;
 import com.example.ec.R;
 import com.example.ec.main.EcBottomDelegate;
+import com.example.ec.main.home.locationlistener.CurrentLocation;
 import com.example.ec.main.home.map.MapDelegate;
 import com.example.ec.main.home.message.MessageDelegate;
 import com.example.ec.main.home.search.SearchDelegate;
@@ -95,6 +96,8 @@ public class HomeDelegate extends BottomItemDelegate implements View.OnClickList
         Latte.getHandler().post(() -> {
             mTvLocation.setText(location.getAddrStr().substring(1,4));
         });
+        //将地址存入工具中
+        CurrentLocation.getInstance().setBdLocation(location);
         baiDuMapClient.stopRequestLocation();
     }
 
