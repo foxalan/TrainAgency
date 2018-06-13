@@ -67,7 +67,6 @@ public class BaiDuMapClient implements IOpenLocationListener ,IDealLocationListe
         location.getLongitude();
 
         Log.e("location","latitude:"+location.getLatitude()+"==="+location.getLongitude());
-
         Log.e("location",location.getLocationDescribe()+"==="+location.getAddrStr());
         homeLocationListener.getCurrentLocation(location.getLocationDescribe());
     }

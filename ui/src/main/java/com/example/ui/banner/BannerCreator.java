@@ -9,7 +9,7 @@ import com.example.ui.R;
 import java.util.ArrayList;
 
 /**
- * Created by 傅令杰
+ * @author alan
  */
 
 public class BannerCreator {
