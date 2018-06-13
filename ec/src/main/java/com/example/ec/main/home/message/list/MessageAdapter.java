@@ -1,12 +1,17 @@
 package com.example.ec.main.home.message.list;
 
 import android.support.v7.widget.AppCompatTextView;
+import android.widget.ImageView;
+
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.example.core.app.Latte;
 import com.example.ec.R;
 import com.example.ec.main.personal.list.ListItemType;
 
 import java.util.List;
+
+import q.rorbin.badgeview.QBadgeView;
 
 /**
  * @author alan
@@ -15,7 +20,7 @@ import java.util.List;
  *         Issue :
  */
 
-public class MessageAdapter extends BaseMultiItemQuickAdapter<MessageBean,BaseViewHolder> {
+public class MessageAdapter extends BaseMultiItemQuickAdapter<MessageBean, BaseViewHolder> {
 
 
     /**
@@ -33,10 +38,27 @@ public class MessageAdapter extends BaseMultiItemQuickAdapter<MessageBean,BaseVi
 
     @Override
     protected void convert(BaseViewHolder helper, MessageBean item) {
+
+        ImageView imageView = helper.getView(R.id.tv_arrow_image);
+        AppCompatTextView appCompatTextView = helper.getView(R.id.tv_arrow_value);
+        imageView.setImageResource(item.getImageUrl());
+        appCompatTextView.setText(item.getText());
+        QBadgeView mQBadgeView;
         switch (helper.getItemViewType()) {
             case ListItemType.ITEM_NORMAL:
-                AppCompatTextView appCompatTextView =  helper.getView(R.id.tv_arrow_value);
-                appCompatTextView.setText(item.getText());
+                switch (item.getValue()) {
+                    case UNREAD:
+                        //设置消息
+                        mQBadgeView = new QBadgeView(Latte.getApplicationContext());
+                        mQBadgeView.bindTarget(imageView).setBadgeNumber(12).setBadgeTextSize(8,true);
+                        break;
+                    case READ:
+
+                        break;
+                    default:
+
+                }
+
                 break;
             default:
                 break;

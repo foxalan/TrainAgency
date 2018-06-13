@@ -47,46 +47,75 @@ public class PersonalDelegate extends BottomItemDelegate {
                 .build();
 
 
-        final ListBean address = new ListBean.Builder()
-                .setItemType(ListItemType.ITEM_NORMAL)
-                .setId(2)
-                .setText("收货地址")
-                .build();
-
-        final ListBean system = new ListBean.Builder()
-                .setItemType(ListItemType.ITEM_NORMAL)
-                .setId(3)
-                .setText("系统设置")
-                .build();
-
         final ListBean notice = new ListBean.Builder()
                 .setItemType(ListItemType.ITEM_NORMAL)
-                .setId(4)
-                .setText("我的评论")
+                .setId(2)
+                .setImageUrl(R.mipmap.ic_personal_notice)
+                .setValue("我的关注")
                 .build();
 
-        final ListBean footer = new ListBean.Builder()
+        final ListBean say = new ListBean.Builder()
+                .setItemType(ListItemType.ITEM_NORMAL)
+                .setImageUrl(R.mipmap.ic_personal_say)
+                .setId(3)
+                .setValue("我的评论")
+                .build();
+
+        final ListBean  footer = new ListBean.Builder()
+                .setItemType(ListItemType.ITEM_NORMAL)
+                .setId(4)
+                .setImageUrl(R.mipmap.ic_personal_footer)
+                .setValue("足    迹")
+                .build();
+
+        final ListBean resource = new ListBean.Builder()
                 .setItemType(ListItemType.ITEM_NORMAL)
                 .setId(5)
-                .setText("资源管理")
+                .setImageUrl(R.mipmap.ic_personal_resource)
+                .setValue("资源管理")
                 .build();
 
-        final ListBean resouce = new ListBean.Builder()
+        final ListBean blank1 = new ListBean.Builder()
+                .setItemType(ListItemType.ITEM_BLANK)
+                .setId(1)
+                .build();
+
+        final ListBean be = new ListBean.Builder()
                 .setItemType(ListItemType.ITEM_NORMAL)
                 .setId(6)
-                .setText("系统设置")
+                .setImageUrl(R.mipmap.ic_personal_be)
+                .setValue("申请成为老师/机构")
                 .build();
+
+        final ListBean hlep = new ListBean.Builder()
+                .setItemType(ListItemType.ITEM_NORMAL)
+                .setId(5)
+                .setImageUrl(R.mipmap.ic_personal_help)
+                .setValue("帮助/反馈")
+                .build();
+
+        final ListBean setting = new ListBean.Builder()
+                .setItemType(ListItemType.ITEM_NORMAL)
+                .setId(6)
+                .setImageUrl(R.mipmap.ic_personal_setting)
+                .setValue("设置")
+                .build();
+
+
 
 
         final List<ListBean> data = new ArrayList<>();
         data.add(my);
         data.add(blank);
 
-        data.add(address);
-        data.add(system);
         data.add(notice);
+        data.add(say);
         data.add(footer);
-        data.add(resouce);
+        data.add(resource);
+        data.add(blank1);
+        data.add(be);
+        data.add(hlep);
+        data.add(setting);
 
         //设置RecyclerView
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
@@ -95,6 +124,6 @@ public class PersonalDelegate extends BottomItemDelegate {
         rvSettings.addItemDecoration
                 (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 2));
         rvSettings.setAdapter(adapter);
-        rvSettings.addOnItemTouchListener(new PersonalClickListener(this));
+    //    rvSettings.addOnItemTouchListener(new PersonalClickListener(this));
     }
 }

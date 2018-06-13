@@ -13,14 +13,14 @@ import com.example.core.delegate.LatteDelegate;
 public class ListBean implements MultiItemEntity {
 
     private int mItemType = 0;
-    private String mImageUrl = null;
+    private int mImageUrl;
     private String mText = null;
     private String mValue = null;
     private int mId = 0;
     private LatteDelegate mDelegate = null;
     private CompoundButton.OnCheckedChangeListener mOnCheckedChangeListener = null;
 
-    public ListBean(int mItemType, String mImageUrl, String mText, String mValue, int mId, LatteDelegate mDelegate, CompoundButton.OnCheckedChangeListener mOnCheckedChangeListener) {
+    public ListBean(int mItemType, int mImageUrl, String mText, String mValue, int mId, LatteDelegate mDelegate, CompoundButton.OnCheckedChangeListener mOnCheckedChangeListener) {
         this.mItemType = mItemType;
         this.mImageUrl = mImageUrl;
         this.mText = mText;
@@ -30,7 +30,7 @@ public class ListBean implements MultiItemEntity {
         this.mOnCheckedChangeListener = mOnCheckedChangeListener;
     }
 
-    public String getImageUrl() {
+    public int  getImageUrl() {
         return mImageUrl;
     }
 
@@ -69,7 +69,7 @@ public class ListBean implements MultiItemEntity {
 
         private int id = 0;
         private int itemType = 0;
-        private String imageUrl = null;
+        private int  imageUrl;
         private String text = null;
         private String value = null;
         private CompoundButton.OnCheckedChangeListener onCheckedChangeListener = null;
@@ -85,7 +85,7 @@ public class ListBean implements MultiItemEntity {
             return this;
         }
 
-        public Builder setImageUrl(String imageUrl) {
+        public Builder setImageUrl(int  imageUrl) {
             this.imageUrl = imageUrl;
             return this;
         }

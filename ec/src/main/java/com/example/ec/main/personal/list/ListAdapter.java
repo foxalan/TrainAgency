@@ -35,7 +35,7 @@ public class ListAdapter extends BaseMultiItemQuickAdapter<ListBean, BaseViewHol
     protected void convert(BaseViewHolder helper, ListBean item) {
         switch (helper.getItemViewType()) {
             case ListItemType.ITEM_NORMAL:
-                helper.setText(R.id.tv_arrow_text, item.getText());
+                helper.setImageResource(R.id.tv_arrow_image,item.getImageUrl());
                 helper.setText(R.id.tv_arrow_value, item.getValue());
                 break;
             case ListItemType.ITEM_AVATAR:
@@ -45,10 +45,7 @@ public class ListAdapter extends BaseMultiItemQuickAdapter<ListBean, BaseViewHol
                         .into((ImageView) helper.getView(R.id.img_arrow_avatar));
                 break;
             case ListItemType.ITEM_BLANK:
-//                helper.setText(R.id.tv_arrow_switch_text,item.getText());
-//                final SwitchCompat switchCompat = helper.getView(R.id.list_item_switch);
-//                switchCompat.setChecked(true);
-//                switchCompat.setOnCheckedChangeListener(item.getmOnCheckedChangeListener());
+
                 break;
             default:
                 break;

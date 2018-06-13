@@ -1,5 +1,6 @@
 package com.example.ec.main.home.message;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import com.example.core.delegate.LatteDelegate;
 import com.example.ec.R;
 import com.example.ec.main.home.message.list.MessageAdapter;
 import com.example.ec.main.home.message.list.MessageBean;
+import com.example.ec.main.home.message.list.MessageType;
 import com.example.ec.main.personal.PersonalClickListener;
 import com.example.ec.main.personal.list.ListItemType;
 import com.example.ui.recycler.BaseDecoration;
@@ -52,12 +54,20 @@ public class MessageDelegate extends LatteDelegate {
      */
     private void initRecyclerView() {
 
+        @SuppressLint("ResourceType")
         MessageBean msgUnRead = new MessageBean.Builder()
+                .setCount(5)
+                .setValue(MessageType.UNREAD)
+                .setImageUrl(R.mipmap.ic_home_message)
                 .setItemType(ListItemType.ITEM_NORMAL)
                 .setText("未读消息")
                 .build();
 
+        @SuppressLint("ResourceType")
         MessageBean msgRead = new MessageBean.Builder()
+
+                .setValue(MessageType.READ)
+                .setImageUrl(R.mipmap.ic_home_message_read)
                 .setItemType(ListItemType.ITEM_NORMAL)
                 .setText("已读消息")
                 .build();
@@ -72,6 +82,6 @@ public class MessageDelegate extends LatteDelegate {
         mRecyclerMessage.addItemDecoration
                 (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 2));
         mRecyclerMessage.setAdapter(adapter);
-        mRecyclerMessage.addOnItemTouchListener(new PersonalClickListener(this));
+    //    mRecyclerMessage.addOnItemTouchListener(new PersonalClickListener(this));
     }
 }

@@ -1,5 +1,6 @@
 package com.example.ec.main.home.message.list;
 
+import android.support.annotation.IdRes;
 import android.widget.CompoundButton;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
@@ -14,18 +15,18 @@ import com.example.core.delegate.LatteDelegate;
 public class MessageBean implements MultiItemEntity {
 
     private int mItemType = 0;
-    private String mImageUrl = null;
-    private int mImgRes;
-    private MessageType mType;
+    @IdRes
+    private int  mImageUrl;
     private int mCount;
     private String mText = null;
-    private String mValue = null;
+    private MessageType mValue = null;
     private int mId = 0;
     private LatteDelegate mDelegate = null;
     private CompoundButton.OnCheckedChangeListener mOnCheckedChangeListener = null;
 
 
-    public MessageBean(int mItemType, String mImageUrl, String mText, String mValue, int mId, LatteDelegate mDelegate, CompoundButton.OnCheckedChangeListener mOnCheckedChangeListener) {
+    public MessageBean(int mCount,int mItemType, int  mImageUrl, String mText, MessageType mValue, int mId, LatteDelegate mDelegate, CompoundButton.OnCheckedChangeListener mOnCheckedChangeListener) {
+        this.mCount = mCount;
         this.mItemType = mItemType;
         this.mImageUrl = mImageUrl;
         this.mText = mText;
@@ -35,20 +36,30 @@ public class MessageBean implements MultiItemEntity {
         this.mOnCheckedChangeListener = mOnCheckedChangeListener;
     }
 
-    public String getImageUrl() {
+    public int getImageUrl() {
         return mImageUrl;
+    }
+
+
+    public int getCount() {
+        return mCount;
+    }
+
+    public void setCount(int mCount) {
+        this.mCount = mCount;
     }
 
     public String getText() {
         if (mText == null) {
             return "";
         }
+
         return mText;
     }
 
-    public String getValue() {
+    public MessageType getValue() {
         if (mValue == null) {
-            return "";
+            return MessageType.READ;
         }
         return mValue;
     }
@@ -71,15 +82,20 @@ public class MessageBean implements MultiItemEntity {
     }
 
     public static final class Builder {
-        private MessageType mType;
+
         private int mCount;
         private int id = 0;
         private int itemType = 0;
-        private String imageUrl = null;
+        private int  imageUrl;
         private String text = null;
-        private String value = null;
+        private MessageType value = null;
         private CompoundButton.OnCheckedChangeListener onCheckedChangeListener = null;
         private LatteDelegate delegate = null;
+
+        public Builder setCount(int count){
+            this.mCount = count;
+            return this;
+        }
 
         public Builder setId(int id) {
             this.id = id;
@@ -91,7 +107,7 @@ public class MessageBean implements MultiItemEntity {
             return this;
         }
 
-        public Builder setImageUrl(String imageUrl) {
+        public Builder setImageUrl(@IdRes int  imageUrl) {
             this.imageUrl = imageUrl;
             return this;
         }
@@ -101,7 +117,7 @@ public class MessageBean implements MultiItemEntity {
             return this;
         }
 
-        public Builder setValue(String value) {
+        public Builder setValue(MessageType value) {
             this.value = value;
             return this;
         }
@@ -117,7 +133,7 @@ public class MessageBean implements MultiItemEntity {
         }
 
         public MessageBean build() {
-            return new MessageBean(itemType, imageUrl, text, value, id, delegate, onCheckedChangeListener);
+            return new MessageBean(mCount,itemType, imageUrl, text, value, id, delegate, onCheckedChangeListener);
         }
     }
 }
