@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/app_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:background="@android:color/holo_blue_light"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:contentInsetStart="0dp">
+        
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            
+            <com.joanzapata.iconify.widget.IconTextView
+                android:id="@+id/ict_back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:text="{fa-arrow-left}"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"/>
+
+            <android.support.v7.widget.AppCompatEditText
+                android:layout_marginLeft="15dp"
+                android:drawableLeft="@mipmap/ic_home_location"
+                android:cursorVisible="true"
+                android:textCursorDrawable="@null"
+                android:focusable="false"
+                android:id="@+id/et_search_view"
+                android:layout_width="240dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_home_et_search"
+                android:gravity="center_vertical"
+                android:drawablePadding="5dp"
+                android:textSize="15sp"
+                android:hint="请输入培训地址"
+                android:paddingLeft="20dp"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+        
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="18sp"
+        android:paddingLeft="15dp"
+        android:text="当前位置"
+        android:textColor="@android:color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="HardcodedText" />
+
+    <LinearLayout
+
+        android:background="@android:color/white"
+        android:paddingLeft="15dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_current_address"
+            android:gravity="center_vertical|start"
+            android:textSize="15sp"
+            android:text="武汉市青山市"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent"
+            tools:ignore="HardcodedText" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:drawableStart="@mipmap/ic_home_message"
+            android:gravity="center_vertical|end"
+            android:textSize="18sp"
+            android:text="重新定位"
+            android:paddingRight="15dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            tools:ignore="HardcodedText,RtlSymmetry"
+            android:drawableLeft="@mipmap/ic_home_message"
+            android:paddingEnd="15dp" />
+
+    </LinearLayout>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_marginTop="20dp"
+        android:textSize="18sp"
+        android:paddingLeft="15dp"
+        android:paddingBottom="5dp"
+        android:text="保存地址"
+        android:textColor="@android:color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="HardcodedText" />
+
+    <LinearLayout
+        android:background="@android:color/white"
+        android:padding="15dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/ryc_address"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+
+</LinearLayout>

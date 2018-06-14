@@ -1,4 +1,4 @@
-package com.example.ec.main.home.locationlistener;
+package com.example.ec.main.home.location;
 
 import com.baidu.location.BDLocation;
 

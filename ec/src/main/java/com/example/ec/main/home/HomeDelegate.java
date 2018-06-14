@@ -1,7 +1,6 @@
 package com.example.ec.main.home;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,7 +10,6 @@ import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 import com.baidu.location.BDLocation;
@@ -19,7 +17,9 @@ import com.example.core.app.Latte;
 import com.example.core.delegate.bottom.BottomItemDelegate;
 import com.example.ec.R;
 import com.example.ec.main.EcBottomDelegate;
-import com.example.ec.main.home.locationlistener.CurrentLocation;
+import com.example.ec.main.home.address.AddressDelegate;
+import com.example.ec.main.home.location.CurrentLocation;
+import com.example.ec.main.home.location.ILocationListener;
 import com.example.ec.main.home.map.MapDelegate;
 import com.example.ec.main.home.message.MessageDelegate;
 import com.example.ec.main.home.search.SearchDelegate;
@@ -36,13 +36,13 @@ import q.rorbin.badgeview.QBadgeView;
  *         Issue :
  */
 
-public class HomeDelegate extends BottomItemDelegate implements View.OnClickListener,IHomeLocationListener{
+public class HomeDelegate extends BottomItemDelegate implements ILocationListener{
 
     private AppCompatTextView mTvLocation;
     private AppCompatEditText mEtSearch;
     private IconTextView mIconMsg;
 
-    private BaiDuMapClient baiDuMapClient;
+    private BaiDuMapLocationClient baiDuMapLocationClient;
     private QBadgeView mQBadgeView;
 
     private RecyclerView mRecyclerView = null;
@@ -64,7 +64,8 @@ public class HomeDelegate extends BottomItemDelegate implements View.OnClickList
         mEtSearch = rootView.findViewById(R.id.et_search_view);
         mIconMsg = rootView.findViewById(R.id.icon_index_message);
 
-        mTvLocation.setOnClickListener(this);
+        mTvLocation.setOnClickListener(v -> getParentDelegate().getSupportDelegate().start(new AddressDelegate()));
+        mIconMsg.setOnClickListener(v -> getParentDelegate().getSupportDelegate().start(new MessageDelegate()));
 
         mRefreshHandler = RefreshHandler.create(mRefreshLayout, mRecyclerView, new HomeDataConverter());
         //Search
@@ -74,42 +75,11 @@ public class HomeDelegate extends BottomItemDelegate implements View.OnClickList
         mQBadgeView = new QBadgeView(getContext());
         mQBadgeView.bindTarget(mIconMsg).setBadgeNumber(12).setBadgeTextSize(8,true);
 
-        baiDuMapClient = BaiDuMapClient.create(getContext(),this);
-        baiDuMapClient.startRequestLocation();
+        baiDuMapLocationClient = BaiDuMapLocationClient.create(getContext(),this);
+        baiDuMapLocationClient.startRequestLocation();
     }
 
-    @Override
-    public void onClick(View v) {
-        int i = v.getId();
-        if (i == R.id.tv_location) {
-            getParentDelegate().getSupportDelegate().start(new MapDelegate());
-        } else if (i == R.id.icon_index_message){
-             getParentDelegate().getSupportDelegate().start(new MessageDelegate());
-        } else {
 
-        }
-    }
-
-    @Override
-    public void getCurrentLocation(BDLocation location) {
-        //得到当前的位置信息
-        Latte.getHandler().post(() -> {
-            mTvLocation.setText(location.getAddrStr().substring(1,4));
-        });
-        //将地址存入工具中
-        CurrentLocation.getInstance().setBdLocation(location);
-        baiDuMapClient.stopRequestLocation();
-    }
-
-    @Override
-    public void changeCurrentLocation(String string) {
-
-    }
-
-    @Override
-    public void reChooseLocation() {
-
-    }
 
     private void initRefreshLayout() {
         mRefreshLayout.setColorSchemeResources(
@@ -140,4 +110,14 @@ public class HomeDelegate extends BottomItemDelegate implements View.OnClickList
         mRefreshHandler.firstPage("index.php");
     }
 
+    @Override
+    public void location(BDLocation location) {
+        //得到当前的位置信息
+        Latte.getHandler().post(() -> {
+            mTvLocation.setText(location.getAddrStr().substring(1,4));
+        });
+        //将地址存入工具中
+        CurrentLocation.getInstance().setBdLocation(location);
+        baiDuMapLocationClient.stopRequestLocation();
+    }
 }

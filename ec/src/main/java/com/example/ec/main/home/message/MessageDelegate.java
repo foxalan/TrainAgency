@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * @author alan
  *         Date  2018/6/9.
- *         Function :
+ *         Function : 消息页面，用于显示多少条消息未读
  *         Issue :
  */
 

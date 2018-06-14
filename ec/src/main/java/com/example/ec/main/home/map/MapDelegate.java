@@ -5,14 +5,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatEditText;
 
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ZoomControls;
 
-import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.mapapi.map.BaiduMap;
@@ -30,7 +28,7 @@ import com.baidu.mapapi.search.core.PoiInfo;
 import com.example.core.delegate.LatteDelegate;
 import com.example.ec.R;
 import com.example.ec.main.home.locationclient.LocationClientImpl;
-import com.example.ec.main.home.locationlistener.CurrentLocation;
+import com.example.ec.main.home.location.CurrentLocation;
 import com.example.ec.main.home.map.bean.MapSearchAdapter;
 import com.example.ec.main.home.map.bean.TrainBean;
 import com.example.ec.main.home.map.bean.TrainDataConverter;
@@ -39,8 +37,6 @@ import com.joanzapata.iconify.widget.IconTextView;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
 /**
  * @Author Alan
@@ -55,7 +51,7 @@ public class MapDelegate extends LatteDelegate {
     private BaiduMap mBaiduMap = null;
 
     private LocationClient mLocationClient;
-//    private MyLocationListener locationListener;
+//    private LatteLocationListener locationListener;
 
     private List<TrainBean> trainBeanList;
 
@@ -208,7 +204,7 @@ public class MapDelegate extends LatteDelegate {
     //    mLocationClient.unRegisterLocationListener(locationListener);
     }
 
-//    private class MyLocationListener extends BDAbstractLocationListener {
+//    private class LatteLocationListener extends BDAbstractLocationListener {
 //
 //        @Override
 //        public void onReceiveLocation(BDLocation location) {

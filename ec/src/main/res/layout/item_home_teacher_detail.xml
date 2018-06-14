@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:background="@color/gray_text"
+        android:id="@+id/teacher_icon"
+        android:layout_margin="20dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+         />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/teacher_name"
+        android:text="A老师"
+        android:textSize="18sp"
+        android:layout_alignTop="@id/teacher_icon"
+        android:layout_toRightOf="@id/teacher_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/teacher_icon"
+        tools:ignore="HardcodedText" />
+
+    <android.support.v7.widget.AppCompatRatingBar
+        android:id="@+id/teacher_rat"
+        android:layout_alignLeft="@id/teacher_name"
+        android:layout_below="@id/teacher_name"
+        style="?ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/teacher_name" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/teacher_des"
+        android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/teacher_name"
+        android:layout_below="@id/teacher_rat"
+        android:layout_alignStart="@id/teacher_name"
+        tools:ignore="HardcodedText" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/teacher_phone"
+        android:layout_below="@id/teacher_des"
+        android:layout_alignLeft="@id/teacher_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/teacher_name" />
+</RelativeLayout>
