@@ -9,7 +9,8 @@ import com.example.ui.recycler.MultipleFields;
 import com.example.ui.recycler.MultipleItemEntity;
 
 /**
- * Created by 傅令杰
+ * 首页点击
+ * @author alan
  */
 
 public class IndexItemClickListener extends SimpleClickListener {
