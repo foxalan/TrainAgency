@@ -1,4 +1,4 @@
-package com.example.ec.main.home.message.list;
+package com.example.ec.main.dynamic.message.list;
 
 /**
  * @author alan

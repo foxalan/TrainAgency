@@ -1,4 +1,4 @@
-package com.example.ec.main.home.message.detail;
+package com.example.ec.main.dynamic.message.detail;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

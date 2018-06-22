@@ -1,4 +1,4 @@
-package com.example.ec.main.home.message;
+package com.example.ec.main.dynamic.message;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -11,10 +11,9 @@ import android.view.View;
 
 import com.example.core.delegate.LatteDelegate;
 import com.example.ec.R;
-import com.example.ec.main.home.message.list.MessageAdapter;
-import com.example.ec.main.home.message.list.MessageBean;
-import com.example.ec.main.home.message.list.MessageType;
-import com.example.ec.main.personal.PersonalClickListener;
+import com.example.ec.main.dynamic.message.list.MessageAdapter;
+import com.example.ec.main.dynamic.message.list.MessageBean;
+import com.example.ec.main.dynamic.message.list.MessageType;
 import com.example.ec.main.personal.list.ListItemType;
 import com.example.ui.recycler.BaseDecoration;
 import com.joanzapata.iconify.widget.IconTextView;

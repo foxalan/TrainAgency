@@ -1,4 +1,4 @@
-package com.example.ec.main.home.message.list;
+package com.example.ec.main.dynamic.message.list;
 
 import android.support.v7.widget.AppCompatTextView;
 import android.widget.ImageView;
