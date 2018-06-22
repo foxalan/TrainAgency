@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:paddingRight="15dp"
+    android:paddingLeft="15dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:text="少儿美术绘画馆"
+        android:id="@+id/msg_title"
+        android:textSize="18sp"
+        android:padding="1dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:textSize="15sp"
+        android:padding="1dp"
+        android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        android:layout_below="@id/msg_title"
+        android:id="@+id/msg_con"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:padding="1dp"
+        android:text="aa|2017-8-6"
+        android:layout_below="@id/msg_con"
+        android:id="@+id/msg_date"
+        android:textSize="12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:padding="1dp"
+        android:src="@mipmap/ic_home_search"
+        android:layout_below="@id/msg_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:padding="1dp"
+        android:src="@mipmap/ic_home_search"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/msg_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

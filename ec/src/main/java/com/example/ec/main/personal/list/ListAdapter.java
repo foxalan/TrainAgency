@@ -1,6 +1,5 @@
 package com.example.ec.main.personal.list;
 
-import android.support.v7.widget.SwitchCompat;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
