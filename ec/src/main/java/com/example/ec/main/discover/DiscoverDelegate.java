@@ -96,6 +96,6 @@ public class DiscoverDelegate extends BottomItemDelegate {
         rvDiscover.addItemDecoration
                 (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 2));
         rvDiscover.setAdapter(adapter);
-     //   rvDiscover.addOnItemTouchListener(new PersonalClickListener(this));
+     //   rvDiscover.addOnItemTouchListener(new DynamicClickListener(this));
     }
 }

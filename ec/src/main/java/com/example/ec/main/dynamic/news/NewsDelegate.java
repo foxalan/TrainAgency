@@ -23,7 +23,7 @@ public class NewsDelegate extends LatteDelegate {
 
     @Override
     public Object setLayout() {
-        return R.layout.delegate_discover;
+        return R.layout.delegate_dynamic_news;
     }
 
     @Override
@@ -33,9 +33,9 @@ public class NewsDelegate extends LatteDelegate {
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
-        final WebDelegateImpl delegate = WebDelegateImpl.create("index.html");
-        delegate.setTopDelegate(this.getParentDelegate());
-        getSupportDelegate().loadRootFragment(R.id.web_discovery_container, delegate);
+//        final WebDelegateImpl delegate = WebDelegateImpl.create("index.html");
+//        delegate.setTopDelegate(this.getParentDelegate());
+//        getSupportDelegate().loadRootFragment(R.id.web_discovery_container, delegate);
     }
 
     @Override

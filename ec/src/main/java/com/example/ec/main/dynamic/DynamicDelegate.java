@@ -10,6 +10,10 @@ import android.view.View;
 
 import com.example.core.delegate.bottom.BottomItemDelegate;
 import com.example.ec.R;
+import com.example.ec.main.dynamic.dailyrecord.RecordDelegate;
+import com.example.ec.main.dynamic.message.MessageDelegate;
+import com.example.ec.main.dynamic.news.NewsDelegate;
+import com.example.ec.main.dynamic.outdoor.OutDoorDelegate;
 import com.example.ec.main.personal.list.ListAdapter;
 import com.example.ec.main.personal.list.ListBean;
 import com.example.ec.main.personal.list.ListItemType;
@@ -42,12 +46,15 @@ public class DynamicDelegate extends BottomItemDelegate {
         List<ListBean> listBeanList = new ArrayList<>();
 
         ListBean news = new ListBean.Builder()
+                .setId(0)
                 .setItemType(ListItemType.ITEM_NORMAL)
                 .setImageUrl(R.mipmap.ic_dynamic_news)
                 .setValue(String.valueOf("新闻"))
+                .setDelegate(new NewsDelegate())
                 .build();
 
         ListBean knowledge = new ListBean.Builder()
+                .setId(1)
                 .setItemType(ListItemType.ITEM_NORMAL)
                 .setImageUrl(R.mipmap.ic_dynamic_knowleage)
                 .setValue(String.valueOf("宝典"))
@@ -58,16 +65,20 @@ public class DynamicDelegate extends BottomItemDelegate {
                 .build();
 
         ListBean log = new ListBean.Builder()
+                .setId(2)
                 .setItemType(ListItemType.ITEM_NORMAL)
                 .setImageUrl(R.mipmap.ic_dynamic_daily)
                 .setValue(String.valueOf("发表日志"))
+                .setDelegate(new RecordDelegate())
                 .build();
 
 
         ListBean message = new ListBean.Builder()
+                .setId(3)
                 .setItemType(ListItemType.ITEM_NORMAL)
                 .setImageUrl(R.mipmap.ic_dynamic_message)
                 .setValue(String.valueOf("消息"))
+                .setDelegate(new MessageDelegate())
                 .build();
 
         ListBean blank2 = new ListBean.Builder()
@@ -76,9 +87,11 @@ public class DynamicDelegate extends BottomItemDelegate {
 
 
         ListBean  campaign = new ListBean.Builder()
+                .setId(4)
                 .setItemType(ListItemType.ITEM_NORMAL)
                 .setImageUrl(R.mipmap.ic_dynamic_activity)
                 .setValue(String.valueOf("活动"))
+                .setDelegate(new OutDoorDelegate())
                 .build();
 
         listBeanList.add(news);
@@ -96,5 +109,6 @@ public class DynamicDelegate extends BottomItemDelegate {
         rvDynamic.addItemDecoration
                 (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 2));
         rvDynamic.setAdapter(adapter);
+        rvDynamic.addOnItemTouchListener(new DynamicClickListener(this));
     }
 }

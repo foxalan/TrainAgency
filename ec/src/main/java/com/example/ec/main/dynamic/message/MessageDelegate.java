@@ -35,7 +35,7 @@ public class MessageDelegate extends LatteDelegate {
 
     @Override
     public Object setLayout() {
-        return R.layout.delegate_home_message;
+        return R.layout.delegate_dynamic_message;
     }
 
     @Override
@@ -81,6 +81,6 @@ public class MessageDelegate extends LatteDelegate {
         mRecyclerMessage.addItemDecoration
                 (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 2));
         mRecyclerMessage.setAdapter(adapter);
-    //    mRecyclerMessage.addOnItemTouchListener(new PersonalClickListener(this));
+    //    mRecyclerMessage.addOnItemTouchListener(new DynamicClickListener(this));
     }
 }

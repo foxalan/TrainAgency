@@ -1,6 +1,7 @@
 package com.example.core.delegate.web.event;
 
-import com.flj.latte.util.log.LatteLogger;
+
+import com.example.core.util.log.LatteLogger;
 
 /**
  * Created by 傅令杰

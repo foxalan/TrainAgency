@@ -1,4 +1,4 @@
-package com.example.ec.main.dynamic.dailyrecord;
+package com.example.ec.main.dynamic.outdoor;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,20 +8,17 @@ import android.view.View;
 import com.example.core.delegate.LatteDelegate;
 import com.example.ec.R;
 
-
 /**
  * @author alan
- *         Date  2018/6/22.
- *         Function : 发表日志页面
+ *         Date  2018/6/23.
+ *         Function : 户外活动
  *         Issue :
  */
 
-public class RecordDelegate extends LatteDelegate {
-
+public class OutDoorDelegate extends LatteDelegate {
     @Override
     public Object setLayout() {
-
-        return R.layout.delegate_dynamic_record;
+        return R.layout.delegate_dynamic_outdoor;
     }
 
     @Override

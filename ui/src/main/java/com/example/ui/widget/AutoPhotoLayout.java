@@ -297,7 +297,7 @@ public final class AutoPhotoLayout extends LinearLayoutCompat {
         mIconAdd.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDelegate.startCameraWithCheck();
+         //       mDelegate.startCameraWithCheck();
             }
         });
         this.addView(mIconAdd);
