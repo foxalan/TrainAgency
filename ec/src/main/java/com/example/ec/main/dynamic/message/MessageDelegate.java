@@ -21,6 +21,9 @@ import com.joanzapata.iconify.widget.IconTextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
+import me.yokeyword.fragmentation.anim.FragmentAnimator;
+
 /**
  * @author alan
  *         Date  2018/6/9.
@@ -46,6 +49,11 @@ public class MessageDelegate extends LatteDelegate {
 
             mIcBack.setOnClickListener(v -> getSupportDelegate().pop());
             initRecyclerView();
+    }
+
+    @Override
+    public FragmentAnimator onCreateFragmentAnimator() {
+        return new DefaultHorizontalAnimator();
     }
 
     /**

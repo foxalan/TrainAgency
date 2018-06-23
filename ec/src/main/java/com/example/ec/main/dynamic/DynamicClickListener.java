@@ -5,7 +5,9 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.SimpleClickListener;
 import com.example.core.delegate.LatteDelegate;
+import com.example.ec.R;
 import com.example.ec.main.personal.list.ListBean;
+import com.example.ui.recycler.DataConverter;
 
 
 /**
@@ -28,10 +30,8 @@ public class DynamicClickListener extends SimpleClickListener {
         switch (id) {
             case 0:
             case 2:
-            case 4:
-                DELEGATE.getParentDelegate().getSupportDelegate().start(bean.getDelegate());
-                break;
             case 3:
+            case 4:
                 DELEGATE.getParentDelegate().getSupportDelegate().start(bean.getDelegate());
                 break;
             default:

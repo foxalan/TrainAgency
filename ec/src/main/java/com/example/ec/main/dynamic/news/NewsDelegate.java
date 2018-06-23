@@ -40,6 +40,12 @@ public class NewsDelegate extends LatteDelegate {
 
     @Override
     public FragmentAnimator onCreateFragmentAnimator() {
+
         return new DefaultHorizontalAnimator();
     }
+
+    //onCreateFragmentAnimator
+
+
+
 }

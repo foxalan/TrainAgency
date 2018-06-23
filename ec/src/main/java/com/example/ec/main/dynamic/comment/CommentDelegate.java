@@ -8,6 +8,9 @@ import android.view.View;
 import com.example.core.delegate.LatteDelegate;
 import com.example.ec.R;
 
+import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
+import me.yokeyword.fragmentation.anim.FragmentAnimator;
+
 /**
  * @author alan
  *         Date  2018/6/23.
@@ -25,5 +28,10 @@ public class CommentDelegate extends LatteDelegate {
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
 
+    }
+
+    @Override
+    public FragmentAnimator onCreateFragmentAnimator() {
+        return new DefaultHorizontalAnimator();
     }
 }
