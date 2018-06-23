@@ -124,6 +124,6 @@ public class PersonalDelegate extends BottomItemDelegate {
         rvSettings.addItemDecoration
                 (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 2));
         rvSettings.setAdapter(adapter);
-    //    rvSettings.addOnItemTouchListener(new DynamicClickListener(this));
+    //    rvSettings.addOnItemTouchListener(new DiscoverClickListener(this));
     }
 }
