@@ -89,6 +89,6 @@ public class MessageDelegate extends LatteDelegate {
         mRecyclerMessage.addItemDecoration
                 (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 2));
         mRecyclerMessage.setAdapter(adapter);
-    //    mRecyclerMessage.addOnItemTouchListener(new DiscoverClickListener(this));
+    //    mRecyclerMessage.addOnItemTouchListener(new DynamicClickListener(this));
     }
 }

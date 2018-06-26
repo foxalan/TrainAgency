@@ -10,10 +10,6 @@ import android.view.View;
 
 import com.example.core.delegate.bottom.BottomItemDelegate;
 import com.example.ec.R;
-import com.example.ec.main.discover.resource.ResourceDelegate;
-import com.example.ec.main.discover.system.SystemDelegate;
-import com.example.ec.main.discover.teacher.TeacherDelegate;
-import com.example.ec.main.discover.trainingclass.TrainClassDelegate;
 import com.example.ec.main.personal.PersonalClickListener;
 import com.example.ec.main.personal.list.ListAdapter;
 import com.example.ec.main.personal.list.ListBean;
@@ -46,28 +42,22 @@ public class DiscoverDelegate extends BottomItemDelegate {
         rvDiscover = rootView.findViewById(R.id.ryc_discover);
         List<ListBean> listBeanList = new ArrayList<>();
         ListBean organization = new ListBean.Builder()
-                .setId(0)
-                .setDelegate(new TrainClassDelegate())
                 .setItemType(ListItemType.ITEM_NORMAL)
                 .setImageUrl(R.mipmap.ic_discover_organization)
                 .setValue(String.valueOf("找机构"))
                 .build();
 
         ListBean teacher = new ListBean.Builder()
-                .setId(1)
-                .setDelegate(new TeacherDelegate())
                 .setItemType(ListItemType.ITEM_NORMAL)
                 .setImageUrl(R.mipmap.ic_discover_teacher)
                 .setValue(String.valueOf("找老师"))
                 .build();
 
         ListBean blank1 = new ListBean.Builder()
-
                 .setItemType(ListItemType.ITEM_BLANK)
                 .build();
 
         ListBean see = new ListBean.Builder()
-
                 .setItemType(ListItemType.ITEM_NORMAL)
                 .setImageUrl(R.mipmap.ic_discover_see)
                 .setValue(String.valueOf("看一看"))
@@ -75,8 +65,6 @@ public class DiscoverDelegate extends BottomItemDelegate {
 
 
         ListBean message = new ListBean.Builder()
-                .setId(2)
-                .setDelegate(new SystemDelegate())
                 .setItemType(ListItemType.ITEM_NORMAL)
                 .setImageUrl(R.mipmap.ic_discover_message)
                 .setValue(String.valueOf("信息平台"))
@@ -87,9 +75,7 @@ public class DiscoverDelegate extends BottomItemDelegate {
                 .build();
 
 
-        ListBean resources = new ListBean.Builder()
-                .setId(3)
-                .setDelegate(new ResourceDelegate())
+        ListBean resouce = new ListBean.Builder()
                 .setItemType(ListItemType.ITEM_NORMAL)
                 .setImageUrl(R.mipmap.ic_discover_resouce)
                 .setValue(String.valueOf("资    源"))
@@ -101,7 +87,7 @@ public class DiscoverDelegate extends BottomItemDelegate {
         listBeanList.add(see);
         listBeanList.add(message);
         listBeanList.add(blank2);
-        listBeanList.add(resources);
+        listBeanList.add(resouce);
 
         //设置RecyclerView
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
@@ -110,6 +96,6 @@ public class DiscoverDelegate extends BottomItemDelegate {
         rvDiscover.addItemDecoration
                 (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 2));
         rvDiscover.setAdapter(adapter);
-        rvDiscover.addOnItemTouchListener(new DiscoverClickListener(this));
+     //   rvDiscover.addOnItemTouchListener(new DynamicClickListener(this));
     }
 }
