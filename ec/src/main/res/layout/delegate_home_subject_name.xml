@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:contentInsetStart="0dp">
-        
+
         <com.joanzapata.iconify.widget.IconTextView
             android:id="@+id/iv_back"
             android:textSize="28sp"
@@ -26,7 +26,7 @@
 
         <android.support.v7.widget.AppCompatTextView
             android:textColor="@android:color/white"
-            android:id="@+id/tv_subject_type"
+            android:id="@+id/tv_subject_name"
             android:text="基础"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
@@ -44,7 +44,7 @@
 
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/ryc_subject_list"
+        android:id="@+id/ryc_subject_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

@@ -53,6 +53,7 @@
         android:layout_height="wrap_content" />
 
     <android.support.v7.widget.AppCompatTextView
+        android:layout_marginRight="10dp"
         android:id="@+id/class_distance"
         android:textSize="12sp"
         android:padding="1dp"

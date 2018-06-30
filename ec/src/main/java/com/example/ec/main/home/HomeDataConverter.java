@@ -50,7 +50,7 @@ public final class HomeDataConverter extends DataConverter {
         final JSONArray dataArray = JSON.parseObject(getJsonData()).getJSONArray("data");
         for(int i =0;i<dataArray.size();i++){
             JSONObject jsonObject = dataArray.getJSONObject(i);
-            String id = jsonObject.getString("ID");
+            int id = jsonObject.getInteger("ID");
             String text = jsonObject.getString("subjectTypeName");
             String url = jsonObject.getString("subjectTypeimgurl");
 

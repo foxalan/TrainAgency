@@ -37,7 +37,7 @@ public class MultipleRecyclerAdapter extends
     /**
      *设置图片加载策略
      */
-    private static final RequestOptions RECYCLER_OPTIONS =
+    public static final RequestOptions RECYCLER_OPTIONS =
             new RequestOptions()
                     .centerCrop()
                     .diskCacheStrategy(DiskCacheStrategy.ALL)

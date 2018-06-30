@@ -18,6 +18,8 @@ public enum MultipleFields {
     ORGANIZATION_IMAGE_2,
     CLASSNAME,
     CLASSINFO,
+    AGE,
     ADDRESS,
     PHONE,
+    DISTANCE,
 }
