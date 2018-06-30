@@ -13,5 +13,11 @@ public enum MultipleFields {
     SPAN_SIZE,
     ID,
     NAME,
-    TAG
+    TAG,
+    ORGANIZATION_IMAGE_1,
+    ORGANIZATION_IMAGE_2,
+    CLASSNAME,
+    CLASSINFO,
+    ADDRESS,
+    PHONE,
 }

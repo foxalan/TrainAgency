@@ -1,5 +1,6 @@
 package com.example.ui.recycler;
 
+import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,6 +18,7 @@ import com.example.ui.banner.BannerCreator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executors;
 
 /**
  * Created by 傅令杰
@@ -66,6 +68,7 @@ public class MultipleRecyclerAdapter extends
         addItemType(ItemType.IMAGE, R.layout.item_multiple_image);
         addItemType(ItemType.TEXT_IMAGE, R.layout.item_multiple_image_text);
         addItemType(ItemType.BANNER, R.layout.item_multiple_banner);
+        addItemType(ItemType.RECOMMEND,R.layout.arrow_item_organization);
         //设置宽度监听
         setSpanSizeLookup(this);
         openLoadAnimation();
@@ -83,6 +86,13 @@ public class MultipleRecyclerAdapter extends
         final String text;
         final String imageUrl;
         final ArrayList<String> bannerImages;
+        final String orgImg;
+        final String orgImgInfo;
+        final String classInfo;
+        final String className;
+        final String phone;
+        final String address;
+
         switch (holder.getItemViewType()) {
             case ItemType.TEXT:
                 text = entity.getField(MultipleFields.TEXT);
@@ -111,6 +121,20 @@ public class MultipleRecyclerAdapter extends
                     BannerCreator.setDefault(convenientBanner, bannerImages, this);
                     mIsInitBanner = true;
                 }
+                break;
+            case ItemType.RECOMMEND:
+                orgImg = entity.getField(MultipleFields.ORGANIZATION_IMAGE_1);
+                orgImgInfo = entity.getField(MultipleFields.ORGANIZATION_IMAGE_2);
+                classInfo = entity.getField(MultipleFields.CLASSINFO);
+                className = entity.getField(MultipleFields.CLASSNAME);
+                phone = entity.getField(MultipleFields.PHONE);
+                address = entity.getField(MultipleFields.ADDRESS);
+
+                Glide.with(mContext).load(orgImg).apply(RECYCLER_OPTIONS).into((AppCompatImageView) holder.getView(R.id.item_iv_1));
+                Glide.with(mContext).load(orgImgInfo).apply(RECYCLER_OPTIONS).into((AppCompatImageView) holder.getView(R.id.item_iv_2));
+                holder.setText(R.id.item_classinfo,className+"|"+classInfo);
+                holder.setText(R.id.item_address,address);
+                holder.setText(R.id.item_phone,phone);
                 break;
             default:
                 break;

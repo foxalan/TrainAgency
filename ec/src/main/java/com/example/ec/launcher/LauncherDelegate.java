@@ -90,7 +90,11 @@ public class LauncherDelegate extends LatteDelegate {
         mTvLauncherTimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                   checkIsShowScroll();
+
+                if (executorService!=null){
+                    executorService.shutdownNow();
+                }
+                checkIsShowScroll();
             }
         });
     }

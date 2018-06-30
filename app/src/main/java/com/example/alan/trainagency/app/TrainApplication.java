@@ -25,7 +25,7 @@ import com.mob.MobSDK;
 
 public class TrainApplication extends Application {
 
-    private static final String API_HOST = "http://www.baidu.com/";
+    private static final String API_HOST = "http://192.168.1.186/Select/";
     private static final int DELAY_TIME = 1000;
     private static final String JAVA_INTERFACE = "train";
 

@@ -1,14 +1,23 @@
 package com.example.ui.recycler;
 
 /**
- * Created by 傅令杰
+ * @author alan
+ * RecyclerView显示的Item
  */
 
 public class ItemType {
+
+    public static final int BANNER = 4;
+    public static final int TEXT_IMAGE = 3;
+    /**
+     * 机构精选
+     */
+    public static final int RECOMMEND = 7;
+
     public static final int TEXT = 1;
     public static final int IMAGE = 2;
-    public static final int TEXT_IMAGE = 3;
-    public static final int BANNER = 4;
+
+
     public static final int VERTICAL_MENU_LIST = 5;
     public static final int SINGLE_BIG_IMAGE = 6;
 }

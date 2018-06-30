@@ -90,13 +90,13 @@ public class HomeDelegate extends BottomItemDelegate implements ILocationListene
     }
 
     private void initRecyclerView() {
-        final GridLayoutManager manager = new GridLayoutManager(getContext(), 4);
+        final GridLayoutManager manager = new GridLayoutManager(getContext(), 5);
         final Context context = getContext();
         mRecyclerView.setLayoutManager(manager);
-        if (context != null) {
-            mRecyclerView.addItemDecoration
-                    (BaseDecoration.create(ContextCompat.getColor(context, R.color.app_background), 5));
-        }
+//        if (context != null) {
+//            mRecyclerView.addItemDecoration
+//                    (BaseDecoration.create(ContextCompat.getColor(context, R.color.app_background), 5));
+//        }
         final EcBottomDelegate ecBottomDelegate = getParentDelegate();
         mRecyclerView.addOnItemTouchListener(IndexItemClickListener.create(ecBottomDelegate));
     }
@@ -106,14 +106,15 @@ public class HomeDelegate extends BottomItemDelegate implements ILocationListene
         super.onLazyInitView(savedInstanceState);
         initRefreshLayout();
         initRecyclerView();
-        mRefreshHandler.firstPage("index.php");
+        mRefreshHandler.firstPage("SubjectTypeLsit?name=武昌区&longitude=114.344131&latitude=30.61037");
     }
 
     @Override
     public void location(BDLocation location) {
         //得到当前的位置信息
         Latte.getHandler().post(() -> {
-            mTvLocation.setText(location.getAddrStr().substring(1,4));
+            String district = location.getAddress().district;
+            mTvLocation.setText(district);
         });
         //将地址存入工具中
         CurrentLocation.getInstance().setBdLocation(location);

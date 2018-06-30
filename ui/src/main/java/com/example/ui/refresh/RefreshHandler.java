@@ -2,6 +2,7 @@ package com.example.ui.refresh;
 
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -15,7 +16,8 @@ import com.example.ui.recycler.MultipleRecyclerAdapter;
 
 
 /**
- * Created by 傅令杰
+ * @author alan
+ * RecyclerView 刷新使用
  */
 
 public class RefreshHandler implements
@@ -56,27 +58,30 @@ public class RefreshHandler implements
 
     public void firstPage(String url) {
 
-        mAdapter = MultipleRecyclerAdapter.create(CONVERTER.setJsonData(null));
-        mAdapter.setOnLoadMoreListener(RefreshHandler.this, RECYCLERVIEW);
-        RECYCLERVIEW.setAdapter(mAdapter);
+        LatteLogger.d("IUDHAS", url);
+        BEAN.setDelayed(1000);
+        RestClient.builder()
+                .url(url)
+                .loader(RECYCLERVIEW.getContext())
+                .success(new ISuccess() {
+                    @Override
+                    public void onSuccess(String response) {
 
-//        LatteLogger.d("IUDHAS", url);
-//        BEAN.setDelayed(1000);
-//        RestClient.builder()
-//                .url(url)
-//                .success(new ISuccess() {
-//                    @Override
-//                    public void onSuccess(String response) {
-//                        final JSONObject object = JSON.parseObject(response);
+                        Log.e("alan",response.toString()+"===========");
+                        final JSONObject object = JSON.parseObject(response);
+
+                        //todo
 //                        BEAN.setTotal(object.getInteger("total"))
 //                                .setPageSize(object.getInteger("page_size"));
-//                        //设置Adapter
-//
-//                        BEAN.addIndex();
-//                    }
-//                })
-//                .build()
-//                .get();
+                        //设置Adapter
+                        mAdapter = MultipleRecyclerAdapter.create(CONVERTER.setJsonData(response));
+                        mAdapter.setOnLoadMoreListener(RefreshHandler.this, RECYCLERVIEW);
+                        RECYCLERVIEW.setAdapter(mAdapter);
+                        BEAN.addIndex();
+                    }
+                })
+                .build()
+                .get();
     }
 
     private void paging(final String url) {
@@ -88,24 +93,27 @@ public class RefreshHandler implements
         if (mAdapter.getData().size() < pageSize || currentCount >= total) {
             mAdapter.loadMoreEnd(true);
         } else {
-//            Latte.getHandler().postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//                    RestClient.builder()
-//                            .url(url + index)
-//                            .success(response -> {
-//                                LatteLogger.json("paging", response);
-//                                CONVERTER.clearData();
-//                                mAdapter.addData(CONVERTER.setJsonData(response).convert());
-//                                //累加数量
-//                                BEAN.setCurrentCount(mAdapter.getData().size());
-//                                mAdapter.loadMoreComplete();
-//                                BEAN.addIndex();
-//                            })
-//                            .build()
-//                            .get();
-//                }
-//            }, 1000);
+            Latte.getHandler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    RestClient.builder()
+                            .url(url + index)
+                            .success(new ISuccess() {
+                                @Override
+                                public void onSuccess(String response) {
+                                    LatteLogger.json("paging", response);
+                                    CONVERTER.clearData();
+                                    mAdapter.addData(CONVERTER.setJsonData(response).convert());
+                                    //累加数量
+                                    BEAN.setCurrentCount(mAdapter.getData().size());
+                                    mAdapter.loadMoreComplete();
+                                    BEAN.addIndex();
+                                }
+                            })
+                            .build()
+                            .get();
+                }
+            }, 1000);
         }
     }
 
