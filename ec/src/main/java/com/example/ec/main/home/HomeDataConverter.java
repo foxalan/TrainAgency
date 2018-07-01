@@ -5,6 +5,7 @@ import android.util.Log;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.example.ec.main.home.subject.SubjectType;
 import com.example.ui.recycler.DataConverter;
 import com.example.ui.recycler.ItemType;
 import com.example.ui.recycler.MultipleFields;
@@ -121,6 +122,41 @@ public final class HomeDataConverter extends DataConverter {
                 .build();
 
         ENTITIES.add(data);
+
+        final MultipleItemEntity classHeader = MultipleItemEntity.builder()
+                .setField(MultipleFields.ITEM_TYPE, ItemType.TEXT_HEADER)
+                .setField(MultipleFields.SPAN_SIZE, 5)
+                .build();
+
+        ENTITIES.add(classHeader);
+
+        final JSONArray classArray = JSON.parseObject(getJsonData()).getJSONArray("classlist");
+        for(int i =0;i<classArray.size();i++){
+
+            JSONObject jsonObject = classArray.getJSONObject(i);
+            int id = jsonObject.getInteger("id");
+            String className = jsonObject.getString("className");
+            String courseIntro = jsonObject.getString("courseIntro");
+            String site = jsonObject.getString("site");
+            String ageGroup = jsonObject.getString("ageGroup");
+            String imgUrl = jsonObject.getString("classImg");
+            double distance = jsonObject.getDouble("distance");
+
+            final MultipleItemEntity classItem = MultipleItemEntity.builder()
+                    .setField(MultipleFields.ITEM_TYPE, ItemType.CLASS_ITEM)
+                    .setField(MultipleFields.SPAN_SIZE,5)
+                    .setField(MultipleFields.ID,id)
+                    .setField(MultipleFields.CLASSNAME,className)
+                    .setField(MultipleFields.IMAGE_URL,imgUrl)
+                    .setField(MultipleFields.CLASSINFO,courseIntro)
+                    .setField(MultipleFields.ADDRESS,site)
+                    .setField(MultipleFields.AGE,ageGroup)
+                    .setField(MultipleFields.DISTANCE,distance)
+                    .build();
+
+            ENTITIES.add(classItem);
+
+        }
 
 
 //        for (int i = 0; i < size; i++) {

@@ -9,10 +9,11 @@
     android:orientation="horizontal">
 
     <android.support.v7.widget.AppCompatImageView
+        android:padding="2dp"
         android:id="@+id/item_iv_1"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
+        android:layout_margin="15dp"
         android:layout_weight="1"
         tools:ignore="MissingConstraints" />
 
@@ -49,7 +50,7 @@
         android:id="@+id/item_iv_2"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
+        android:layout_margin="15dp"
         android:layout_weight="1"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="268dp"

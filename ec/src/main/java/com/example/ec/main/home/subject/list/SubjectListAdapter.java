@@ -12,8 +12,6 @@ import com.example.ui.recycler.MultipleViewHolder;
 
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 /**
  * @author alan
  *         Date  2018/6/30.
@@ -25,7 +23,7 @@ public class SubjectListAdapter extends MultipleRecyclerAdapter {
 
     protected SubjectListAdapter(List<MultipleItemEntity> data) {
         super(data);
-        addItemType(SubjectType.SUBJECT_ITEM,R.layout.item_home_class_detail);
+        addItemType(SubjectType.SUBJECT_ITEM,R.layout.item_multiple_class_detail);
     }
 
     @Override

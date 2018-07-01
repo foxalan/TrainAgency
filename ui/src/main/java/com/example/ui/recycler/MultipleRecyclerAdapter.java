@@ -67,12 +67,13 @@ public class MultipleRecyclerAdapter extends
 
     private void init() {
         //设置不同的item布局
-        addItemType(ItemType.TEXT, R.layout.item_multiple_text);
-        addItemType(ItemType.IMAGE, R.layout.item_multiple_image);
+
+        addItemType(ItemType.TEXT_HEADER, R.layout.item_multiple_image);
         addItemType(ItemType.TEXT_IMAGE, R.layout.item_multiple_image_text);
         addItemType(ItemType.BANNER, R.layout.item_multiple_banner);
         addItemType(ItemType.RECOMMEND, R.layout.arrow_item_organization);
-        addItemType(ItemType.CHOICENESS,R.layout.arrow_item_teacher);
+        addItemType(ItemType.CHOICENESS, R.layout.arrow_item_teacher);
+        addItemType(ItemType.CLASS_ITEM, R.layout.item_multiple_class_detail);
         //设置宽度监听
         setSpanSizeLookup(this);
         openLoadAnimation();
@@ -98,16 +99,8 @@ public class MultipleRecyclerAdapter extends
         final String address;
 
         switch (holder.getItemViewType()) {
-            case ItemType.TEXT:
-                text = entity.getField(MultipleFields.TEXT);
-                holder.setText(R.id.text_single, text);
-                break;
-            case ItemType.IMAGE:
-                imageUrl = entity.getField(MultipleFields.IMAGE_URL);
-                Glide.with(mContext)
-                        .load(imageUrl)
-                        .apply(RECYCLER_OPTIONS)
-                        .into((ImageView) holder.getView(R.id.img_single));
+            case ItemType.TEXT_HEADER:
+
                 break;
             case ItemType.TEXT_IMAGE:
                 text = entity.getField(MultipleFields.TEXT);
@@ -147,20 +140,20 @@ public class MultipleRecyclerAdapter extends
                 List<String> textList = entity.getField(MultipleFields.TEXTS);
                 List<String> imgUrlList = entity.getField(MultipleFields.URLS);
                 int length = 3;
-                if (imgUrlList.size()>=length){
+                if (imgUrlList.size() >= length) {
 
                     Glide.with(mContext).load(imgUrlList.get(0)).apply(RECYCLER_OPTIONS).into((CircleImageView) holder.getView(R.id.civ_subject));
                     Glide.with(mContext).load(imgUrlList.get(1)).apply(RECYCLER_OPTIONS).into((CircleImageView) holder.getView(R.id.civ_teacher));
                     Glide.with(mContext).load(imgUrlList.get(2)).apply(RECYCLER_OPTIONS).into((CircleImageView) holder.getView(R.id.civ_class));
 
-                    holder.setText(R.id.tv_sub_red,textList.get(0));
-                    holder.setText(R.id.tv_sub_gary,titleList.get(0));
+                    holder.setText(R.id.tv_sub_red, textList.get(0));
+                    holder.setText(R.id.tv_sub_gary, titleList.get(0));
 
-                    holder.setText(R.id.tv_teacher_red,textList.get(1));
-                    holder.setText(R.id.tv_teacher_gray,titleList.get(1));
+                    holder.setText(R.id.tv_teacher_red, textList.get(1));
+                    holder.setText(R.id.tv_teacher_gray, titleList.get(1));
 
-                    holder.setText(R.id.tv_class_red,textList.get(2));
-                    holder.setText(R.id.tv_class_gray,titleList.get(2));
+                    holder.setText(R.id.tv_class_red, textList.get(2));
+                    holder.setText(R.id.tv_class_gray, titleList.get(2));
                 }
 
 
@@ -191,7 +184,22 @@ public class MultipleRecyclerAdapter extends
 
                     }
                 });
+                break;
+            case ItemType.CLASS_ITEM:
+                String urlImg = entity.getField(MultipleFields.IMAGE_URL);
+                Glide.with(mContext).load(urlImg).apply(RECYCLER_OPTIONS).into((ImageView) holder.getView(R.id.class_icon));
 
+                String name = entity.getField(MultipleFields.CLASSNAME);
+                String courseIntro = entity.getField(MultipleFields.CLASSINFO);
+                String site = entity.getField(MultipleFields.ADDRESS);
+                String ageGroup = entity.getField(MultipleFields.AGE);
+                double distance = entity.getField(MultipleFields.DISTANCE);
+
+                holder.setText(R.id.class_name,name);
+                holder.setText(R.id.class_des,courseIntro);
+                holder.setText(R.id.class_address, site);
+                holder.setText(R.id.class_age,ageGroup);
+                holder.setText(R.id.class_distance,distance+"m");
 
                 break;
             default:

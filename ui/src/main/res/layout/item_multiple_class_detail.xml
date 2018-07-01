@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_marginBottom="2dp"
+    android:background="@android:color/white"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/class_icon"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="120dp"
+        android:layout_height="70dp" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:textSize="15sp"
+        android:layout_toRightOf="@id/class_icon"
+        android:layout_alignTop="@id/class_icon"
+        android:text="少儿美术培训班"
+        android:padding="1dp"
+        android:id="@+id/class_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:padding="1dp"
+        android:id="@+id/class_des"
+        android:textSize="12sp"
+        android:layout_below="@id/class_name"
+        android:layout_alignLeft="@id/class_name"
+        android:text="美术跟修和唯一"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/class_address"
+        android:textSize="12sp"
+        android:layout_below="@id/class_des"
+        android:layout_alignLeft="@id/class_name"
+        android:text="地址："
+        android:padding="1dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/class_age"
+        android:textSize="12sp"
+        android:padding="1dp"
+        android:layout_below="@id/class_address"
+        android:layout_alignLeft="@id/class_address"
+        android:text="只适合5-9岁小朋友"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_marginRight="10dp"
+        android:id="@+id/class_distance"
+        android:textSize="12sp"
+        android:padding="1dp"
+        android:layout_below="@id/class_address"
+        android:layout_alignParentRight="true"
+        android:text="400m"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
+</RelativeLayout>
