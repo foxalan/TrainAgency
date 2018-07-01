@@ -11,55 +11,54 @@ import com.example.ui.recycler.MultipleFields;
 import com.example.ui.recycler.MultipleItemEntity;
 
 
-
-
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author alan
- * JSON
+ *         JSON
  */
 
 public final class HomeDataConverter extends DataConverter {
 
     @Override
-    public ArrayList<MultipleItemEntity> convert()  {
+    public ArrayList<MultipleItemEntity> convert() {
 
-        Log.e("foxconn",getJsonData().toString());
+        Log.e("foxconn", getJsonData().toString());
 
         final JSONArray advArray = JSON.parseObject(getJsonData()).getJSONArray("adv");
 
         final int size = advArray.size();
         final ArrayList<String> bannerImages = new ArrayList<>();
-        for (int i = 0;i<size;i++){
+        for (int i = 0; i < size; i++) {
             JSONObject jsonObject = advArray.getJSONObject(i);
             String banner = jsonObject.getString("PriceUrl");
-            Log.e("Foxconn",banner);
+            Log.e("Foxconn", banner);
             bannerImages.add(banner);
         }
 
         final MultipleItemEntity entity = MultipleItemEntity.builder()
-                    .setField(MultipleFields.ITEM_TYPE,ItemType.BANNER)
-                    .setField(MultipleFields.SPAN_SIZE,5)
-                    .setField(MultipleFields.ID,0)
-                    .setField(MultipleFields.BANNERS,bannerImages)
-                    .build();
+                .setField(MultipleFields.ITEM_TYPE, ItemType.BANNER)
+                .setField(MultipleFields.SPAN_SIZE, 5)
+                .setField(MultipleFields.ID, 0)
+                .setField(MultipleFields.BANNERS, bannerImages)
+                .build();
 
         ENTITIES.add(entity);
 
         final JSONArray dataArray = JSON.parseObject(getJsonData()).getJSONArray("data");
-        for(int i =0;i<dataArray.size();i++){
+        for (int i = 0; i < dataArray.size(); i++) {
             JSONObject jsonObject = dataArray.getJSONObject(i);
             int id = jsonObject.getInteger("ID");
             String text = jsonObject.getString("subjectTypeName");
             String url = jsonObject.getString("subjectTypeimgurl");
 
             final MultipleItemEntity data = MultipleItemEntity.builder()
-                    .setField(MultipleFields.ITEM_TYPE,ItemType.TEXT_IMAGE)
-                    .setField(MultipleFields.SPAN_SIZE,1)
-                    .setField(MultipleFields.ID,id)
-                    .setField(MultipleFields.TEXT,text)
-                    .setField(MultipleFields.IMAGE_URL,url)
+                    .setField(MultipleFields.ITEM_TYPE, ItemType.TEXT_IMAGE)
+                    .setField(MultipleFields.SPAN_SIZE, 1)
+                    .setField(MultipleFields.ID, id)
+                    .setField(MultipleFields.TEXT, text)
+                    .setField(MultipleFields.IMAGE_URL, url)
                     .build();
 
             ENTITIES.add(data);
@@ -67,8 +66,8 @@ public final class HomeDataConverter extends DataConverter {
         }
 
         final JSONArray recommendArray = JSON.parseObject(getJsonData()).getJSONArray("Recommend");
-        Log.e("foxconn",recommendArray.toJSONString()+"===");
-        for(int i = 0 ;i<recommendArray.size();i++){
+        Log.e("foxconn", recommendArray.toJSONString() + "===");
+        for (int i = 0; i < recommendArray.size(); i++) {
             JSONObject jsonObject = recommendArray.getJSONObject(i);
             String organization_image_1 = jsonObject.getString("RecommendImg");
             String organization_image_2 = jsonObject.getString("classImg");
@@ -78,18 +77,50 @@ public final class HomeDataConverter extends DataConverter {
             String phone = jsonObject.getString("mobile");
 
             final MultipleItemEntity data = MultipleItemEntity.builder()
-                    .setField(MultipleFields.ITEM_TYPE,ItemType.RECOMMEND)
-                    .setField(MultipleFields.SPAN_SIZE,5)
-                    .setField(MultipleFields.ORGANIZATION_IMAGE_1,organization_image_1)
-                    .setField(MultipleFields.ORGANIZATION_IMAGE_2,organization_image_2)
-                    .setField(MultipleFields.CLASSNAME,className)
-                    .setField(MultipleFields.CLASSINFO,classInfo)
-                    .setField(MultipleFields.ADDRESS,address)
-                    .setField(MultipleFields.PHONE,phone)
+                    .setField(MultipleFields.ITEM_TYPE, ItemType.RECOMMEND)
+                    .setField(MultipleFields.SPAN_SIZE, 5)
+                    .setField(MultipleFields.ORGANIZATION_IMAGE_1, organization_image_1)
+                    .setField(MultipleFields.ORGANIZATION_IMAGE_2, organization_image_2)
+                    .setField(MultipleFields.CLASSNAME, className)
+                    .setField(MultipleFields.CLASSINFO, classInfo)
+                    .setField(MultipleFields.ADDRESS, address)
+                    .setField(MultipleFields.PHONE, phone)
                     .build();
             ENTITIES.add(data);
         }
 
+        final JSONArray choicenessArray = JSON.parseObject(getJsonData()).getJSONArray("choiceness");
+        Log.e("foxconn", recommendArray.toJSONString() + "===");
+
+
+        List<Integer> integerList = new ArrayList<>();
+        List<String> picList = new ArrayList<>();
+        List<String> textList = new ArrayList<>();
+        List<String> titleList = new ArrayList<>();
+
+        for (int i = 0; i < choicenessArray.size(); i++) {
+            JSONObject jsonObject = choicenessArray.getJSONObject(i);
+            int id = jsonObject.getInteger("photoID");
+            String picUrl = jsonObject.getString("PriceUrl");
+            String text = jsonObject.getString("text");
+            String title = jsonObject.getString("title");
+
+            integerList.add(id);
+            picList.add(picUrl);
+            textList.add(text);
+            titleList.add(title);
+        }
+
+        final MultipleItemEntity data = MultipleItemEntity.builder()
+                .setField(MultipleFields.ITEM_TYPE, ItemType.CHOICENESS)
+                .setField(MultipleFields.SPAN_SIZE, 5)
+                .setField(MultipleFields.IDS, integerList)
+                .setField(MultipleFields.TEXTS, textList)
+                .setField(MultipleFields.TITLES,titleList)
+                .setField(MultipleFields.URLS, picList)
+                .build();
+
+        ENTITIES.add(data);
 
 
 //        for (int i = 0; i < size; i++) {

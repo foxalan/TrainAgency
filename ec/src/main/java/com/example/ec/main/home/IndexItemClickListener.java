@@ -41,9 +41,7 @@ public class IndexItemClickListener extends SimpleClickListener {
             default:
                 break;
         }
-//        final int goodsId = entity.getField(MultipleFields.ID);
-//        final GoodsDetailDelegate delegate = GoodsDetailDelegate.create(goodsId);
-//        DELEGATE.getSupportDelegate().start(delegate);
+
     }
 
     @Override

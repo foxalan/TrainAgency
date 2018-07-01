@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_marginTop="5dp"
+    android:background="@android:color/white"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="140dp">
+    
+    <RelativeLayout
+        android:id="@+id/rl_subject"
+        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_centerHorizontal="true"
+            android:id="@+id/civ_subject"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_marginTop="20dp"
+            android:id="@+id/tv_sub_gary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tv_sub_red"
+            android:layout_centerHorizontal="true"
+            android:text="兴趣体验"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_sub_red"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/civ_subject"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="圆你特长梦"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/holo_green_light" />
+    
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="3"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+        
+        <RelativeLayout
+            android:id="@+id/rl_teacher"
+            android:layout_weight="4"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_teacher"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_marginTop="20dp"
+                android:id="@+id/tv_teacher_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="16dp"
+                android:text="优秀老师"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_below="@+id/tv_teacher_gray"
+                android:id="@+id/tv_teacher_red"
+                android:layout_marginLeft="20dp"
+                android:textColor="@android:color/holo_red_light"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:text="一个好的学校是最重要的一步"
+                />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/holo_green_light" />
+
+        <RelativeLayout
+            android:id="@+id/rl_class"
+            android:layout_weight="3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/civ_class"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_alignParentRight="true"
+                android:id="@+id/tv_class_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="16dp"
+                android:text="精品课程"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_class_red"
+                android:textColor="@android:color/holo_red_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/civ_class"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:text="各个精英讲师致力推荐"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+        
+    </LinearLayout>
+
+</LinearLayout>
