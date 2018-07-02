@@ -25,23 +25,6 @@ public class SubjectNameDataConverter extends DataConverter {
         final JSONArray dataArray = JSON.parseObject(getJsonData()).getJSONArray("data");
 
         Log.e("subjectname",getJsonData());
-
-//            "id": 4,
-//                    "className": "语文培训班4",
-//                    "courseIntro": "语文和修养合二唯一",
-//                    "site": "武汉音乐学院",
-//                    "ageGroup": "适合8岁-15岁学习",
-//                    "classImg": "http://192.168.1.186/img/ClassImg/class-1105.png",
-//                    "locationX": "114.302234",
-//                    "locationY": "30.543991",
-//                    "regionsID": 1900,
-//                    "distance": 12329670.0,
-//                    "regions": {
-//                "name": "武昌区 ",
-//                        "cityname": "武汉市 ",
-//                        "provincename": "湖北省 "
-//
-
         for(int i =0;i<dataArray.size();i++){
 
             JSONObject jsonObject = dataArray.getJSONObject(i);

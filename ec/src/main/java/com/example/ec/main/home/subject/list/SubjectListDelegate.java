@@ -115,6 +115,6 @@ public class SubjectListDelegate extends LatteDelegate implements ISuccess{
                 new SubjectNameDataConverter().setJsonData(response).convert();
         final SubjectListAdapter addressAdapter = new SubjectListAdapter(data);
         mRycSubName.setAdapter(addressAdapter);
-    //    mRycSubName.addOnItemTouchListener(new SubjectItemClickListener(this));
+        mRycSubName.addOnItemTouchListener(new SubjectClickListener(this));
     }
 }
