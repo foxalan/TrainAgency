@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="45dp"
     android:orientation="horizontal"
+    android:layout_marginTop="2dp"
     android:background="@android:color/white">
 
     <ImageView
@@ -17,13 +18,15 @@
         />
 
     <android.support.v7.widget.AppCompatTextView
+        android:layout_margin="5dp"
+        android:padding="5dp"
         android:id="@+id/tv_arrow_value"
         android:layout_weight="8"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
         android:gravity="center_vertical"
-        android:text="课程安排"
+        android:text="课程列表与安排"
         tools:ignore="HardcodedText"
         android:layout_marginStart="10dp" />
 

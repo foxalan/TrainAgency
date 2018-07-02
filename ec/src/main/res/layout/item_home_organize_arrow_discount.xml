@@ -9,36 +9,23 @@
 
     <ImageView
         android:padding="5dp"
-        android:id="@+id/tv_address_image"
+        android:id="@+id/tv_arrow_image"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginLeft="20dp"
         android:gravity="center"
-        android:layout_marginStart="20dp"
-        />
+        android:layout_marginStart="20dp" />
 
     <android.support.v7.widget.AppCompatTextView
-
-        android:padding="5dp"
         android:layout_margin="5dp"
-        android:id="@+id/tv_address_value"
-        android:layout_weight="8"
-        android:layout_width="0dp"
+        android:padding="5dp"
+        android:id="@+id/tv_discount_value"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
         android:gravity="center_vertical"
-        android:text="武昌区"
-        tools:ignore="HardcodedText"
-        android:layout_marginStart="10dp" />
-
-    <com.joanzapata.iconify.widget.IconTextView
-        android:id="@+id/icon_arrow"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginRight="20dp"
-        android:gravity="center"
-        android:text="{fa-chevron-right}"
-        tools:ignore="HardcodedText"
-        android:layout_marginEnd="20dp" />
+        android:text="未设置"
+        android:layout_marginStart="10dp"
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>

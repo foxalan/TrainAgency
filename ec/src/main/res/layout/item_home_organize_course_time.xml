@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="45dp"
     android:orientation="horizontal"
+    android:layout_marginTop="2dp"
     android:background="@android:color/white">
 
     <ImageView
@@ -16,8 +17,9 @@
         android:layout_marginStart="20dp" />
 
     <android.support.v7.widget.AppCompatTextView
-
-        android:id="@+id/tv_arrow_value"
+        android:padding="5dp"
+        android:layout_margin="5dp"
+        android:id="@+id/tv_course_time"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"

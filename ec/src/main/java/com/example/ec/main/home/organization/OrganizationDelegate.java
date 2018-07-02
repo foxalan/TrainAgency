@@ -65,8 +65,8 @@ public class OrganizationDelegate extends LatteDelegate implements ISuccess{
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
-        mRecyclerView = rootView.findViewById(R.id.ryc_org);
 
+        mRecyclerView = rootView.findViewById(R.id.ryc_org);
         initData();
     }
 
@@ -84,10 +84,12 @@ public class OrganizationDelegate extends LatteDelegate implements ISuccess{
             y = bdLocation.getLatitude();
         }
 
+        Log.e("organization",mClassId+"++++++++++");
+
         Log.e(TAG,"mSubid"+mSubName+mClassId);
         RestClient.builder()
                 .loader(getContext())
-                .url("SingleClass?classid"+mClassId)
+                .url("SingleClass?classid="+mClassId)
                 .params("Longitude",x)
                 .params("Latitude",y)
                 .success(this)
@@ -97,6 +99,7 @@ public class OrganizationDelegate extends LatteDelegate implements ISuccess{
 
     @Override
     public void onSuccess(String response) {
+        Log.e("organization",response+"++++++++++");
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(manager);
         final List<MultipleItemEntity> data =

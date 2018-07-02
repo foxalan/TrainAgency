@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:layout_marginTop="2dp"
     android:background="@android:color/white">
 
     <ImageView
@@ -17,13 +18,16 @@
         />
 
     <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/tv_arrow_value"
+        android:padding="5dp"
+        android:layout_margin="5dp"
+        android:maxLength="50"
+        android:id="@+id/tv_class_info_value"
         android:layout_weight="8"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
         android:gravity="center_vertical"
-        android:text="开课时间王王一王一五一王一杯sfafafsfsfafafafafafa"
+        android:text="开课时间王王一王一五一王一杯sfafafsfsfafafafafafa ffffffff"
         tools:ignore="HardcodedText"
         android:layout_marginStart="10dp" />
 
