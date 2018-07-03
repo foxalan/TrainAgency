@@ -29,7 +29,7 @@ public class TeacherAdapter extends MultipleRecyclerAdapter {
     protected TeacherAdapter(List<MultipleItemEntity> data) {
         super(data);
 
-        addItemType(DisCoverItemType.DISCOVER_TEACHER_TYPE_BANNER, R.layout.item_home_organize_multiple_banner);
+        addItemType(DisCoverItemType.DISCOVER_TEACHER_TYPE_BANNER, R.layout.item_banner);
         addItemType(DisCoverItemType.DISCOVER_TEACHER_TYPE_INFO, R.layout.item_discover_teacher);
     }
 

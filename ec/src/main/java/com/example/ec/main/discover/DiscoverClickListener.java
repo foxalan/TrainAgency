@@ -29,6 +29,7 @@ public class DiscoverClickListener extends SimpleClickListener {
         switch (id) {
             case 0:
             case 1:
+            case 3:
                 DELEGATE.getParentDelegate().getSupportDelegate().start(bean.getDelegate());
                 break;
             default:

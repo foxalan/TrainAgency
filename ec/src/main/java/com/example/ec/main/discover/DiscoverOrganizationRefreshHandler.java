@@ -9,7 +9,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.core.app.Latte;
 import com.example.core.net.RestClient;
-import com.example.core.net.callback.ISuccess;
 import com.example.ec.main.home.subject.list.SubjectListAdapter;
 import com.example.ui.recycler.DataConverter;
 import com.example.ui.refresh.PagingBean;
@@ -21,7 +20,7 @@ import com.example.ui.refresh.PagingBean;
  *         Issue :
  */
 
-public class MyRefreshHandler implements SwipeRefreshLayout.OnRefreshListener
+public class DiscoverOrganizationRefreshHandler implements SwipeRefreshLayout.OnRefreshListener
         , BaseQuickAdapter.RequestLoadMoreListener{
 
     private final SwipeRefreshLayout REFRESH_LAYOUT;
@@ -29,32 +28,28 @@ public class MyRefreshHandler implements SwipeRefreshLayout.OnRefreshListener
     private final RecyclerView RECYCLERVIEW;
     private SubjectListAdapter mAdapter = null;
     private final DataConverter CONVERTER;
-    private  String baseUrl;
+    private String baseUrl;
 
 
-    private MyRefreshHandler(SwipeRefreshLayout swipeRefreshLayout,
-                           RecyclerView recyclerView,
-                           DataConverter converter, PagingBean bean) {
+    private DiscoverOrganizationRefreshHandler(SwipeRefreshLayout swipeRefreshLayout,
+                                               RecyclerView recyclerView,
+                                               DataConverter converter, PagingBean bean) {
         this.REFRESH_LAYOUT = swipeRefreshLayout;
         this.RECYCLERVIEW = recyclerView;
         this.CONVERTER = converter;
         this.BEAN = bean;
-    //    REFRESH_LAYOUT.setOnRefreshListener(this);
     }
 
-    public static MyRefreshHandler create(SwipeRefreshLayout swipeRefreshLayout,
-                                        RecyclerView recyclerView, DataConverter converter) {
-        return new MyRefreshHandler(swipeRefreshLayout, recyclerView, converter, new PagingBean());
+    public static DiscoverOrganizationRefreshHandler create(SwipeRefreshLayout swipeRefreshLayout,
+                                                            RecyclerView recyclerView, DataConverter converter) {
+        return new DiscoverOrganizationRefreshHandler(swipeRefreshLayout, recyclerView, converter, new PagingBean());
     }
 
     private void refresh() {
         REFRESH_LAYOUT.setRefreshing(true);
-        Latte.getHandler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                //进行一些网络请求
-                REFRESH_LAYOUT.setRefreshing(false);
-            }
+        Latte.getHandler().postDelayed(() -> {
+            //进行一些网络请求
+            REFRESH_LAYOUT.setRefreshing(false);
         }, 1000);
     }
 
@@ -73,7 +68,7 @@ public class MyRefreshHandler implements SwipeRefreshLayout.OnRefreshListener
                     mAdapter = new SubjectListAdapter(null);
                     //设置Adapter
                     mAdapter.addData(CONVERTER.setJsonData(response).convert());
-                    mAdapter.setOnLoadMoreListener(MyRefreshHandler.this, RECYCLERVIEW);
+                    mAdapter.setOnLoadMoreListener(DiscoverOrganizationRefreshHandler.this, RECYCLERVIEW);
                     RECYCLERVIEW.setAdapter(mAdapter);
                     BEAN.addIndex();
                 })
@@ -90,26 +85,19 @@ public class MyRefreshHandler implements SwipeRefreshLayout.OnRefreshListener
         if (mAdapter.getData().size() < pageSize || currentCount >= total) {
             mAdapter.loadMoreEnd(true);
         } else {
-            Latte.getHandler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    RestClient.builder()
-                            .url(url + index)
-                            .success(response -> {
-                                Log.e("refresh","response:"+response);
-
-                                CONVERTER.clearData();
-
-                                mAdapter.addData(CONVERTER.setJsonData(response).convert());
-                                //累加数量
-                                BEAN.setCurrentCount(mAdapter.getData().size());
-                                mAdapter.loadMoreComplete();
-                                BEAN.addIndex();
-                            })
-                            .build()
-                            .get();
-                }
-            }, 1000);
+            Latte.getHandler().postDelayed(() -> RestClient.builder()
+                    .url(url + index)
+                    .success(response -> {
+                        Log.e("refresh","response:"+response);
+                        CONVERTER.clearData();
+                        mAdapter.addData(CONVERTER.setJsonData(response).convert());
+                        //累加数量
+                        BEAN.setCurrentCount(mAdapter.getData().size());
+                        mAdapter.loadMoreComplete();
+                        BEAN.addIndex();
+                    })
+                    .build()
+                    .get(), 1000);
         }
     }
 

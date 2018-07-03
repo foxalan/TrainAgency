@@ -10,10 +10,9 @@ import android.view.View;
 import com.baidu.location.BDLocation;
 import com.example.core.delegate.LatteDelegate;
 import com.example.ec.R;
-import com.example.ec.main.discover.MyRefreshHandler;
+import com.example.ec.main.discover.DiscoverOrganizationRefreshHandler;
 import com.example.ec.main.home.location.CurrentLocation;
 import com.example.ec.main.home.subject.list.SubjectNameDataConverter;
-import com.example.ui.refresh.RefreshHandler;
 
 /**
  * @author alan
@@ -26,7 +25,7 @@ public class OrganizationDelegate extends LatteDelegate{
 
     private RecyclerView mRycOrganization;
 
-    private MyRefreshHandler mRefreshHandler = null;
+    private DiscoverOrganizationRefreshHandler mRefreshHandler = null;
 
     @Override
     public Object setLayout() {
@@ -37,7 +36,7 @@ public class OrganizationDelegate extends LatteDelegate{
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
         mRycOrganization = rootView.findViewById(R.id.ryc_organization_list);
 
-        mRefreshHandler = MyRefreshHandler.create(null, mRycOrganization, new SubjectNameDataConverter());
+        mRefreshHandler = DiscoverOrganizationRefreshHandler.create(null, mRycOrganization, new SubjectNameDataConverter());
     }
 
     /**

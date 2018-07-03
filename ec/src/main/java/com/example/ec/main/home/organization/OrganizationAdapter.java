@@ -5,11 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bumptech.glide.Glide;
-import com.example.core.app.Latte;
 import com.example.ec.R;
 import com.example.ui.banner.BannerCreator;
 import com.example.ui.recycler.MultipleFields;
@@ -34,7 +32,7 @@ public class OrganizationAdapter extends MultipleRecyclerAdapter {
 
     protected OrganizationAdapter(List<MultipleItemEntity> data) {
         super(data);
-        addItemType(OrganizationType.ORGANIZATION_TYPE_BANNER, R.layout.item_home_organize_multiple_banner);
+        addItemType(OrganizationType.ORGANIZATION_TYPE_BANNER, R.layout.item_banner);
         addItemType(OrganizationType.ORGANIZATION_TYPE_CLASS, R.layout.item_home_organize_class);
         addItemType(OrganizationType.ORGANIZATION_TYPE_ADDRESS, R.layout.item_home_organize_address);
         addItemType(OrganizationType.ORGANIZATION_TYPE_CLASS_INFO, R.layout.item_home_organize_arrow_class_info);

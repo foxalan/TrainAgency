@@ -10,7 +10,9 @@ import android.view.View;
 
 import com.example.core.delegate.bottom.BottomItemDelegate;
 import com.example.ec.R;
+import com.example.ec.main.discover.message.MessageDelegate;
 import com.example.ec.main.discover.organization.OrganizationDelegate;
+import com.example.ec.main.discover.resource.ResourceDelegate;
 import com.example.ec.main.discover.teacher.TeacherDelegate;
 import com.example.ec.main.personal.PersonalClickListener;
 import com.example.ec.main.personal.list.ListAdapter;
@@ -75,6 +77,7 @@ public class DiscoverDelegate extends BottomItemDelegate {
                 .setId(3)
                 .setItemType(ListItemType.ITEM_NORMAL)
                 .setImageUrl(R.mipmap.ic_discover_message)
+                .setDelegate(new MessageDelegate())
                 .setValue(String.valueOf("信息平台"))
                 .build();
 
@@ -87,6 +90,7 @@ public class DiscoverDelegate extends BottomItemDelegate {
                 .setId(4)
                 .setItemType(ListItemType.ITEM_NORMAL)
                 .setImageUrl(R.mipmap.ic_discover_resouce)
+                .setDelegate(new ResourceDelegate())
                 .setValue(String.valueOf("资    源"))
                 .build();
 
