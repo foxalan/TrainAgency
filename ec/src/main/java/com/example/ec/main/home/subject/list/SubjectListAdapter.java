@@ -21,7 +21,7 @@ import java.util.List;
 
 public class SubjectListAdapter extends MultipleRecyclerAdapter {
 
-    protected SubjectListAdapter(List<MultipleItemEntity> data) {
+    public SubjectListAdapter(List<MultipleItemEntity> data) {
         super(data);
         addItemType(SubjectType.SUBJECT_ITEM,R.layout.item_multiple_class_detail);
 

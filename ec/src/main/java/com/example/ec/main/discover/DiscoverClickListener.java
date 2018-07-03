@@ -27,6 +27,7 @@ public class DiscoverClickListener extends SimpleClickListener {
         final ListBean bean = (ListBean) baseQuickAdapter.getData().get(position);
         int id = bean.getId();
         switch (id) {
+            case 0:
             case 1:
                 DELEGATE.getParentDelegate().getSupportDelegate().start(bean.getDelegate());
                 break;

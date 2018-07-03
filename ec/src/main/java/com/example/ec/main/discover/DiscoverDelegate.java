@@ -10,6 +10,7 @@ import android.view.View;
 
 import com.example.core.delegate.bottom.BottomItemDelegate;
 import com.example.ec.R;
+import com.example.ec.main.discover.organization.OrganizationDelegate;
 import com.example.ec.main.discover.teacher.TeacherDelegate;
 import com.example.ec.main.personal.PersonalClickListener;
 import com.example.ec.main.personal.list.ListAdapter;
@@ -47,6 +48,7 @@ public class DiscoverDelegate extends BottomItemDelegate {
                 .setItemType(ListItemType.ITEM_NORMAL)
                 .setImageUrl(R.mipmap.ic_discover_organization)
                 .setValue(String.valueOf("找机构"))
+                .setDelegate(new OrganizationDelegate())
                 .build();
 
         ListBean teacher = new ListBean.Builder()
