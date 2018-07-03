@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@android:color/white"
+    android:layout_marginTop="10dp"
+    android:layout_height="100dp">
+
+    <ImageView
+        android:padding="5dp"
+        android:layout_margin="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/iv_teacher"
+        android:layout_width="70dp"
+        android:layout_height="100dp" />
+
+    <android.support.v7.widget.AppCompatTextView
+
+        android:id="@+id/tv_teacher_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/iv_teacher"
+        android:layout_toEndOf="@+id/iv_teacher"
+        android:layout_toRightOf="@+id/iv_teacher"
+        android:text="张见老师" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_teacher_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLength="50"
+        android:layout_below="@+id/tv_teacher_name"
+        android:layout_toEndOf="@+id/iv_teacher"
+        android:layout_toRightOf="@+id/iv_teacher"
+        android:text="fjalfjlafjlafjlafjlafjlafjalfjal" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:padding="5dp"
+        android:id="@+id/tv_teacher_address"
+        android:layout_alignBottom="@id/iv_teacher"
+        android:text="现在什么授吸"
+        android:maxLength="100"
+        android:layout_toRightOf="@+id/iv_teacher"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:padding="5dp"
+        android:id="@+id/tv_teacher_phone"
+        android:layout_alignBottom="@id/iv_teacher"
+        android:text="电话：18202710074"
+        android:layout_toRightOf="@+id/tv_teacher_address"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
