@@ -31,11 +31,11 @@ public class NewsDelegate extends LatteDelegate {
     }
 
     @Override
-    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
+    public void onLazyInitView(@Nullable Bundle savedInstanceState) {http://www.51zxw.net/
         super.onLazyInitView(savedInstanceState);
-//        final WebDelegateImpl delegate = WebDelegateImpl.create("index.html");
-//        delegate.setTopDelegate(this.getParentDelegate());
-//        getSupportDelegate().loadRootFragment(R.id.web_discovery_container, delegate);
+        final WebDelegateImpl delegate = WebDelegateImpl.create("http://www.51zxw.net/");
+        delegate.setTopDelegate(this.getParentDelegate());
+        getSupportDelegate().loadRootFragment(R.id.web_discovery_container, delegate);
     }
 
     @Override
@@ -43,9 +43,4 @@ public class NewsDelegate extends LatteDelegate {
 
         return new DefaultHorizontalAnimator();
     }
-
-    //onCreateFragmentAnimator
-
-
-
 }

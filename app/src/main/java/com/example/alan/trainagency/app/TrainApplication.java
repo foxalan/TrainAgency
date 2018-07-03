@@ -42,6 +42,8 @@ public class TrainApplication extends Application {
                 .withIcon(new FontEcModule())
                 .withJavascriptInterface(JAVA_INTERFACE)
                 .withInterceptor(new DebugInterceptor("test", R.raw.test))
+                //添加Cookie同步拦截器
+                .withWebHost("https://www.baidu.com/")
                 .configure();
 
         MobSDK.init(this);
