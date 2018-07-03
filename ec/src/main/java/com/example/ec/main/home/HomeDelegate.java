@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatTextView;
@@ -22,7 +21,6 @@ import com.example.ec.main.home.location.CurrentLocation;
 import com.example.ec.main.home.location.ILocationListener;
 import com.example.ec.main.dynamic.message.MessageDelegate;
 import com.example.ec.main.home.search.SearchDelegate;
-import com.example.ui.recycler.BaseDecoration;
 import com.example.ui.refresh.RefreshHandler;
 import com.joanzapata.iconify.widget.IconTextView;
 

@@ -5,22 +5,15 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 import com.baidu.location.BDLocation;
 import com.example.core.delegate.LatteDelegate;
-import com.example.core.net.RestClient;
-import com.example.core.net.callback.ISuccess;
-import com.example.core.ui.Lo;
 import com.example.ec.R;
+import com.example.ec.main.discover.MyRefreshHandler;
 import com.example.ec.main.home.location.CurrentLocation;
-import com.example.ec.main.home.subject.list.SubjectClickListener;
-import com.example.ec.main.home.subject.list.SubjectListAdapter;
 import com.example.ec.main.home.subject.list.SubjectNameDataConverter;
-import com.example.ui.recycler.MultipleItemEntity;
-
-import java.util.List;
+import com.example.ui.refresh.RefreshHandler;
 
 /**
  * @author alan
@@ -29,9 +22,11 @@ import java.util.List;
  *         Issue :
  */
 
-public class OrganizationDelegate extends LatteDelegate implements ISuccess{
+public class OrganizationDelegate extends LatteDelegate{
 
     private RecyclerView mRycOrganization;
+
+    private MyRefreshHandler mRefreshHandler = null;
 
     @Override
     public Object setLayout() {
@@ -42,7 +37,7 @@ public class OrganizationDelegate extends LatteDelegate implements ISuccess{
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
         mRycOrganization = rootView.findViewById(R.id.ryc_organization_list);
 
-        initData();
+        mRefreshHandler = MyRefreshHandler.create(null, mRycOrganization, new SubjectNameDataConverter());
     }
 
     /**
@@ -53,37 +48,26 @@ public class OrganizationDelegate extends LatteDelegate implements ISuccess{
         Latitude:纬度
      */
 
+
     double x = 0.00;
     double y = 0.00;
+    @Override
+    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
+        super.onLazyInitView(savedInstanceState);
 
-    private void initData() {
         BDLocation bdLocation = CurrentLocation.getInstance().getBdLocation();
         if(bdLocation!=null){
             x = bdLocation.getLongitude();
             y = bdLocation.getLatitude();
         }
 
-        Log.e("organization:","longitude:"+x);
-        Log.e("organization","latitude:"+y);
-
-        RestClient.builder()
-                .loader(getContext())
-                .url("Classinfo")
-                .params("Longitude",x)
-                .params("Latitude",y)
-                .success(this)
-                .build()
-                .get();
+        initRecyclerView();
+        mRefreshHandler.firstPage("Classinfo");
     }
 
-    @Override
-    public void onSuccess(String response) {
+
+    private void initRecyclerView() {
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         mRycOrganization.setLayoutManager(manager);
-        final List<MultipleItemEntity> data =
-                new SubjectNameDataConverter().setJsonData(response).convert();
-        final SubjectListAdapter addressAdapter = new SubjectListAdapter(data);
-        mRycOrganization.setAdapter(addressAdapter);
-     //   mRycOrganization.addOnItemTouchListener(new SubjectClickListener(this));
     }
 }

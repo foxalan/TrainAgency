@@ -1,4 +1,4 @@
-package com.example.ui.refresh;
+package com.example.ec.main.discover;
 
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
@@ -10,39 +10,41 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.core.app.Latte;
 import com.example.core.net.RestClient;
 import com.example.core.net.callback.ISuccess;
-import com.example.core.util.log.LatteLogger;
+import com.example.ec.main.home.subject.list.SubjectListAdapter;
 import com.example.ui.recycler.DataConverter;
-import com.example.ui.recycler.MultipleRecyclerAdapter;
-
+import com.example.ui.refresh.PagingBean;
 
 /**
  * @author alan
- * RecyclerView 刷新使用
+ *         Date  2018/7/3.
+ *         Function : 刷新使用
+ *         Issue :
  */
 
-public class RefreshHandler implements
-        SwipeRefreshLayout.OnRefreshListener
-        , BaseQuickAdapter.RequestLoadMoreListener {
+public class MyRefreshHandler implements SwipeRefreshLayout.OnRefreshListener
+        , BaseQuickAdapter.RequestLoadMoreListener{
 
     private final SwipeRefreshLayout REFRESH_LAYOUT;
     private final PagingBean BEAN;
     private final RecyclerView RECYCLERVIEW;
-    private MultipleRecyclerAdapter mAdapter = null;
+    private SubjectListAdapter mAdapter = null;
     private final DataConverter CONVERTER;
+    private  String baseUrl;
 
-    private RefreshHandler(SwipeRefreshLayout swipeRefreshLayout,
+
+    private MyRefreshHandler(SwipeRefreshLayout swipeRefreshLayout,
                            RecyclerView recyclerView,
                            DataConverter converter, PagingBean bean) {
         this.REFRESH_LAYOUT = swipeRefreshLayout;
         this.RECYCLERVIEW = recyclerView;
         this.CONVERTER = converter;
         this.BEAN = bean;
-        REFRESH_LAYOUT.setOnRefreshListener(this);
+    //    REFRESH_LAYOUT.setOnRefreshListener(this);
     }
 
-    public static RefreshHandler create(SwipeRefreshLayout swipeRefreshLayout,
+    public static MyRefreshHandler create(SwipeRefreshLayout swipeRefreshLayout,
                                         RecyclerView recyclerView, DataConverter converter) {
-        return new RefreshHandler(swipeRefreshLayout, recyclerView, converter, new PagingBean());
+        return new MyRefreshHandler(swipeRefreshLayout, recyclerView, converter, new PagingBean());
     }
 
     private void refresh() {
@@ -57,28 +59,23 @@ public class RefreshHandler implements
     }
 
     public void firstPage(String url) {
-
-        LatteLogger.d("IUDHAS", url);
+        baseUrl  = url;
         BEAN.setDelayed(1000);
         RestClient.builder()
                 .url(url)
                 .loader(RECYCLERVIEW.getContext())
-                .success(new ISuccess() {
-                    @Override
-                    public void onSuccess(String response) {
+                .success(response -> {
 
-                        Log.e("alan",response.toString()+"===========");
-                        final JSONObject object = JSON.parseObject(response);
-
-                        //todo
-//                        BEAN.setTotal(object.getInteger("total"))
-//                                .setPageSize(object.getInteger("pagesize"));
-                        //设置Adapter
-                        mAdapter = MultipleRecyclerAdapter.create(CONVERTER.setJsonData(response));
-                        mAdapter.setOnLoadMoreListener(RefreshHandler.this, RECYCLERVIEW);
-                        RECYCLERVIEW.setAdapter(mAdapter);
-                        BEAN.addIndex();
-                    }
+                    Log.e("alan",response.toString()+"===========");
+                    final JSONObject object = JSON.parseObject(response);
+                    BEAN.setTotal(object.getInteger("total"))
+                              .setPageSize(object.getInteger("pagesize"));
+                    mAdapter = new SubjectListAdapter(null);
+                    //设置Adapter
+                    mAdapter.addData(CONVERTER.setJsonData(response).convert());
+                    mAdapter.setOnLoadMoreListener(MyRefreshHandler.this, RECYCLERVIEW);
+                    RECYCLERVIEW.setAdapter(mAdapter);
+                    BEAN.addIndex();
                 })
                 .build()
                 .get();
@@ -98,17 +95,16 @@ public class RefreshHandler implements
                 public void run() {
                     RestClient.builder()
                             .url(url + index)
-                            .success(new ISuccess() {
-                                @Override
-                                public void onSuccess(String response) {
-                                    LatteLogger.json("paging", response);
-                                    CONVERTER.clearData();
-                                    mAdapter.addData(CONVERTER.setJsonData(response).convert());
-                                    //累加数量
-                                    BEAN.setCurrentCount(mAdapter.getData().size());
-                                    mAdapter.loadMoreComplete();
-                                    BEAN.addIndex();
-                                }
+                            .success(response -> {
+                                Log.e("refresh","response:"+response);
+
+                                CONVERTER.clearData();
+
+                                mAdapter.addData(CONVERTER.setJsonData(response).convert());
+                                //累加数量
+                                BEAN.setCurrentCount(mAdapter.getData().size());
+                                mAdapter.loadMoreComplete();
+                                BEAN.addIndex();
                             })
                             .build()
                             .get();
@@ -125,6 +121,6 @@ public class RefreshHandler implements
 
     @Override
     public void onLoadMoreRequested() {
-        paging("refresh.php?pageindex=");
+        paging(baseUrl+"?pageindex=");
     }
 }

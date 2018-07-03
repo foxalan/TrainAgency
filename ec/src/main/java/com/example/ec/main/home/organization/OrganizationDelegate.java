@@ -68,6 +68,7 @@ public class OrganizationDelegate extends LatteDelegate implements ISuccess{
 
         mRecyclerView = rootView.findViewById(R.id.ryc_org);
         initData();
+
     }
 
     double x = 0.00;
