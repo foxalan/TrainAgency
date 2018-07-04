@@ -12,10 +12,9 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentLeft="true"
+        android:src="@mipmap/avatar"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="20dp"
-        app:civ_fill_color="@android:color/white"
-        app:civ_circle_background_color="@android:color/white"/>
+        android:layout_marginLeft="20dp" />
 
 
     <android.support.v7.widget.AppCompatTextView

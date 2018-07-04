@@ -1,5 +1,7 @@
 package com.example.ec.main.personal.list;
 
+import android.support.v7.widget.AppCompatCheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -30,6 +32,7 @@ public class ListAdapter extends BaseMultiItemQuickAdapter<ListBean, BaseViewHol
         addItemType(ListItemType.ITEM_BLANK, R.layout.arrow_item_blank_layout);
         addItemType(ListItemType.ITEM_TEXT_TEXT, R.layout.arrow_item_text_text);
         addItemType(ListItemType.ITEM_TEXT_AVATAR, R.layout.arrow_item_text_avatar);
+        addItemType(ListItemType.ITEM_CHECK, R.layout.arrow_item_check_text);
     }
 
     @Override
@@ -52,7 +55,12 @@ public class ListAdapter extends BaseMultiItemQuickAdapter<ListBean, BaseViewHol
                 helper.setText(R.id.tv_arrow_context, item.getValue());
                 break;
             case ListItemType.ITEM_TEXT_AVATAR:
-                helper.setText(R.id.tv_arrow_text,item.getValue());
+                helper.setText(R.id.tv_arrow_text, item.getValue());
+                break;
+            case ListItemType.ITEM_CHECK:
+                AppCompatCheckBox compatCheckBox = helper.getView(R.id.cb_advice);
+                compatCheckBox.setText(item.getValue());
+                compatCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> item.setCheck(isChecked));
                 break;
             default:
                 break;

@@ -1,7 +1,8 @@
 package com.example.ec.main.personal.list;
 
 /**
- * Created by 傅令杰
+ * @author alan
+ * 我的recyclerView样式
  */
 
 public class ListItemType {
@@ -11,5 +12,5 @@ public class ListItemType {
     public static final int ITEM_BLANK = 22;
     public static final int ITEM_TEXT_TEXT= 23;
     public static final int ITEM_TEXT_AVATAR = 24;
-
+    public static final int ITEM_CHECK = 25;
 }

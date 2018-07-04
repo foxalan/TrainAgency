@@ -9,4 +9,9 @@
         <attr name="icon_size" format="dimension" />
     </declare-styleable>
 
+    <declare-styleable name="LimitScrollEditText">
+        <attr name="hint" format="string" />
+        <attr name="maxLength" format="integer" />
+    </declare-styleable>
+
 </resources>

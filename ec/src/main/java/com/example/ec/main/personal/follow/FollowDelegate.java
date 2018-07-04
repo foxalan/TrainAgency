@@ -20,6 +20,8 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
 public class FollowDelegate extends LatteDelegate {
 
+
+
     @Override
     public Object setLayout() {
         return R.layout.delegate_personal_follow;

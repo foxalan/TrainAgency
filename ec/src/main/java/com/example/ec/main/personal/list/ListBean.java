@@ -7,7 +7,8 @@ import com.example.core.delegate.LatteDelegate;
 
 
 /**
- * Created by 傅令杰
+ * @author alan
+ *
  */
 
 public class ListBean implements MultiItemEntity {
@@ -16,11 +17,12 @@ public class ListBean implements MultiItemEntity {
     private int mImageUrl;
     private String mText = null;
     private String mValue = null;
+    private boolean isCheck = false;
     private int mId = 0;
     private LatteDelegate mDelegate = null;
     private CompoundButton.OnCheckedChangeListener mOnCheckedChangeListener = null;
 
-    public ListBean(int mItemType, int mImageUrl, String mText, String mValue, int mId, LatteDelegate mDelegate, CompoundButton.OnCheckedChangeListener mOnCheckedChangeListener) {
+    public ListBean(int mItemType, int mImageUrl, String mText, String mValue, int mId, LatteDelegate mDelegate, CompoundButton.OnCheckedChangeListener mOnCheckedChangeListener,boolean isCheck) {
         this.mItemType = mItemType;
         this.mImageUrl = mImageUrl;
         this.mText = mText;
@@ -28,6 +30,7 @@ public class ListBean implements MultiItemEntity {
         this.mId = mId;
         this.mDelegate = mDelegate;
         this.mOnCheckedChangeListener = mOnCheckedChangeListener;
+        this.isCheck = isCheck;
     }
 
     public int  getImageUrl() {
@@ -41,11 +44,20 @@ public class ListBean implements MultiItemEntity {
         return mText;
     }
 
+    public boolean isCheck() {
+        return isCheck;
+    }
+
+    public void setCheck(boolean check) {
+        isCheck = check;
+    }
+
     public String getValue() {
         if (mValue == null) {
             return "";
         }
         return mValue;
+
     }
 
     public int getId() {
@@ -70,6 +82,7 @@ public class ListBean implements MultiItemEntity {
         private int id = 0;
         private int itemType = 0;
         private int  imageUrl;
+        private boolean isCheck = false;
         private String text = null;
         private String value = null;
         private CompoundButton.OnCheckedChangeListener onCheckedChangeListener = null;
@@ -82,6 +95,11 @@ public class ListBean implements MultiItemEntity {
 
         public Builder setItemType(int itemType) {
             this.itemType = itemType;
+            return this;
+        }
+
+        public Builder isChecked(boolean isCheck){
+            this.isCheck = isCheck;
             return this;
         }
 
@@ -111,7 +129,7 @@ public class ListBean implements MultiItemEntity {
         }
 
         public ListBean build() {
-            return new ListBean(itemType, imageUrl, text, value, id, delegate, onCheckedChangeListener);
+            return new ListBean(itemType, imageUrl, text, value, id, delegate, onCheckedChangeListener,isCheck);
         }
     }
 }
