@@ -66,7 +66,7 @@ public class MessageDelegate extends LatteDelegate {
                 .setCount(5)
                 .setValue(MessageType.UNREAD)
                 .setImageUrl(R.mipmap.ic_home_message)
-                .setItemType(ListItemType.ITEM_NORMAL)
+                .setItemType(ListItemType.ITEM_IMAGE_TEXT_AVATAR)
                 .setText("未读消息")
                 .build();
 
@@ -75,7 +75,7 @@ public class MessageDelegate extends LatteDelegate {
 
                 .setValue(MessageType.READ)
                 .setImageUrl(R.mipmap.ic_home_message_read)
-                .setItemType(ListItemType.ITEM_NORMAL)
+                .setItemType(ListItemType.ITEM_IMAGE_TEXT_AVATAR)
                 .setText("已读消息")
                 .build();
         List<MessageBean> messageBeanList = new ArrayList<>();

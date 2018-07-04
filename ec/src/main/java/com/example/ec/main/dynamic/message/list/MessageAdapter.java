@@ -32,7 +32,7 @@ public class MessageAdapter extends BaseMultiItemQuickAdapter<MessageBean, BaseV
     public MessageAdapter(List<MessageBean> data) {
         super(data);
 
-        addItemType(ListItemType.ITEM_NORMAL, R.layout.arrow_item_layout);
+        addItemType(ListItemType.ITEM_IMAGE_TEXT_AVATAR, R.layout.arrow_item_image_text_avatar);
 
     }
 
@@ -45,7 +45,7 @@ public class MessageAdapter extends BaseMultiItemQuickAdapter<MessageBean, BaseV
         appCompatTextView.setText(item.getText());
         QBadgeView mQBadgeView;
         switch (helper.getItemViewType()) {
-            case ListItemType.ITEM_NORMAL:
+            case ListItemType.ITEM_IMAGE_TEXT_AVATAR:
                 switch (item.getValue()) {
                     case UNREAD:
                         //设置消息

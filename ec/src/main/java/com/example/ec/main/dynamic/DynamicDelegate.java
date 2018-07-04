@@ -47,7 +47,7 @@ public class DynamicDelegate extends BottomItemDelegate {
 
         ListBean news = new ListBean.Builder()
                 .setId(0)
-                .setItemType(ListItemType.ITEM_NORMAL)
+                .setItemType(ListItemType.ITEM_IMAGE_TEXT_AVATAR)
                 .setImageUrl(R.mipmap.ic_dynamic_news)
                 .setValue(String.valueOf("新闻"))
                 .setDelegate(new NewsDelegate())
@@ -55,7 +55,7 @@ public class DynamicDelegate extends BottomItemDelegate {
 
         ListBean knowledge = new ListBean.Builder()
                 .setId(1)
-                .setItemType(ListItemType.ITEM_NORMAL)
+                .setItemType(ListItemType.ITEM_IMAGE_TEXT_AVATAR)
                 .setImageUrl(R.mipmap.ic_dynamic_knowleage)
                 .setValue(String.valueOf("宝典"))
                 .build();
@@ -66,7 +66,7 @@ public class DynamicDelegate extends BottomItemDelegate {
 
         ListBean log = new ListBean.Builder()
                 .setId(2)
-                .setItemType(ListItemType.ITEM_NORMAL)
+                .setItemType(ListItemType.ITEM_IMAGE_TEXT_AVATAR)
                 .setImageUrl(R.mipmap.ic_dynamic_daily)
                 .setValue(String.valueOf("发表日志"))
                 .setDelegate(new RecordDelegate())
@@ -75,7 +75,7 @@ public class DynamicDelegate extends BottomItemDelegate {
 
         ListBean message = new ListBean.Builder()
                 .setId(3)
-                .setItemType(ListItemType.ITEM_NORMAL)
+                .setItemType(ListItemType.ITEM_IMAGE_TEXT_AVATAR)
                 .setImageUrl(R.mipmap.ic_dynamic_message)
                 .setValue(String.valueOf("消息"))
                 .setDelegate(new MessageDelegate())
@@ -88,7 +88,7 @@ public class DynamicDelegate extends BottomItemDelegate {
 
         ListBean  campaign = new ListBean.Builder()
                 .setId(4)
-                .setItemType(ListItemType.ITEM_NORMAL)
+                .setItemType(ListItemType.ITEM_IMAGE_TEXT_AVATAR)
                 .setImageUrl(R.mipmap.ic_dynamic_activity)
                 .setValue(String.valueOf("活动"))
                 .setDelegate(new OutDoorDelegate())

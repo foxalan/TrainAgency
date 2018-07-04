@@ -13,7 +13,7 @@ import com.example.ec.R;
 import java.util.List;
 
 /**
- * Created by 傅令杰
+ * @author alan
  */
 
 public class ListAdapter extends BaseMultiItemQuickAdapter<ListBean, BaseViewHolder> {
@@ -25,26 +25,34 @@ public class ListAdapter extends BaseMultiItemQuickAdapter<ListBean, BaseViewHol
 
     public ListAdapter(List<ListBean> data) {
         super(data);
-        addItemType(ListItemType.ITEM_NORMAL, R.layout.arrow_item_layout);
-        addItemType(ListItemType.ITEM_AVATAR, R.layout.arrow_item_avatar);
-        addItemType(ListItemType.ITEM_BLANK,R.layout.arrow_blank_layout);
+        addItemType(ListItemType.ITEM_IMAGE_TEXT_AVATAR, R.layout.arrow_item_image_text_avatar);
+        addItemType(ListItemType.ITEM_USER_AVATAR, R.layout.arrow_item_user_avatar);
+        addItemType(ListItemType.ITEM_BLANK, R.layout.arrow_item_blank_layout);
+        addItemType(ListItemType.ITEM_TEXT_TEXT, R.layout.arrow_item_text_text);
+        addItemType(ListItemType.ITEM_TEXT_AVATAR, R.layout.arrow_item_text_avatar);
     }
 
     @Override
     protected void convert(BaseViewHolder helper, ListBean item) {
         switch (helper.getItemViewType()) {
-            case ListItemType.ITEM_NORMAL:
-                helper.setImageResource(R.id.tv_arrow_image,item.getImageUrl());
+            case ListItemType.ITEM_IMAGE_TEXT_AVATAR:
+                helper.setImageResource(R.id.tv_arrow_image, item.getImageUrl());
                 helper.setText(R.id.tv_arrow_value, item.getValue());
                 break;
-            case ListItemType.ITEM_AVATAR:
+            case ListItemType.ITEM_USER_AVATAR:
                 Glide.with(mContext)
                         .load(item.getImageUrl())
                         .apply(OPTIONS)
                         .into((ImageView) helper.getView(R.id.img_arrow_avatar));
                 break;
             case ListItemType.ITEM_BLANK:
-
+                break;
+            case ListItemType.ITEM_TEXT_TEXT:
+                helper.setText(R.id.tv_arrow_text, item.getText());
+                helper.setText(R.id.tv_arrow_context, item.getValue());
+                break;
+            case ListItemType.ITEM_TEXT_AVATAR:
+                helper.setText(R.id.tv_arrow_text,item.getValue());
                 break;
             default:
                 break;

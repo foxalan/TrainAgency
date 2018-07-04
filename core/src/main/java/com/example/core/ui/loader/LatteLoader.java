@@ -25,7 +25,7 @@ public class LatteLoader {
 
     private static final ArrayList<AppCompatDialog> LOADERS = new ArrayList<>();
 
-    private static final String DEFAULT_LOADER = LoaderStyle.BallClipRotatePulseIndicator.name();
+    private static final String DEFAULT_LOADER = LoaderStyle.LineSpinFadeLoaderIndicator.name();
 
     public static void showLoading(Context context, Enum<LoaderStyle> type) {
         showLoading(context, type.name());
@@ -40,7 +40,7 @@ public class LatteLoader {
         dialog.setContentView(avLoadingIndicatorView);
 
         //todo
-        dialog.setCancelable(false);
+     //   dialog.setCancelable(false);
 
         int deviceWidth = DimenUtil.getScreenWidth();
         int deviceHeight = DimenUtil.getScreenHeight();

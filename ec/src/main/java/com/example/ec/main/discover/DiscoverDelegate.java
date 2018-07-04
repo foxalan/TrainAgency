@@ -47,7 +47,7 @@ public class DiscoverDelegate extends BottomItemDelegate {
         List<ListBean> listBeanList = new ArrayList<>();
         ListBean organization = new ListBean.Builder()
                 .setId(0)
-                .setItemType(ListItemType.ITEM_NORMAL)
+                .setItemType(ListItemType.ITEM_IMAGE_TEXT_AVATAR)
                 .setImageUrl(R.mipmap.ic_discover_organization)
                 .setValue(String.valueOf("找机构"))
                 .setDelegate(new OrganizationDelegate())
@@ -55,7 +55,7 @@ public class DiscoverDelegate extends BottomItemDelegate {
 
         ListBean teacher = new ListBean.Builder()
                 .setId(1)
-                .setItemType(ListItemType.ITEM_NORMAL)
+                .setItemType(ListItemType.ITEM_IMAGE_TEXT_AVATAR)
                 .setImageUrl(R.mipmap.ic_discover_teacher)
                 .setValue(String.valueOf("找老师"))
                 .setDelegate(new TeacherDelegate())
@@ -67,7 +67,7 @@ public class DiscoverDelegate extends BottomItemDelegate {
 
         ListBean see = new ListBean.Builder()
                 .setId(2)
-                .setItemType(ListItemType.ITEM_NORMAL)
+                .setItemType(ListItemType.ITEM_IMAGE_TEXT_AVATAR)
                 .setImageUrl(R.mipmap.ic_discover_see)
                 .setValue(String.valueOf("看一看"))
                 .build();
@@ -75,7 +75,7 @@ public class DiscoverDelegate extends BottomItemDelegate {
 
         ListBean message = new ListBean.Builder()
                 .setId(3)
-                .setItemType(ListItemType.ITEM_NORMAL)
+                .setItemType(ListItemType.ITEM_IMAGE_TEXT_AVATAR)
                 .setImageUrl(R.mipmap.ic_discover_message)
                 .setDelegate(new MessageDelegate())
                 .setValue(String.valueOf("信息平台"))
@@ -88,7 +88,7 @@ public class DiscoverDelegate extends BottomItemDelegate {
 
         ListBean resource = new ListBean.Builder()
                 .setId(4)
-                .setItemType(ListItemType.ITEM_NORMAL)
+                .setItemType(ListItemType.ITEM_IMAGE_TEXT_AVATAR)
                 .setImageUrl(R.mipmap.ic_discover_resouce)
                 .setDelegate(new ResourceDelegate())
                 .setValue(String.valueOf("资    源"))

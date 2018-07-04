@@ -10,9 +10,12 @@ import android.view.View;
 
 import com.example.core.delegate.bottom.BottomItemDelegate;
 import com.example.ec.R;
+import com.example.ec.main.personal.follow.FollowDelegate;
 import com.example.ec.main.personal.list.ListAdapter;
 import com.example.ec.main.personal.list.ListBean;
 import com.example.ec.main.personal.list.ListItemType;
+import com.example.ec.main.personal.setting.SettingDelegate;
+import com.example.ec.main.personal.userinfo.UserInfoDelegate;
 import com.example.ui.recycler.BaseDecoration;
 
 import java.util.ArrayList;
@@ -29,7 +32,7 @@ public class PersonalDelegate extends BottomItemDelegate {
 
     @Override
     public Object setLayout() {
-        return R.layout.delegate_own;
+        return R.layout.delegate_personal;
     }
 
     @Override
@@ -37,7 +40,8 @@ public class PersonalDelegate extends BottomItemDelegate {
         final RecyclerView rvSettings = $(R.id.rv_personal_setting);
 
         final ListBean  my = new ListBean.Builder()
-                .setItemType(ListItemType.ITEM_AVATAR)
+                .setItemType(ListItemType.ITEM_USER_AVATAR)
+                .setDelegate(new UserInfoDelegate())
                 .setId(0)
                 .build();
 
@@ -48,28 +52,29 @@ public class PersonalDelegate extends BottomItemDelegate {
 
 
         final ListBean notice = new ListBean.Builder()
-                .setItemType(ListItemType.ITEM_NORMAL)
+                .setItemType(ListItemType.ITEM_IMAGE_TEXT_AVATAR)
                 .setId(2)
                 .setImageUrl(R.mipmap.ic_personal_notice)
+                .setDelegate(new FollowDelegate())
                 .setValue("我的关注")
                 .build();
 
         final ListBean say = new ListBean.Builder()
-                .setItemType(ListItemType.ITEM_NORMAL)
+                .setItemType(ListItemType.ITEM_IMAGE_TEXT_AVATAR)
                 .setImageUrl(R.mipmap.ic_personal_say)
                 .setId(3)
                 .setValue("我的评论")
                 .build();
 
         final ListBean  footer = new ListBean.Builder()
-                .setItemType(ListItemType.ITEM_NORMAL)
+                .setItemType(ListItemType.ITEM_IMAGE_TEXT_AVATAR)
                 .setId(4)
                 .setImageUrl(R.mipmap.ic_personal_footer)
                 .setValue("足    迹")
                 .build();
 
         final ListBean resource = new ListBean.Builder()
-                .setItemType(ListItemType.ITEM_NORMAL)
+                .setItemType(ListItemType.ITEM_IMAGE_TEXT_AVATAR)
                 .setId(5)
                 .setImageUrl(R.mipmap.ic_personal_resource)
                 .setValue("资源管理")
@@ -81,22 +86,23 @@ public class PersonalDelegate extends BottomItemDelegate {
                 .build();
 
         final ListBean be = new ListBean.Builder()
-                .setItemType(ListItemType.ITEM_NORMAL)
+                .setItemType(ListItemType.ITEM_IMAGE_TEXT_AVATAR)
                 .setId(6)
                 .setImageUrl(R.mipmap.ic_personal_be)
                 .setValue("申请成为老师/机构")
                 .build();
 
-        final ListBean hlep = new ListBean.Builder()
-                .setItemType(ListItemType.ITEM_NORMAL)
+        final ListBean hlpe = new ListBean.Builder()
+                .setItemType(ListItemType.ITEM_IMAGE_TEXT_AVATAR)
                 .setId(5)
                 .setImageUrl(R.mipmap.ic_personal_help)
                 .setValue("帮助/反馈")
                 .build();
 
         final ListBean setting = new ListBean.Builder()
-                .setItemType(ListItemType.ITEM_NORMAL)
+                .setItemType(ListItemType.ITEM_IMAGE_TEXT_AVATAR)
                 .setId(6)
+                .setDelegate(new SettingDelegate())
                 .setImageUrl(R.mipmap.ic_personal_setting)
                 .setValue("设置")
                 .build();
@@ -114,7 +120,7 @@ public class PersonalDelegate extends BottomItemDelegate {
         data.add(resource);
         data.add(blank1);
         data.add(be);
-        data.add(hlep);
+        data.add(hlpe);
         data.add(setting);
 
         //设置RecyclerView
@@ -124,6 +130,6 @@ public class PersonalDelegate extends BottomItemDelegate {
         rvSettings.addItemDecoration
                 (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 2));
         rvSettings.setAdapter(adapter);
-    //    rvSettings.addOnItemTouchListener(new DynamicClickListener(this));
+        rvSettings.addOnItemTouchListener(new PersonalClickListener(this));
     }
 }

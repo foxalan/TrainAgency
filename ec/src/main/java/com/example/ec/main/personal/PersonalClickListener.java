@@ -24,10 +24,10 @@ public class PersonalClickListener extends SimpleClickListener {
         final ListBean bean = (ListBean) baseQuickAdapter.getData().get(position);
         int id = bean.getId();
         switch (id) {
-            case 1:
-                DELEGATE.getParentDelegate().getSupportDelegate().start(bean.getDelegate());
-                break;
+            case 0:
+            //case 1:
             case 2:
+            case 6:
                 DELEGATE.getParentDelegate().getSupportDelegate().start(bean.getDelegate());
                 break;
             default:
