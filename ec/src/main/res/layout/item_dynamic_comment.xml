@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/default_margin"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:textColor="@color/black"
+        android:id="@+id/tv_author"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:drawableLeft="@mipmap/ic_discover_message"
+        android:textSize="20sp"
+        android:text="一个人的兵荒"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="HardcodedText,RtlHardcoded" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_margin="@dimen/default_padding"
+        android:padding="@dimen/default_margin"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_medium"
+        android:id="@+id/tv_comment_context"
+        android:text="你们好啊，朋友"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="HardcodedText" />
+
+    <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/id_gallery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_comment_location"
+        android:layout_margin="@dimen/default_padding"
+        android:padding="@dimen/default_margin"
+        android:textSize="@dimen/text_size_small"
+        android:drawablePadding="2dp"
+        android:drawableLeft="@mipmap/ic_discover_message"
+        android:text="时尚广场"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_comment_time"
+        android:layout_margin="@dimen/default_padding"
+        android:padding="@dimen/default_margin"
+        android:textSize="@dimen/text_size_micro"
+        android:textColor="@color/gray_text"
+        android:text="7:30 / 3.96km / 398阅读"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="HardcodedText" />
+
+    <View
+        android:background="@color/gray_text"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:text="21"
+            android:gravity="bottom"
+            android:textSize="@dimen/text_size_micro"
+            android:padding="@dimen/default_padding"
+            android:layout_margin="@dimen/default_margin"
+            android:drawableLeft="@mipmap/ic_discover_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:text="21"
+            android:gravity="bottom"
+            android:textSize="@dimen/text_size_micro"
+            android:padding="@dimen/default_padding"
+            android:layout_margin="@dimen/default_margin"
+            android:drawableLeft="@mipmap/ic_discover_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:gravity="bottom"
+            android:textSize="@dimen/text_size_micro"
+            android:text="21"
+            android:padding="@dimen/default_padding"
+            android:layout_margin="@dimen/default_margin"
+            android:drawableLeft="@mipmap/ic_discover_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

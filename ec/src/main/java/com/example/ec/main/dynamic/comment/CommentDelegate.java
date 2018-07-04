@@ -3,6 +3,7 @@ package com.example.ec.main.dynamic.comment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.example.core.delegate.LatteDelegate;
@@ -20,6 +21,8 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
 public class CommentDelegate extends LatteDelegate {
 
+    private RecyclerView mReyComment;
+
     @Override
     public Object setLayout() {
         return R.layout.delegate_dynamic_comment;
@@ -27,6 +30,8 @@ public class CommentDelegate extends LatteDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
+
+        mReyComment = rootView.findViewById(R.id.ryc_comment);
 
     }
 
