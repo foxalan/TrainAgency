@@ -24,10 +24,7 @@ import com.example.ec.test.model.Order;
 
 import java.io.Serializable;
 
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+
 
 
 /**
@@ -81,48 +78,7 @@ public class BlueToothPrintDelegate extends BluetoothDelegate implements View.On
 
         LoggerUtil.e(TAG,"TEXT");
 
-        Observable.create(new Observable.OnSubscribe<Order>() {
-            @Override
-            public void call(Subscriber<? super Order> subscriber) {
-                Order order = OrderModelController.getInstance().getOrder();
-                subscriber.onNext(order);
-                LoggerUtil.e(TAG,"ONCREATE"+order.toString());
-            //    subscriber.onCompleted();
-            }
-        })
-                // 指定 Subscriber 的回调发生在主线程
-                .subscribeOn(AndroidSchedulers.mainThread())
-                // 指定 subscribe() 发生在 IO 线程
-                .observeOn(Schedulers.io())
-                .subscribe(new Subscriber<Order>() {
-                    @Override
-                    public void onCompleted() {
 
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(Order order) {
-
-                        LoggerUtil.e(TAG,"ONNETXT"+order.getOrderId());
-                       StringBuffer sb = new StringBuffer();
-
-                       sb.append("订单编号："+order.getOrderId()+"\n");
-                       sb.append("备注："+"\n");
-                       sb.append("      "+"商品明细单"+"\n");
-                       sb.append("      "+order.getWareList().get(0).getShopName()+"\n");
-                       sb.append("      "+order.getWareList().get(0).getWareName()+"   "+"\n");
-                       sb.append("配送费："+order.getSendPrice()+"\n");
-                       sb.append("优惠劵："+order.getCoupon()+"\n");
-                       sb.append("实付款金额："+order.getOrderPrice()+"\n");
-                        LoggerUtil.e(TAG,"VALUE"+sb.toString());
-                        mTvOrderInfo.setText(sb.toString());
-                    }
-                });
     }
 
     @Override

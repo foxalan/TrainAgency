@@ -26,7 +26,7 @@ import com.joanzapata.iconify.widget.IconTextView;
 import java.util.ArrayList;
 
 /**
- * Created by 傅令杰
+ * @author alan
  */
 
 public final class AutoPhotoLayout extends LinearLayoutCompat {
@@ -297,7 +297,7 @@ public final class AutoPhotoLayout extends LinearLayoutCompat {
         mIconAdd.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-         //       mDelegate.startCameraWithCheck();
+                mDelegate.startCameraWithCheck();
             }
         });
         this.addView(mIconAdd);
