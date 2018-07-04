@@ -23,6 +23,8 @@
             android:text="{fa-angle-left}"
             android:layout_marginLeft="20dp"
             android:layout_width="60dp"
+            android:layout_gravity="left"
+            android:gravity="center_vertical"
             android:layout_height="match_parent"
             tools:ignore="HardcodedText"
             android:layout_marginStart="20dp" />

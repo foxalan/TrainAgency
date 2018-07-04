@@ -15,6 +15,7 @@ import com.example.ec.main.personal.help.HelpDelegate;
 import com.example.ec.main.personal.list.ListAdapter;
 import com.example.ec.main.personal.list.ListBean;
 import com.example.ec.main.personal.list.ListItemType;
+import com.example.ec.main.personal.notice.NoticeDelegate;
 import com.example.ec.main.personal.setting.SettingDelegate;
 import com.example.ec.main.personal.userinfo.UserInfoDelegate;
 import com.example.ui.recycler.BaseDecoration;
@@ -56,7 +57,7 @@ public class PersonalDelegate extends BottomItemDelegate {
                 .setItemType(ListItemType.ITEM_IMAGE_TEXT_AVATAR)
                 .setId(2)
                 .setImageUrl(R.mipmap.ic_personal_notice)
-                .setDelegate(new FollowDelegate())
+                .setDelegate(new NoticeDelegate())
                 .setValue("我的关注")
                 .build();
 
