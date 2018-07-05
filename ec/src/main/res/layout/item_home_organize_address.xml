@@ -8,13 +8,14 @@
     android:background="@android:color/white">
 
     <ImageView
+        android:src="@mipmap/ic_home_detail_address"
         android:padding="5dp"
         android:id="@+id/tv_address_image"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
         android:gravity="center"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="10dp"
         />
 
     <android.support.v7.widget.AppCompatTextView

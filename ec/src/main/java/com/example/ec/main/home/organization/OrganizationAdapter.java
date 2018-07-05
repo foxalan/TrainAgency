@@ -51,10 +51,8 @@ public class OrganizationAdapter extends MultipleRecyclerAdapter {
         super.convert(holder, entity);
         switch (entity.getItemType()) {
             case OrganizationType.ORGANIZATION_TYPE_BANNER:
-
                 final ArrayList<String> bannerImages;
                 if (!mIsInitBanner) {
-
                     bannerImages = entity.getField(MultipleFields.BANNERS);
                     final ConvenientBanner<String> convenientBanner = holder.getView(R.id.banner_recycler_item_org);
                     BannerCreator.setDefault(convenientBanner, bannerImages, this);
@@ -118,6 +116,13 @@ public class OrganizationAdapter extends MultipleRecyclerAdapter {
                 }
                 break;
             case OrganizationType.ORGANIZATION_TYPE_CLASS_MOBILE:
+                String mobile = entity.getField(MultipleFields.HOME_ORGANIZATION_MOBILE);
+//                int state = entity.getField(MultipleFields.HOME_ORGANIZATION_STATE);
+
+                holder.getView(R.id.tv_phone);
+  //              holder.getView(R.id.tv_state);
+
+
 
                 break;
             default:

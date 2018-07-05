@@ -1,5 +1,6 @@
 package com.example.ec.main.home.teacher.detail;
 
+import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -117,6 +118,16 @@ public class TeacherDetailAdapter extends MultipleRecyclerAdapter {
                 }
                 break;
             case OrganizationType.ORGANIZATION_TYPE_CLASS_MOBILE:
+                String mobile = entity.getField(MultipleFields.HOME_ORGANIZATION_MOBILE);
+                int state = entity.getField(MultipleFields.HOME_ORGANIZATION_STATE);
+                holder.getView(R.id.tv_phone);
+                AppCompatTextView mTvState =  holder.getView(R.id.tv_state);
+
+                if (state == 0){
+                    mTvState.setText("关注");
+                }else {
+                    mTvState.setText("取消关注");
+                }
 
                 break;
             default:

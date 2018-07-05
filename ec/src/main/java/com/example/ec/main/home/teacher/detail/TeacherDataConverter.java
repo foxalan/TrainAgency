@@ -83,6 +83,19 @@ public class TeacherDataConverter extends DataConverter {
         ENTITIES.add(teacherEntity);
 
 
+        MultipleItemEntity courseEntity = MultipleItemEntity.builder()
+                .setField(MultipleFields.ITEM_TYPE, OrganizationType.ORGANIZATION_TYPE_CLASS_COURSE)
+                .build();
+        ENTITIES.add(courseEntity);
+
+        String classTime = json.getString("workingHour");
+        MultipleItemEntity classTimeEntity = MultipleItemEntity.builder()
+                .setField(MultipleFields.ITEM_TYPE, OrganizationType.ORGANIZATION_TYPE_CLASS_TIME)
+                .setField(MultipleFields.HOME_ORGANIZATION_CLASS_TIME, classTime)
+                .build();
+        ENTITIES.add(classTimeEntity);
+
+
         final JSONArray imgArray = JSON.parseObject(getJsonData()).getJSONArray("imglist");
         List<String> imgList = new ArrayList<>();
         for (int i = 0; i < imgArray.size(); i++) {

@@ -4,6 +4,7 @@
     android:paddingRight="15dp"
     android:paddingTop="5dp"
     android:paddingBottom="5dp"
+    android:background="@color/white"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -20,18 +21,22 @@
         tools:ignore="HardcodedText" />
 
     <android.support.v7.widget.AppCompatTextView
-
-        android:drawableLeft="@mipmap/ic_home_search"
+        android:id="@+id/tv_phone"
+        android:drawableLeft="@mipmap/ic_home_detail_phone_un"
         android:layout_centerInParent="true"
         android:text="电话"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        tools:ignore="HardcodedText,RtlHardcoded" />
 
     <android.support.v7.widget.AppCompatTextView
-        android:drawableLeft="@mipmap/ic_home_search"
+        android:id="@+id/tv_state"
+        android:drawableLeft="@mipmap/ic_home_detail_state"
         android:layout_alignParentRight="true"
         android:text="关注"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        tools:ignore="HardcodedText" />
 
 </RelativeLayout>
