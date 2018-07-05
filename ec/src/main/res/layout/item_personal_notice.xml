@@ -2,15 +2,17 @@
 <LinearLayout
     android:orientation="horizontal"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="80dp">
+    android:layout_height="90dp">
 
     <ImageView
+        android:id="@+id/iv_notice_teacher_icon"
         android:layout_margin="@dimen/default_margin"
         android:padding="@dimen/default_padding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_notice_teacher_name"
         android:layout_margin="@dimen/default_margin"
         android:padding="@dimen/default_padding"
         android:textSize="@dimen/text_size_medium"

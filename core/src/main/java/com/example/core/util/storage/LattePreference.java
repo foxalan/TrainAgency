@@ -65,6 +65,15 @@ public final class LattePreference {
                 .apply();
     }
 
+    public static void setUserId(String key,String userId){
+        getAppPreference().edit().putString(key,userId).apply();
+    }
+
+    public static String  getUserId(String key){
+
+        return getAppPreference().getString(key, "");
+    }
+
     public static boolean getAppFlag(String key) {
         return getAppPreference()
                 .getBoolean(key, false);

@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 
+import com.example.alan.trainagency.sign.SignInPsdDelegate;
 import com.example.core.activity.ProxyActivity;
 import com.example.core.app.Latte;
 import com.example.core.delegate.LatteDelegate;
@@ -61,7 +62,7 @@ public class MainActivity extends ProxyActivity implements ILauncherListener {
                 getSupportDelegate().startWithPop(new EcBottomDelegate());
                 break;
             case NOT_SIGNED:
-                getSupportDelegate().startWithPop(new SignInDelegate());
+                getSupportDelegate().startWithPop(new SignInPsdDelegate());
                 break;
                 default:
 

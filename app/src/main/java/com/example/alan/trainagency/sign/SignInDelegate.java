@@ -60,6 +60,7 @@ public class SignInDelegate extends LatteDelegate implements View.OnClickListene
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
+
         mEdPhone = rootView.findViewById(R.id.et_phone);
         mEdProv = rootView.findViewById(R.id.et_prove);
         mIbClearPhone = rootView.findViewById(R.id.delete_phone);
