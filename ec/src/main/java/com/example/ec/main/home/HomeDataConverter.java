@@ -70,6 +70,7 @@ public final class HomeDataConverter extends DataConverter {
         Log.e("foxconn", recommendArray.toJSONString() + "===");
         for (int i = 0; i < recommendArray.size(); i++) {
             JSONObject jsonObject = recommendArray.getJSONObject(i);
+            String id = jsonObject.getString("ID");
             String organization_image_1 = jsonObject.getString("RecommendImg");
             String organization_image_2 = jsonObject.getString("classImg");
             String className = jsonObject.getString("className");
@@ -79,6 +80,7 @@ public final class HomeDataConverter extends DataConverter {
 
             final MultipleItemEntity data = MultipleItemEntity.builder()
                     .setField(MultipleFields.ITEM_TYPE, ItemType.RECOMMEND)
+                    .setField(MultipleFields.ID,1)
                     .setField(MultipleFields.SPAN_SIZE, 5)
                     .setField(MultipleFields.ORGANIZATION_IMAGE_1, organization_image_1)
                     .setField(MultipleFields.ORGANIZATION_IMAGE_2, organization_image_2)

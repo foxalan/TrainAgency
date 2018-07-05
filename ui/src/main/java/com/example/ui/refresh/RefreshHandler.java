@@ -30,6 +30,14 @@ public class RefreshHandler implements
     private MultipleRecyclerAdapter mAdapter = null;
     private final DataConverter CONVERTER;
 
+    public MultipleRecyclerAdapter getmAdapter() {
+        return mAdapter;
+    }
+
+    public void setmAdapter(MultipleRecyclerAdapter mAdapter) {
+        this.mAdapter = mAdapter;
+    }
+
     private RefreshHandler(SwipeRefreshLayout swipeRefreshLayout,
                            RecyclerView recyclerView,
                            DataConverter converter, PagingBean bean) {
@@ -57,6 +65,8 @@ public class RefreshHandler implements
     }
 
     public void firstPage(String url) {
+
+
 
         LatteLogger.d("IUDHAS", url);
         BEAN.setDelayed(1000);

@@ -2,7 +2,8 @@
 <RelativeLayout
     android:layout_marginBottom="2dp"
     android:background="@android:color/white"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <android.support.v7.widget.AppCompatImageView
@@ -54,7 +55,16 @@
         android:layout_height="wrap_content" />
 
     <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/class_mobile"
+        android:textSize="12sp"
+        android:padding="1dp"
+        android:layout_below="@id/class_age"
+        android:layout_alignLeft="@id/class_address"
+        android:text="电话：18202710074"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
+    <android.support.v7.widget.AppCompatTextView
         android:layout_marginRight="10dp"
         android:id="@+id/class_distance"
         android:textSize="12sp"
@@ -62,6 +72,13 @@
         android:layout_below="@id/class_address"
         android:layout_alignParentRight="true"
         android:text="400m"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:text="立即抢课"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

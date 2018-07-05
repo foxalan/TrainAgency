@@ -51,6 +51,7 @@ public enum MultipleFields {
 
     HOME_ORGANIZATION_IMGLIST,
     HOME_ORGANIZATION_MOBILE,
+    HOME_ORGANIZATION_STATE,
 
     /**
      * 发现

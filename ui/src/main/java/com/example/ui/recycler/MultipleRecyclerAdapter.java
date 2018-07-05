@@ -33,6 +33,16 @@ public class MultipleRecyclerAdapter extends
         BaseQuickAdapter.SpanSizeLookup,
         OnItemClickListener {
 
+    private IChoicenessClickListener choicenessClickListener;
+
+    public IChoicenessClickListener getChoicenessClickListener() {
+        return choicenessClickListener;
+    }
+
+    public void setChoicenessClickListener(IChoicenessClickListener choicenessClickListener) {
+        this.choicenessClickListener = choicenessClickListener;
+    }
+
     /**
      * 确保初始化一次Banner，防止重复Item加载
      */
@@ -120,6 +130,7 @@ public class MultipleRecyclerAdapter extends
                 }
                 break;
             case ItemType.RECOMMEND:
+
                 orgImg = entity.getField(MultipleFields.ORGANIZATION_IMAGE_1);
                 orgImgInfo = entity.getField(MultipleFields.ORGANIZATION_IMAGE_2);
                 classInfo = entity.getField(MultipleFields.CLASSINFO);
@@ -167,21 +178,27 @@ public class MultipleRecyclerAdapter extends
                 rlClass.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        if (choicenessClickListener !=null){
+                            choicenessClickListener.click(0,v);
+                        }
                     }
                 });
 
                 rlTeacher.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        if (choicenessClickListener !=null){
+                            choicenessClickListener.click(1,v);
+                        }
                     }
                 });
 
                 rlSubject.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        if (choicenessClickListener !=null){
+                            choicenessClickListener.click(2,v);
+                        }
                     }
                 });
                 break;

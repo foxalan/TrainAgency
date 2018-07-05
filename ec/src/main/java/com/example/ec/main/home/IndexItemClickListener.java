@@ -5,6 +5,8 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.SimpleClickListener;
 import com.example.core.delegate.LatteDelegate;
+import com.example.ec.main.home.experience.ExperienceClassDelegate;
+import com.example.ec.main.home.organization.OrganizationDelegate;
 import com.example.ec.main.home.subject.SubjectDelegate;
 import com.example.ui.recycler.ItemType;
 import com.example.ui.recycler.MultipleFields;
@@ -35,9 +37,18 @@ public class IndexItemClickListener extends SimpleClickListener {
             case ItemType.TEXT_IMAGE:
                 int id = entity.getField(MultipleFields.ID);
                 String type = entity.getField(MultipleFields.TEXT);
-                SubjectDelegate subjectDelegate = SubjectDelegate.create(id,type);
+                SubjectDelegate subjectDelegate = SubjectDelegate.create(id, type);
                 DELEGATE.getSupportDelegate().start(subjectDelegate);
                 break;
+            case ItemType.RECOMMEND:
+                int goodClassId = entity.getField(MultipleFields.ID);
+                DELEGATE.getSupportDelegate().start(OrganizationDelegate.create(goodClassId, null));
+                break;
+            case ItemType.CLASS_ITEM:
+                int classId = entity.getField(MultipleFields.ID);
+                DELEGATE.getSupportDelegate().start(OrganizationDelegate.create(classId, null));
+                break;
+
             default:
                 break;
         }
