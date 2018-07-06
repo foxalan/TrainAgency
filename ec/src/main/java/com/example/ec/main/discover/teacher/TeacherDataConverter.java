@@ -65,8 +65,6 @@ public class TeacherDataConverter extends DataConverter {
             ENTITIES.add(teacher);
         }
 
-
-
         return ENTITIES;
     }
 }

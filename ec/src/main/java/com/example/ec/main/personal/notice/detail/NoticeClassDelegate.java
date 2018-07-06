@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 
 
@@ -18,16 +19,13 @@ import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.example.core.app.AccountManager;
 import com.example.core.delegate.LatteDelegate;
 import com.example.core.net.RestClient;
-import com.example.core.net.callback.ISuccess;
-import com.example.ec.R;
 
+import com.example.ec.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import q.rorbin.badgeview.DisplayUtil;
 
-import static com.blankj.utilcode.util.ConvertUtils.dp2px;
 
 
 /**
@@ -55,49 +53,60 @@ public class NoticeClassDelegate extends LatteDelegate {
         listView = rootView.findViewById(R.id.lv_notice);
         initData();
 
-//        SwipeMenuCreator creator = menu -> {
-//            // create "open" item
-//            SwipeMenuItem openItem = new SwipeMenuItem(getContext());
-//            // set item background
-//            openItem.setWidth(DisplayUtil.dp2px(getContext(),90));
-//            openItem.setBackground(new ColorDrawable(Color.rgb(0xC9, 0xC9, 0xCE)));
-//            // set item width
-//            // set item title
-//            openItem.setTitle("Open");
-//            openItem.setTitleSize(18);
-//            // set item title font color
-//            openItem.setTitleColor(Color.WHITE);
-//            // add to menu
-//            menu.addMenuItem(openItem);
-//
-//            // create "delete" item
-//            SwipeMenuItem deleteItem = new SwipeMenuItem(getContext());
-//            // set item background
-//            deleteItem.setBackground(new ColorDrawable(Color.rgb(0xF9, 0x3F, 0x25)));
-//            // set item width
-//            // set a icon
-//            deleteItem.setTitle("删除");
-//            // add to menu
-//            deleteItem.setWidth(dp2px(90));
-//            menu.addMenuItem(deleteItem);
-//        };
-//
-//        listView.setMenuCreator(creator);
-//        listView.setSwipeDirection(SwipeMenuListView.DIRECTION_RIGHT);
-//        listView.setOnMenuItemClickListener((position, menu, index) -> {
-//            switch (index) {
-//                case 0:
-//
-//                    break;
-//                case 1:
-//
-//                    break;
-//                default:
-//                    break;
-//            }
-//            return false;
-//        });
+        SwipeMenuCreator creator = menu -> {
+            // create "open" item
+            SwipeMenuItem openItem = new SwipeMenuItem(
+                    getContext());
+            // set item background
+            openItem.setBackground(new ColorDrawable(Color.rgb(0xC9, 0xC9,
+                    0xCE)));
+            // set item width
+            openItem.setWidth(dp2px(90));
+            // set item title
+            openItem.setTitle("Open");
+            // set item title fontsize
+            openItem.setTitleSize(18);
+            // set item title font color
+            openItem.setTitleColor(Color.WHITE);
+            // add to menu
+            menu.addMenuItem(openItem);
+            // create "delete" item
+            SwipeMenuItem deleteItem = new SwipeMenuItem(
+                    getContext());
+            // set item background
+            deleteItem.setBackground(new ColorDrawable(Color.rgb(0xF9,
+                    0x3F, 0x25)));
+            // set item width
+            deleteItem.setWidth(dp2px(90));
+            // set a icon
+//            deleteItem.setIcon(R.mipmap.avatar);
+            // add to menu
+            menu.addMenuItem(deleteItem);
+
+        };
+
+        listView.setMenuCreator(creator);
+        listView.setSwipeDirection(SwipeMenuListView.DIRECTION_LEFT);
+        listView.setOnMenuItemClickListener((position, menu, index) -> {
+            switch (index) {
+                case 0:
+
+                    break;
+                case 1:
+
+                    break;
+                default:
+                    break;
+            }
+            return false;
+        });
     }
+
+    private int dp2px(int dp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
+                getResources().getDisplayMetrics());
+    }
+
 
     /**
      * http://192.168.1.186/Select/TeacherLikeList?userid=1
