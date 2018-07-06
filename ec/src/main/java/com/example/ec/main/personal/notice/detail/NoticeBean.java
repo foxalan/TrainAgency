@@ -11,13 +11,13 @@ import java.io.Serializable;
 
 public class NoticeBean implements Serializable{
 
-    private String id;
+    private int id;
     private String imgUrl;
     private String name;
     private String phone;
     private boolean isNotice;
 
-    public NoticeBean(String id, String imgUrl, String name, String phone, boolean isNotice) {
+    public NoticeBean(int id, String imgUrl, String name, String phone, boolean isNotice) {
         this.id = id;
         this.imgUrl = imgUrl;
         this.name = name;
@@ -25,11 +25,11 @@ public class NoticeBean implements Serializable{
         this.isNotice = isNotice;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

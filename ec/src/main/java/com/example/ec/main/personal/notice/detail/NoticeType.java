@@ -8,6 +8,6 @@ package com.example.ec.main.personal.notice.detail;
  */
 
 public class NoticeType {
-    public static final String NOTICE_ALL = "notice_all";
-    public static final String NOTICE_CURRENT = "notice_current";
+    public static final String NOTICE_CLASS = "notice_class";
+    public static final String NOTICE_TEACHER = "notice_teacher";
 }
