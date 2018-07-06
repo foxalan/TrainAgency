@@ -25,25 +25,28 @@
         android:orientation="vertical">
 
         <android.support.v7.widget.AppCompatTextView
+            android:lines="2"
+            android:textColor="@android:color/black"
             android:id="@+id/item_classinfo"
-            android:textSize="15sp"
+            android:textSize="12sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="乐享音乐载 载霸霸某某黄雪辰fjalfalfjald" />
+            android:ellipsize="end"
+            tools:ignore="HardcodedText" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/item_address"
             android:textSize="10sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="地址：aaaa" />
+            tools:ignore="HardcodedText,SmallSp" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/item_phone"
             android:textSize="10sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="电话：18202145121455" />
+            tools:ignore="SmallSp" />
     </LinearLayout>
 
     <android.support.v7.widget.AppCompatImageView

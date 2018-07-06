@@ -6,6 +6,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.SimpleClickListener;
 import com.example.core.delegate.LatteDelegate;
 import com.example.ec.main.personal.list.ListBean;
+import com.example.ec.main.personal.notice.NoticeDelegate;
+import com.example.ec.main.personal.notice.detail.NoticeClassDelegate;
+import com.example.ui.recycler.DataConverter;
 
 /**
  * Created by 傅令杰
@@ -27,6 +30,8 @@ public class PersonalClickListener extends SimpleClickListener {
             case 0:
             //case 1:
             case 2:
+                DELEGATE.getParentDelegate().getSupportDelegate().start(new NoticeDelegate());
+                break;
             case 5:
             case 6:
                 DELEGATE.getParentDelegate().getSupportDelegate().start(bean.getDelegate());

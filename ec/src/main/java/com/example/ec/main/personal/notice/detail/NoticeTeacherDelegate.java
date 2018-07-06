@@ -39,12 +39,13 @@ public class NoticeTeacherDelegate extends LatteDelegate {
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
         listView = rootView.findViewById(R.id.lv_notice);
+        initData();
     }
 
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
-        initData();
+
     }
 
     private void initData() {

@@ -92,6 +92,8 @@ public class SubjectDelegate extends LatteDelegate implements ISuccess{
     @Override
     public void onSuccess(String response) {
 
+        Log.e("subjectalan",response);
+
         final GridLayoutManager manager = new GridLayoutManager(getContext(), 3);
         mRycSub.setLayoutManager(manager);
         final List<MultipleItemEntity> data =

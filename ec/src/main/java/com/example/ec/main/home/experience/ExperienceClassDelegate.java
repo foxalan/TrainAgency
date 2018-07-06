@@ -46,11 +46,7 @@ public class ExperienceClassDelegate extends LatteDelegate{
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
 
-        BDLocation bdLocation = CurrentLocation.getInstance().getBdLocation();
-        if(bdLocation!=null){
-            x = bdLocation.getLongitude();
-            y = bdLocation.getLatitude();
-        }
+
 
         initRecyclerView();
         mRefreshHandler.firstPage("Classinfo");

@@ -7,7 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.v7.widget.Toolbar
-        android:paddingTop="10dp"
+        android:paddingTop="15dp"
         android:background="@android:color/holo_blue_light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
             android:textColor="@android:color/white"
             android:text="{fa-angle-left}"
             android:layout_marginLeft="20dp"
-            android:layout_width="60dp"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             tools:ignore="HardcodedText"
             android:layout_marginStart="20dp" />
@@ -34,14 +34,6 @@
             tools:ignore="HardcodedText" />
 
     </android.support.v7.widget.Toolbar>
-
-    <com.bigkoo.convenientbanner.ConvenientBanner
-        android:background="@android:color/holo_blue_light"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/cb_subject_banner"
-        android:layout_width="match_parent"
-        android:layout_height="100dp" />
-
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/ryc_subject_name"

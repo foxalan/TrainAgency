@@ -1,5 +1,7 @@
 package com.example.ec.main.home.teacher.detail;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -125,6 +127,12 @@ public class TeacherDetailDelegate extends LatteDelegate implements ISuccess {
 
             switch (type) {
                 case Config.DETAIL_TEACHER_PHONE:
+
+                    String mobile = phone;
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    Uri uri= Uri.parse("tel:" + mobile);
+                    intent.setData(uri);
+                    startActivity(intent);
 
                     break;
                 case Config.DETAIL_TEACHER_STATE:

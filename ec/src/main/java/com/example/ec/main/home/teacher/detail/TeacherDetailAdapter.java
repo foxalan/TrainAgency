@@ -103,6 +103,8 @@ public class TeacherDetailAdapter extends MultipleRecyclerAdapter {
                 String urlImg = entity.getField(MultipleFields.HOME_ORGANIZATION_TEACHER_IMG);
                 String info = entity.getField(MultipleFields.HOME_ORGANIZATION_TEACHER_INFO);
                 Log.e("organization", "info:" + info);
+
+             //   tv_teacher_image
                 Glide.with(mContext)
                         .load(urlImg)
                         .apply(RECYCLER_OPTIONS)

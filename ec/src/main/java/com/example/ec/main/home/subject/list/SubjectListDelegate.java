@@ -26,7 +26,7 @@ import com.joanzapata.iconify.widget.IconTextView;
 import java.util.List;
 
 /**
- * @author alan
+ *          @author alan
  *         Date  2018/6/22.
  *         Function : 具体科目的培训班信息
  *         Issue :
@@ -107,8 +107,8 @@ public class SubjectListDelegate extends LatteDelegate implements ISuccess{
 
     @Override
     public void onSuccess(String response) {
-        Log.e(TAG,"mSubid"+response);
-        Log.e("subjectname","response:"+response);
+//        Log.e(TAG,"mSubid"+response);
+//        Log.e("subjectname","response:"+response);
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         mRycSubName.setLayoutManager(manager);
         final List<MultipleItemEntity> data =

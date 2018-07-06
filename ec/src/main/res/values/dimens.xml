@@ -34,4 +34,6 @@
     <!-- default toolbar size -->
     <dimen name="default_toolbar_text_size">18sp</dimen>
     <dimen name="default_toolbar_padding">10dp</dimen>
+    <dimen name="default_toolbar_ic_padding">10dp</dimen>
+    <dimen name="default_toolbar_width">100dp</dimen>
 </resources>

@@ -19,7 +19,7 @@
             android:textColor="@android:color/white"
             android:text="{fa-angle-left}"
             android:layout_marginLeft="20dp"
-            android:layout_width="60dp"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             tools:ignore="HardcodedText"
             android:layout_marginStart="20dp" />
@@ -36,6 +36,7 @@
     </android.support.v7.widget.Toolbar>
 
     <com.bigkoo.convenientbanner.ConvenientBanner
+        android:visibility="gone"
         android:background="@android:color/holo_blue_light"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/cb_subject_banner"

@@ -12,8 +12,25 @@ import com.baidu.location.BDLocation;
 public class CurrentLocation {
 
     private BDLocation bdLocation;
-
     private static CurrentLocation currentLocation;
+
+
+    public  double getLongitude(){
+        if (getBdLocation()!=null){
+
+            return getBdLocation().getLongitude();
+        }else {
+            return 0.00;
+        }
+    }
+
+    public double getLatitude(){
+        if (getBdLocation() != null){
+            return getBdLocation().getLatitude();
+        }else {
+            return 0.00;
+        }
+    }
 
     public static CurrentLocation getInstance(){
         if (currentLocation == null){
@@ -30,4 +47,6 @@ public class CurrentLocation {
     public void setBdLocation(BDLocation bdLocation) {
         this.bdLocation = bdLocation;
     }
+
+
 }

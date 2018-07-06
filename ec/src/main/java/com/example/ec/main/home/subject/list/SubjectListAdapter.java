@@ -27,8 +27,8 @@ public class SubjectListAdapter extends MultipleRecyclerAdapter {
 
     public SubjectListAdapter(List<MultipleItemEntity> data) {
         super(data);
-        addItemType(ItemType.BANNER,R.layout.item_banner);
-        addItemType(SubjectType.SUBJECT_ITEM,R.layout.item_multiple_class_detail);
+        addItemType(ItemType.BANNER, R.layout.item_banner);
+        addItemType(SubjectType.SUBJECT_ITEM, R.layout.item_multiple_class_detail);
 
     }
 
@@ -59,11 +59,11 @@ public class SubjectListAdapter extends MultipleRecyclerAdapter {
                 String ageGroup = entity.getField(MultipleFields.AGE);
                 double distance = entity.getField(MultipleFields.DISTANCE);
 
-                holder.setText(R.id.class_name,className);
-                holder.setText(R.id.class_des,courseIntro);
-                holder.setText(R.id.class_address, site);
-                holder.setText(R.id.class_age,ageGroup);
-                holder.setText(R.id.class_distance,distance+"m");
+                holder.setText(R.id.class_name, className);
+                holder.setText(R.id.class_des, courseIntro);
+                holder.setText(R.id.class_address, "地址:" + site);
+                holder.setText(R.id.class_age, ageGroup);
+                holder.setText(R.id.class_distance, "距你" + distance + "m");
 
                 break;
             default:

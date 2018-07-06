@@ -6,9 +6,11 @@ import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.baidu.location.BDLocation;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.core.app.Latte;
 import com.example.core.net.RestClient;
+import com.example.ec.main.home.location.CurrentLocation;
 import com.example.ec.main.home.subject.list.SubjectListAdapter;
 import com.example.ui.recycler.DataConverter;
 import com.example.ui.refresh.PagingBean;
@@ -53,11 +55,17 @@ public class ExperienceRefreshHandler implements SwipeRefreshLayout.OnRefreshLis
         }, 1000);
     }
 
+
+
     public void firstPage(String url) {
+
+
         baseUrl  = url;
         BEAN.setDelayed(1000);
         RestClient.builder()
                 .url(url)
+                .params("longitude",CurrentLocation.getInstance().getLongitude())
+                .params("latitude",CurrentLocation.getInstance().getLatitude())
                 .loader(RECYCLERVIEW.getContext())
                 .success(response -> {
 
@@ -87,6 +95,8 @@ public class ExperienceRefreshHandler implements SwipeRefreshLayout.OnRefreshLis
         } else {
             Latte.getHandler().postDelayed(() -> RestClient.builder()
                     .url(url + index)
+                    .params("longitude",CurrentLocation.getInstance().getLongitude())
+                    .params("latitude",CurrentLocation.getInstance().getLatitude())
                     .success(response -> {
                         Log.e("refresh","response:"+response);
                         CONVERTER.clearData();

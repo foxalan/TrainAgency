@@ -14,6 +14,7 @@
         android:layout_height="70dp" />
 
     <android.support.v7.widget.AppCompatTextView
+        android:textStyle="bold"
         android:textSize="15sp"
         android:layout_toRightOf="@id/class_icon"
         android:layout_alignTop="@id/class_icon"

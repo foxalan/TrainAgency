@@ -53,6 +53,7 @@ public class NoticeClassDelegate extends LatteDelegate {
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
 
         listView = rootView.findViewById(R.id.lv_notice);
+        initData();
 
 //        SwipeMenuCreator creator = menu -> {
 //            // create "open" item
@@ -133,7 +134,7 @@ public class NoticeClassDelegate extends LatteDelegate {
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
-        initData();
+
 
     }
 }

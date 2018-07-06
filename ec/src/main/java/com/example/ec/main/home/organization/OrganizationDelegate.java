@@ -1,5 +1,7 @@
 package com.example.ec.main.home.organization;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -27,6 +29,7 @@ import com.example.ec.main.home.IDetailListener;
 import com.example.ec.main.home.location.CurrentLocation;
 import com.example.ec.main.home.subject.list.SubjectNameDataConverter;
 import com.example.ui.recycler.MultipleItemEntity;
+import com.joanzapata.iconify.widget.IconTextView;
 
 import java.util.List;
 
@@ -45,6 +48,7 @@ public class OrganizationDelegate extends LatteDelegate implements ISuccess {
 
     private int mClassId = -1;
     private String mSubName = "";
+    private IconTextView mIcBack;
 
     private RecyclerView mRecyclerView;
 
@@ -77,8 +81,10 @@ public class OrganizationDelegate extends LatteDelegate implements ISuccess {
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
 
+        mIcBack = rootView.findViewById(R.id.ic_back);
         mRecyclerView = rootView.findViewById(R.id.ryc_org);
         initData();
+        mIcBack.setOnClickListener(v -> getSupportDelegate().pop());
 
     }
 
@@ -123,6 +129,12 @@ public class OrganizationDelegate extends LatteDelegate implements ISuccess {
             public void click(int type, String phone, int state, View view) {
                 switch (type) {
                     case Config.DETAIL_ORGANIZATION_PHONE:
+
+                        String mobile = phone;
+                        Intent intent = new Intent(Intent.ACTION_DIAL);
+                        Uri uri= Uri.parse("tel:" + mobile);
+                        intent.setData(uri);
+                        startActivity(intent);
 
                         break;
                     case Config.DETAIL_ORGANIZATION_STATE:

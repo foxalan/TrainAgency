@@ -73,7 +73,7 @@ public class TeacherDataConverter extends DataConverter {
         ENTITIES.add(addressEntity);
 
 
-        String img = json.getString("teacherImg");
+        String img = json.getString("teacherimg");
         String info = json.getString("resume");
         MultipleItemEntity teacherEntity = MultipleItemEntity.builder()
                 .setField(MultipleFields.ITEM_TYPE, OrganizationType.ORGANIZATION_TYPE_CLASS_TEACHER)
@@ -88,7 +88,7 @@ public class TeacherDataConverter extends DataConverter {
                 .build();
         ENTITIES.add(courseEntity);
 
-        String classTime = json.getString("workingHour");
+        String classTime = json.getString("workingHours");
         MultipleItemEntity classTimeEntity = MultipleItemEntity.builder()
                 .setField(MultipleFields.ITEM_TYPE, OrganizationType.ORGANIZATION_TYPE_CLASS_TIME)
                 .setField(MultipleFields.HOME_ORGANIZATION_CLASS_TIME, classTime)

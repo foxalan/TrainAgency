@@ -31,8 +31,6 @@ import java.util.List;
 
 public class OrganizationAdapter extends MultipleRecyclerAdapter {
 
-
-
     private boolean mIsInitBanner = false;
     private IDetailListener detailListener;
 
@@ -78,7 +76,7 @@ public class OrganizationAdapter extends MultipleRecyclerAdapter {
                 double distance = entity.getField(MultipleFields.HOME_ORGANIZATION_CLASS_DISTANCE);
                 int browse = entity.getField(MultipleFields.HOME_ORGANIZATION_CLASS_BROWSE);
                 int like = entity.getField(MultipleFields.HOME_ORGANIZATION_CLASS_LIKE);
-                holder.setText(R.id.tv_class_distance, "距你" + distance);
+                holder.setText(R.id.tv_class_distance, "距你" + distance+"m");
                 holder.setText(R.id.tv_class_name, className);
                 holder.setText(R.id.tv_class_browse, "浏览 " + browse);
                 holder.setText(R.id.tv_class_like, "关注 " + like);

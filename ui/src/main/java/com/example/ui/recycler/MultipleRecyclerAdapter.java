@@ -2,6 +2,7 @@ package com.example.ui.recycler;
 
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.GridLayoutManager;
+import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -140,9 +141,13 @@ public class MultipleRecyclerAdapter extends
 
                 Glide.with(mContext).load(orgImg).apply(RECYCLER_OPTIONS).into((AppCompatImageView) holder.getView(R.id.item_iv_1));
                 Glide.with(mContext).load(orgImgInfo).apply(RECYCLER_OPTIONS).into((AppCompatImageView) holder.getView(R.id.item_iv_2));
-                holder.setText(R.id.item_classinfo, className + "|" + classInfo);
-                holder.setText(R.id.item_address, address);
-                holder.setText(R.id.item_phone, phone);
+
+//                String html = "预计收益<font color='#ff0000'>"+et_buy_sum.getText().toString()+"</font>元";
+//                tv_profit_think.setText(Html.fromHtml(html));
+                String html = className +"|"+"<font color='#898989' size='10sp'>" +classInfo+"</font>";
+                holder.setText(R.id.item_classinfo, Html.fromHtml(html));
+                holder.setText(R.id.item_address,"地址:"+address);
+                holder.setText(R.id.item_phone, "咨询电话:"+phone);
                 break;
             case ItemType.CHOICENESS:
 

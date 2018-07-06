@@ -39,7 +39,7 @@ public class SubjectAdapter extends MultipleRecyclerAdapter {
             case SubjectType.SUBJECT_TYPE:
                 String text = entity.getField(MultipleFields.TEXT);
                 String url = entity.getField(MultipleFields.IMAGE_URL);
-                Glide.with(mContext).load(url).apply(RECYCLER_OPTIONS).into((CircleImageView) holder.getView(com.example.ec.R.id.sub_img_multiple));
+                Glide.with(mContext).load(url).apply(RECYCLER_OPTIONS).into((ImageView) holder.getView(R.id.sub_img_multiple));
                 holder.setText(R.id.sub_tv_multiple,text);
                 break;
             default:
