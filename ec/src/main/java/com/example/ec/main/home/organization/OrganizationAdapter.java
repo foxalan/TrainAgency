@@ -1,5 +1,6 @@
 package com.example.ec.main.home.organization;
 
+import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,8 @@ import android.widget.LinearLayout;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bumptech.glide.Glide;
 import com.example.ec.R;
+import com.example.ec.config.Config;
+import com.example.ec.main.home.IDetailListener;
 import com.example.ui.banner.BannerCreator;
 import com.example.ui.recycler.MultipleFields;
 import com.example.ui.recycler.MultipleItemEntity;
@@ -28,7 +31,18 @@ import java.util.List;
 
 public class OrganizationAdapter extends MultipleRecyclerAdapter {
 
+
+
     private boolean mIsInitBanner = false;
+    private IDetailListener detailListener;
+
+    public IDetailListener getDetailListener() {
+        return detailListener;
+    }
+
+    public void setDetailListener(IDetailListener detailListener) {
+        this.detailListener = detailListener;
+    }
 
     protected OrganizationAdapter(List<MultipleItemEntity> data) {
         super(data);
@@ -117,13 +131,19 @@ public class OrganizationAdapter extends MultipleRecyclerAdapter {
                 break;
             case OrganizationType.ORGANIZATION_TYPE_CLASS_MOBILE:
                 String mobile = entity.getField(MultipleFields.HOME_ORGANIZATION_MOBILE);
-//                int state = entity.getField(MultipleFields.HOME_ORGANIZATION_STATE);
+                int state = entity.getField(MultipleFields.HOME_ORGANIZATION_STATE);
 
-                holder.getView(R.id.tv_phone);
-  //              holder.getView(R.id.tv_state);
+                AppCompatTextView phone =  holder.getView(R.id.tv_phone);
+                AppCompatTextView notice = holder.getView(R.id.tv_state);
 
+                if (state == 0){
+                    notice.setText("关注");
+                }else {
+                    notice.setText("取消关注");
+                }
 
-
+                phone.setOnClickListener(v -> detailListener.click(Config.DETAIL_ORGANIZATION_PHONE,mobile,0,v));
+                notice.setOnClickListener(v -> detailListener.click(Config.DETAIL_ORGANIZATION_STATE,"",state,v));
                 break;
             default:
                 break;

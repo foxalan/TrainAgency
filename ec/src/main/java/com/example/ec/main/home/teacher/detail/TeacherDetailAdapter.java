@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bumptech.glide.Glide;
 import com.example.ec.R;
+import com.example.ec.config.Config;
+import com.example.ec.main.home.IDetailListener;
 import com.example.ec.main.home.organization.OrganizationType;
 import com.example.ui.banner.BannerCreator;
 import com.example.ui.recycler.MultipleFields;
@@ -30,11 +32,18 @@ import java.util.List;
 public class TeacherDetailAdapter extends MultipleRecyclerAdapter {
 
     private boolean mIsInitBanner = false;
+    private IDetailListener detailListener;
 
+    public IDetailListener getDetailListener() {
+        return detailListener;
+    }
+
+    public void setDetailListener(IDetailListener detailListener) {
+        this.detailListener = detailListener;
+    }
 
     protected TeacherDetailAdapter(List<MultipleItemEntity> data) {
         super(data);
-
         addItemType(OrganizationType.ORGANIZATION_TYPE_BANNER, R.layout.item_banner);
         addItemType(OrganizationType.ORGANIZATION_TYPE_CLASS, R.layout.item_home_organize_class);
         addItemType(OrganizationType.ORGANIZATION_TYPE_ADDRESS, R.layout.item_home_organize_address);
@@ -120,8 +129,16 @@ public class TeacherDetailAdapter extends MultipleRecyclerAdapter {
             case OrganizationType.ORGANIZATION_TYPE_CLASS_MOBILE:
                 String mobile = entity.getField(MultipleFields.HOME_ORGANIZATION_MOBILE);
                 int state = entity.getField(MultipleFields.HOME_ORGANIZATION_STATE);
-                holder.getView(R.id.tv_phone);
+                AppCompatTextView mTvPhone = holder.getView(R.id.tv_phone);
                 AppCompatTextView mTvState =  holder.getView(R.id.tv_state);
+
+                mTvState.setOnClickListener(v -> {
+                    detailListener.click(Config.DETAIL_TEACHER_STATE,"",state,mTvState);
+                });
+
+                mTvPhone.setOnClickListener(v ->
+                        detailListener.click(Config.DETAIL_TEACHER_PHONE,mobile,0,mTvPhone)
+                );
 
                 if (state == 0){
                     mTvState.setText("关注");

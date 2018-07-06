@@ -134,9 +134,11 @@ public class OrganizationDataConverter extends DataConverter {
 
 
         String mobile = json.getString("mobile");
+        int state = json.getInteger("likestate");
         MultipleItemEntity photoEntity = MultipleItemEntity.builder()
                 .setField(MultipleFields.ITEM_TYPE, OrganizationType.ORGANIZATION_TYPE_CLASS_MOBILE)
                 .setField(MultipleFields.HOME_ORGANIZATION_MOBILE, mobile)
+                .setField(MultipleFields.HOME_ORGANIZATION_STATE,state)
                 .build();
         ENTITIES.add(photoEntity);
 

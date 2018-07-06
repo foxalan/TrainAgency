@@ -27,6 +27,7 @@ import com.example.ec.main.home.location.CurrentLocation;
 import com.example.ec.main.home.location.ILocationListener;
 import com.example.ec.main.dynamic.message.MessageDelegate;
 import com.example.ec.main.home.search.SearchDelegate;
+import com.example.ec.main.home.subject.good.GreatSubjectDelegate;
 import com.example.ec.main.home.teacher.TeacherDelegate;
 import com.example.ui.recycler.DataConverter;
 import com.example.ui.recycler.IChoicenessClickListener;
@@ -135,6 +136,7 @@ public class HomeDelegate extends BottomItemDelegate implements ILocationListene
                                 getParentDelegate().getSupportDelegate().start(new TeacherDelegate());
                                 break;
                             case 0:
+                                getParentDelegate().getSupportDelegate().start(new GreatSubjectDelegate());
                                 break;
                             default:
                                 break;
