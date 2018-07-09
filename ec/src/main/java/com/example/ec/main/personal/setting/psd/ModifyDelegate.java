@@ -1,4 +1,4 @@
-package com.example.ec.main.personal.help;
+package com.example.ec.main.personal.setting.psd;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,15 +11,15 @@ import com.example.ec.R;
 /**
  * @author alan
  *         Date  2018/7/9.
- *         Function : 问题帮助
+ *         Function :修改密码
  *         Issue :
  */
 
-public class HelpDelegate extends LatteDelegate {
+public class ModifyDelegate extends LatteDelegate{
 
     @Override
     public Object setLayout() {
-        return R.layout.delegate_personal_help;
+        return R.layout.delegate_personal_setting_password_modify;
     }
 
     @Override

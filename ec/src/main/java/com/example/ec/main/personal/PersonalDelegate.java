@@ -10,8 +10,8 @@ import android.view.View;
 
 import com.example.core.delegate.bottom.BottomItemDelegate;
 import com.example.ec.R;
-import com.example.ec.main.personal.follow.FollowDelegate;
-import com.example.ec.main.personal.help.HelpDelegate;
+import com.example.ec.main.personal.help.AdviceDelegate;
+import com.example.ec.main.personal.help.HelpAndAdviceDelegate;
 import com.example.ec.main.personal.list.ListAdapter;
 import com.example.ec.main.personal.list.ListBean;
 import com.example.ec.main.personal.list.ListItemType;
@@ -99,7 +99,7 @@ public class PersonalDelegate extends BottomItemDelegate {
                 .setId(5)
                 .setImageUrl(R.mipmap.ic_personal_help)
                 .setValue("帮助/反馈")
-                .setDelegate(new HelpDelegate())
+                .setDelegate(new HelpAndAdviceDelegate())
                 .build();
 
         final ListBean setting = new ListBean.Builder()

@@ -1,10 +1,9 @@
-package com.example.alan.trainagency.sign;
+package com.example.ec.sign;
 
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.test.espresso.remote.EspressoRemoteMessage;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -13,12 +12,12 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.alan.trainagency.R;
-import com.example.alan.trainagency.sms.MsgProveHandler;
+
 import com.example.core.app.AccountManager;
 import com.example.core.app.Latte;
 import com.example.core.delegate.LatteDelegate;
 import com.example.core.util.log.LoggerUtil;
+import com.example.ec.R;
 import com.example.ec.main.EcBottomDelegate;
 
 

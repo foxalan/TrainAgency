@@ -1,4 +1,4 @@
-package com.example.alan.trainagency.sign;
+package com.example.ec.sign;
 
 /**
  * @author alan

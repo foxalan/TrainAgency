@@ -5,6 +5,7 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.SimpleClickListener;
 import com.example.core.delegate.LatteDelegate;
+import com.example.ec.main.personal.footer.FooterDelegate;
 import com.example.ec.main.personal.list.ListBean;
 import com.example.ec.main.personal.notice.NoticeDelegate;
 import com.example.ec.main.personal.notice.detail.NoticeClassDelegate;
@@ -28,9 +29,13 @@ public class PersonalClickListener extends SimpleClickListener {
         int id = bean.getId();
         switch (id) {
             case 0:
+                break;
             //case 1:
             case 2:
                 DELEGATE.getParentDelegate().getSupportDelegate().start(new NoticeDelegate());
+                break;
+            case 4:
+                DELEGATE.getParentDelegate().getSupportDelegate().start(new FooterDelegate());
                 break;
             case 5:
             case 6:

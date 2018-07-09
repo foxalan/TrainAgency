@@ -1,4 +1,4 @@
-package com.example.alan.trainagency.sign;
+package com.example.ec.sign;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,12 +12,11 @@ import android.widget.Toast;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.example.alan.trainagency.R;
+
 import com.example.core.app.AccountManager;
 import com.example.core.delegate.LatteDelegate;
 import com.example.core.net.RestClient;
-import com.example.core.net.callback.ISuccess;
-import com.example.core.ui.Lo;
+import com.example.ec.R;
 import com.example.ec.main.EcBottomDelegate;
 
 /**
@@ -98,7 +97,9 @@ public class SignInPsdDelegate extends LatteDelegate{
 
                         AccountManager.setSignState(true);
                         AccountManager.setUserId(String.valueOf(id));
+
                         getSupportDelegate().startWithPop(new EcBottomDelegate());
+
                     }else {
                         Toast.makeText(getContext(),"用户名或密码错误",Toast.LENGTH_SHORT).show();
                     }

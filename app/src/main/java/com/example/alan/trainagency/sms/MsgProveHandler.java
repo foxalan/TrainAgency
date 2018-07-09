@@ -2,7 +2,7 @@ package com.example.alan.trainagency.sms;
 
 import android.util.Log;
 
-import com.example.alan.trainagency.sign.ISignInPresenter;
+import com.example.ec.sign.ISignInPresenter;
 
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;

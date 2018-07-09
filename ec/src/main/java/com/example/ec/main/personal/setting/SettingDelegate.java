@@ -9,13 +9,18 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.SimpleClickListener;
+import com.example.core.app.AccountManager;
 import com.example.core.delegate.LatteDelegate;
 import com.example.ec.R;
 import com.example.ec.main.personal.follow.FollowDelegate;
 import com.example.ec.main.personal.list.ListAdapter;
 import com.example.ec.main.personal.list.ListBean;
 import com.example.ec.main.personal.list.ListItemType;
+import com.example.ec.main.personal.setting.psd.ModifyDelegate;
 import com.example.ec.main.personal.userinfo.UserInfoDelegate;
+import com.example.ec.sign.SignInPsdDelegate;
 import com.example.ui.recycler.BaseDecoration;
 
 import java.util.ArrayList;
@@ -48,7 +53,7 @@ public class SettingDelegate extends LatteDelegate {
         mTvLoginOut = rootView.findViewById(R.id.tv_login_out);
 
         final ListBean one = new ListBean.Builder()
-                .setItemType(ListItemType.ITEM_BLANK)
+                .setItemType(ListItemType.ITEM_TEXT_AVATAR)
                 .setId(1)
                 .setValue("帐号管理")
                 .build();
@@ -91,7 +96,6 @@ public class SettingDelegate extends LatteDelegate {
                 .build();
 
 
-
         final List<ListBean> data = new ArrayList<>();
 
         data.add(one);
@@ -110,12 +114,37 @@ public class SettingDelegate extends LatteDelegate {
         mRycSettings.addItemDecoration
                 (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 2));
         mRycSettings.setAdapter(adapter);
-
-        mTvLoginOut.setOnClickListener(new View.OnClickListener() {
+        mRycSettings.addOnItemTouchListener(new SimpleClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                switch (position) {
+                    case 2:
+                        getSupportDelegate().start(new ModifyDelegate());
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            @Override
+            public void onItemLongClick(BaseQuickAdapter adapter, View view, int position) {
 
             }
+
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+
+            }
+
+            @Override
+            public void onItemChildLongClick(BaseQuickAdapter adapter, View view, int position) {
+
+            }
+        });
+
+        mTvLoginOut.setOnClickListener(v -> {
+            AccountManager.setSignState(false);
+            getSupportDelegate().startWithPop(new SignInPsdDelegate());
         });
     }
 

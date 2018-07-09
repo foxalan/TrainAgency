@@ -5,13 +5,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 
-import com.example.alan.trainagency.sign.SignInPsdDelegate;
+import com.example.ec.sign.SignInPsdDelegate;
 import com.example.core.activity.ProxyActivity;
 import com.example.core.app.Latte;
 import com.example.core.delegate.LatteDelegate;
 import com.example.ec.launcher.LauncherDelegate;
 import com.example.ec.main.EcBottomDelegate;
-import com.example.alan.trainagency.sign.SignInDelegate;
 import com.example.ui.launcher.ILauncherListener;
 import com.example.ui.launcher.OnLauncherFinishTag;
 

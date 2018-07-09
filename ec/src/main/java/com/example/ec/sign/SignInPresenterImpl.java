@@ -1,6 +1,6 @@
-package com.example.alan.trainagency.sign;
+package com.example.ec.sign;
 
-import com.example.alan.trainagency.sms.MsgProveHandler;
+
 
 /**
  * @author alan
@@ -12,21 +12,21 @@ import com.example.alan.trainagency.sms.MsgProveHandler;
 public class SignInPresenterImpl implements ISignInPresenter{
 
     private ISignInListener signInListener;
-    private MsgProveHandler msgProveHandler;
+  //  private MsgProveHandler msgProveHandler;
     private String country = "86";
 
     public SignInPresenterImpl(ISignInListener signInListener){
         this.signInListener = signInListener;
-        msgProveHandler = MsgProveHandler.create(this);
+//        msgProveHandler = MsgProveHandler.create(this);
     }
 
 
     public void submit(String phone,String msg){
-        msgProveHandler.submitCode(country,phone,msg);
+        //msgProveHandler.submitCode(country,phone,msg);
     }
 
     public void sendCode(String phone){
-        msgProveHandler.sendCode("86",phone);
+        //msgProveHandler.sendCode("86",phone);
     }
 
 

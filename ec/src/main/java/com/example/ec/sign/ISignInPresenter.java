@@ -1,6 +1,4 @@
-package com.example.alan.trainagency.sign;
-
-import android.view.View;
+package com.example.ec.sign;
 
 /**
  * @author alan

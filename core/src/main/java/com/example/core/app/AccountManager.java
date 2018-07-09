@@ -23,12 +23,6 @@ public class AccountManager {
     }
 
     /**
-     *
-     */
-
-
-
-    /**
      * 保存用户当前ID phone
      * @return
      */

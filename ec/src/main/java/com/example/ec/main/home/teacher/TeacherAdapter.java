@@ -53,9 +53,9 @@ public class TeacherAdapter extends MultipleRecyclerAdapter {
 
                 String urlImg = entity.getField(MultipleFields.DISCOVER_TEACHER_IMG);
                 String name = entity.getField(MultipleFields.DISCOVER_TEACHER_NAME);
-                String info = entity.getField(MultipleFields.DISVOCER_TEACHER_INFO);
-                String className = entity.getField(MultipleFields.DISVOCER_TEACHER_CLASS);
-                String mobile = entity.getField(MultipleFields.DISVOCER_TEACHER_MOBILE);
+                String info = entity.getField(MultipleFields.DISCOVER_TEACHER_INFO);
+                String className = entity.getField(MultipleFields.DISCOVER_TEACHER_CLASS);
+                String mobile = entity.getField(MultipleFields.DISCOVER_TEACHER_MOBILE);
 
                 Glide.with(mContext)
                         .load(urlImg)
