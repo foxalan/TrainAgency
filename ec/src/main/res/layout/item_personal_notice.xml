@@ -1,24 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="horizontal"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="90dp">
 
-    <ImageView
-        android:id="@+id/iv_notice_teacher_icon"
-        android:layout_margin="@dimen/default_margin"
-        android:padding="@dimen/default_padding"
-        android:layout_width="80dp"
-        android:layout_height="80dp" />
+<com.mcxtzhang.swipemenulib.SwipeMenuLayout
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/tv_notice_teacher_name"
-        android:layout_margin="@dimen/default_margin"
-        android:padding="@dimen/default_padding"
-        android:textSize="@dimen/text_size_medium"
-        android:layout_gravity="center"
-        android:text="老师18202710074"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="90dp">
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/iv_notice_teacher_icon"
+            android:layout_margin="@dimen/default_margin"
+            android:padding="@dimen/default_padding"
+            android:layout_width="80dp"
+            android:layout_height="80dp" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_notice_teacher_name"
+            android:layout_margin="@dimen/default_margin"
+            android:padding="@dimen/default_padding"
+            android:textSize="@dimen/text_size_medium"
+            android:layout_gravity="center"
+            android:text="老师18202710074"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <!-- 以下都是侧滑菜单的内容依序排列 -->
+    <Button
+        android:id="@+id/btnTop"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:background="#d9dee4"
+        android:text="置顶"
+        android:textColor="@android:color/white"/>
+
+    <Button
+        android:id="@+id/btnUnRead"
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:background="#ecd50a"
+        android:clickable="true"
+        android:text="标记未读"
+        android:textColor="@android:color/white"/>
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:background="@color/red"
+        android:text="删除"
+        android:textColor="@android:color/white"/>
+
+</com.mcxtzhang.swipemenulib.SwipeMenuLayout>
+

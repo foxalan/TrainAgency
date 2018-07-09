@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -26,7 +28,7 @@ import java.util.List;
 
 public class NoticeTeacherDelegate extends LatteDelegate {
 
-    private SwipeMenuListView listView;
+    private ListView listView;
     private NoticeAdapter adapter;
     private List<NoticeBean> noticeBeanList = new ArrayList<>();
 
@@ -40,6 +42,7 @@ public class NoticeTeacherDelegate extends LatteDelegate {
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
         listView = rootView.findViewById(R.id.lv_notice);
         initData();
+
     }
 
     @Override

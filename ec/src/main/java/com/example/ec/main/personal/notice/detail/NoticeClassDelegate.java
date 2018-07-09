@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.ListView;
 
 
 import com.alibaba.fastjson.JSON;
@@ -37,7 +38,7 @@ import java.util.List;
 
 public class NoticeClassDelegate extends LatteDelegate {
 
-    private SwipeMenuListView listView;
+    private ListView listView;
     private NoticeAdapter adapter;
     private List<NoticeBean> noticeBeanList = new ArrayList<>();
 
@@ -52,60 +53,8 @@ public class NoticeClassDelegate extends LatteDelegate {
 
         listView = rootView.findViewById(R.id.lv_notice);
         initData();
-
-        SwipeMenuCreator creator = menu -> {
-            // create "open" item
-            SwipeMenuItem openItem = new SwipeMenuItem(
-                    getContext());
-            // set item background
-            openItem.setBackground(new ColorDrawable(Color.rgb(0xC9, 0xC9,
-                    0xCE)));
-            // set item width
-            openItem.setWidth(dp2px(90));
-            // set item title
-            openItem.setTitle("Open");
-            // set item title fontsize
-            openItem.setTitleSize(18);
-            // set item title font color
-            openItem.setTitleColor(Color.WHITE);
-            // add to menu
-            menu.addMenuItem(openItem);
-            // create "delete" item
-            SwipeMenuItem deleteItem = new SwipeMenuItem(
-                    getContext());
-            // set item background
-            deleteItem.setBackground(new ColorDrawable(Color.rgb(0xF9,
-                    0x3F, 0x25)));
-            // set item width
-            deleteItem.setWidth(dp2px(90));
-            // set a icon
-//            deleteItem.setIcon(R.mipmap.avatar);
-            // add to menu
-            menu.addMenuItem(deleteItem);
-
-        };
-
-        listView.setMenuCreator(creator);
-        listView.setSwipeDirection(SwipeMenuListView.DIRECTION_LEFT);
-        listView.setOnMenuItemClickListener((position, menu, index) -> {
-            switch (index) {
-                case 0:
-
-                    break;
-                case 1:
-
-                    break;
-                default:
-                    break;
-            }
-            return false;
-        });
     }
 
-    private int dp2px(int dp) {
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
-                getResources().getDisplayMetrics());
-    }
 
 
     /**
