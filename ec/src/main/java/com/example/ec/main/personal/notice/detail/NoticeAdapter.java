@@ -1,5 +1,6 @@
 package com.example.ec.main.personal.notice.detail;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.v7.widget.AppCompatTextView;
 import android.widget.ImageView;
@@ -28,13 +29,13 @@ public class NoticeAdapter extends CustomAdapter<NoticeBean> {
         super(mContext, mData, resID);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void convert(CustomViewHolder viewHolder, int position) {
+
         ImageView icon = viewHolder.getView(R.id.iv_notice_teacher_icon);
         AppCompatTextView textView = viewHolder.getView(R.id.tv_notice_teacher_name);
-
-        Glide.with(mContext).load(mData.get(position).getImgUrl()).apply(RECYCLER_OPTIONS)
-                .into(icon);
+        Glide.with(mContext).load(mData.get(position).getImgUrl()).apply(RECYCLER_OPTIONS).into(icon);
         textView.setText(mData.get(position).getName()+":"+mData.get(position).getPhone());
     }
 }

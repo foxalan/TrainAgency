@@ -14,6 +14,7 @@ public class FooterBean {
    private String img;
    private int targetId ;
    private String time ;
+   private boolean isDelete;
 
     public FooterBean(int id, int heatTarget, String img, int targetId, String time) {
         this.id = id;

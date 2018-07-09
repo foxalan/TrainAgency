@@ -3,8 +3,6 @@ package com.example.ec.main.personal.footer;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.example.core.util.log.LoggerUtil;
-import com.example.ec.main.home.subject.SubjectType;
 import com.example.ec.main.personal.PersonalType;
 import com.example.ui.recycler.DataConverter;
 import com.example.ui.recycler.MultipleFields;
@@ -31,6 +29,7 @@ public class FooterDataConveter extends DataConverter {
             final MultipleItemEntity data = MultipleItemEntity.builder()
                     .setField(MultipleFields.ITEM_TYPE, PersonalType.FOOTER_DATE)
                     .setField(MultipleFields.PERSONAL_FOOTER_DATE,jsonArray.getJSONObject(0).getString("time"))
+                    .setField(MultipleFields.PERSONAL_FOOTER_IS_DELETE,false)
                     .setField(MultipleFields.SPAN_SIZE,3)
                     .build();
 
@@ -48,6 +47,7 @@ public class FooterDataConveter extends DataConverter {
                         .setField(MultipleFields.ITEM_TYPE, PersonalType.FOOTER_ITEM)
                         .setField(MultipleFields.PERSONAL_FOOTER_ID,id)
                         .setField(MultipleFields.PERSONAL_FOOTER_IMG,img)
+                        .setField(MultipleFields.PERSONAL_FOOTER_IS_DELETE_ITEM,false)
                         .setField(MultipleFields.SPAN_SIZE,1)
                         .build();
                 ENTITIES.add(item);
