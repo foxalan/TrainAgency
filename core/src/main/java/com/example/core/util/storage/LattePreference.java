@@ -74,6 +74,34 @@ public final class LattePreference {
         return getAppPreference().getString(key, "");
     }
 
+    public static void setUserIcon(String key,String url){
+        getAppPreference().edit().putString(key,url).apply();
+    }
+
+    public static String getUserIcon(String key){
+        return getAppPreference().getString(key,"");
+    }
+
+    /**
+     * 用户简介
+     */
+    public static void setUserSignature(String key,String value){
+        getAppPreference().edit().putString(key,value).apply();
+    }
+
+    public static String getUserSignature(String key){
+        return getAppPreference().getString(key,"");
+    }
+
+    public static void setUserType(String key,String value){
+        getAppPreference().edit().putString(key,value).apply();
+    }
+
+    public static String getUserType(String key){
+        return getAppPreference().getString(key,"");
+    }
+
+
     public static boolean getAppFlag(String key) {
         return getAppPreference()
                 .getBoolean(key, false);

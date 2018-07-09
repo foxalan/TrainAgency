@@ -6,8 +6,10 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
+import com.example.core.app.AccountManager;
 import com.example.core.delegate.bottom.BottomItemDelegate;
 import com.example.ec.R;
 import com.example.ec.main.personal.help.AdviceDelegate;
@@ -43,9 +45,14 @@ public class PersonalDelegate extends BottomItemDelegate {
 
         final ListBean  my = new ListBean.Builder()
                 .setItemType(ListItemType.ITEM_USER_AVATAR)
+                .setUrl(AccountManager.isSignIn()?AccountManager.getUserIcon():"")
+                .setText(AccountManager.isSignIn()?AccountManager.getUserType():"")
+                .setValue(AccountManager.isSignIn()?AccountManager.getUserSign():"")
                 .setDelegate(new UserInfoDelegate())
                 .setId(0)
                 .build();
+
+        Log.e("accountmanager",AccountManager.getUserSign()+"==========");
 
         final ListBean blank = new ListBean.Builder()
                 .setItemType(ListItemType.ITEM_BLANK)

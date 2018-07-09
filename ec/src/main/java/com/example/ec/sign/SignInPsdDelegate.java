@@ -93,7 +93,17 @@ public class SignInPsdDelegate extends LatteDelegate{
                         JSONArray array = object.getJSONArray("userinfo");
                         JSONObject user = array.getJSONObject(0);
                         int id = user.getInteger("ID");
-                        Log.e("login","login:ID"+id);
+
+                        String url = user.getString("pictureImg");
+                        String signature = user.getString("signature");
+                        String memberType = user.getString("memberType");
+
+                        Log.e("login","login:ID"+signature+"::"+memberType);
+
+
+                        AccountManager.setUserIcon(url);
+                        AccountManager.setUserSign(signature);
+                        AccountManager.setUserType(memberType);
 
                         AccountManager.setSignState(true);
                         AccountManager.setUserId(String.valueOf(id));

@@ -1,5 +1,6 @@
 package com.example.ec.main.personal.list;
 
+import android.os.Bundle;
 import android.widget.CompoundButton;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
@@ -15,6 +16,7 @@ public class ListBean implements MultiItemEntity {
 
     private int mItemType = 0;
     private int mImageUrl;
+    private String mUrl;
     private String mText = null;
     private String mValue = null;
     private boolean isCheck = false;
@@ -22,7 +24,16 @@ public class ListBean implements MultiItemEntity {
     private LatteDelegate mDelegate = null;
     private CompoundButton.OnCheckedChangeListener mOnCheckedChangeListener = null;
 
-    public ListBean(int mItemType, int mImageUrl, String mText, String mValue, int mId, LatteDelegate mDelegate, CompoundButton.OnCheckedChangeListener mOnCheckedChangeListener,boolean isCheck) {
+    public String getmUrl() {
+        return mUrl;
+    }
+
+    public void setmUrl(String mUrl) {
+        this.mUrl = mUrl;
+    }
+
+    public ListBean(String mUrl, int mItemType, int mImageUrl, String mText, String mValue, int mId, LatteDelegate mDelegate, CompoundButton.OnCheckedChangeListener mOnCheckedChangeListener, boolean isCheck) {
+        this.mUrl = mUrl;
         this.mItemType = mItemType;
         this.mImageUrl = mImageUrl;
         this.mText = mText;
@@ -30,6 +41,7 @@ public class ListBean implements MultiItemEntity {
         this.mId = mId;
         this.mDelegate = mDelegate;
         this.mOnCheckedChangeListener = mOnCheckedChangeListener;
+
         this.isCheck = isCheck;
     }
 
@@ -78,7 +90,7 @@ public class ListBean implements MultiItemEntity {
     }
 
     public static final class Builder {
-
+        private String url;
         private int id = 0;
         private int itemType = 0;
         private int  imageUrl;
@@ -87,6 +99,11 @@ public class ListBean implements MultiItemEntity {
         private String value = null;
         private CompoundButton.OnCheckedChangeListener onCheckedChangeListener = null;
         private LatteDelegate delegate = null;
+
+        public Builder setUrl(String url){
+            this.url = url;
+            return this;
+        }
 
         public Builder setId(int id) {
             this.id = id;
@@ -129,7 +146,7 @@ public class ListBean implements MultiItemEntity {
         }
 
         public ListBean build() {
-            return new ListBean(itemType, imageUrl, text, value, id, delegate, onCheckedChangeListener,isCheck);
+            return new ListBean(url,itemType, imageUrl, text, value, id, delegate, onCheckedChangeListener,isCheck);
         }
     }
 }

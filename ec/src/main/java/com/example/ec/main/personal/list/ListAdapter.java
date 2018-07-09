@@ -1,6 +1,7 @@
 package com.example.ec.main.personal.list;
 
 import android.support.v7.widget.AppCompatCheckBox;
+import android.support.v7.widget.AppCompatTextView;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 
@@ -43,10 +44,21 @@ public class ListAdapter extends BaseMultiItemQuickAdapter<ListBean, BaseViewHol
                 helper.setText(R.id.tv_arrow_value, item.getValue());
                 break;
             case ListItemType.ITEM_USER_AVATAR:
-//                Glide.with(mContext)
-//                        .load(item.getImageUrl())
-//                        .apply(OPTIONS)
-//                        .into((ImageView) helper.getView(R.id.img_arrow_avatar));
+                AppCompatTextView mTvUserType = helper.getView(R.id.tv_user_type);
+                AppCompatTextView mTvUserSignature = helper.getView(R.id.tv_user_signature);
+
+                mTvUserType.setText(item.getText());
+                mTvUserSignature.setText(item.getValue());
+
+                if (!item.getmUrl().equals("")){
+
+                    Glide.with(mContext)
+                            .load(String.valueOf(item.getmUrl()) )
+                            .apply(OPTIONS)
+                            .into((ImageView) helper.getView(R.id.img_arrow_avatar));
+                }
+
+
                 break;
             case ListItemType.ITEM_BLANK:
                 break;

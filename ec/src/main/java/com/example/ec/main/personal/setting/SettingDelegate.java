@@ -33,7 +33,7 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
  * @author alan
  *         Date  2018/7/4.
  *         Function : 设置页面
- *         Issue :
+ *         Issue : 退出登录：返回有问题
  */
 
 public class SettingDelegate extends LatteDelegate {
@@ -144,7 +144,8 @@ public class SettingDelegate extends LatteDelegate {
 
         mTvLoginOut.setOnClickListener(v -> {
             AccountManager.setSignState(false);
-            getSupportDelegate().startWithPop(new SignInPsdDelegate());
+            getSupportDelegate().popChild();
+            getSupportDelegate().start(new SignInPsdDelegate());
         });
     }
 

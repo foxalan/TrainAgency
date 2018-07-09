@@ -13,6 +13,9 @@ public class AccountManager {
     private enum SignTag {
         SIGN_TAG,
         USER_ID,
+        USER_ICON,
+        USER_SIGN,
+        USER_TYPE,
     }
 
     /**
@@ -35,7 +38,34 @@ public class AccountManager {
     }
 
 
-    private static boolean isSignIn() {
+
+
+    public static void setUserIcon(String url){
+        LattePreference.setUserIcon(SignTag.USER_ICON.name(),url);
+    }
+
+    public static String getUserIcon(){
+        return LattePreference.getUserIcon(SignTag.USER_ICON.name());
+    }
+
+    public static void setUserSign(String signature){
+        LattePreference.setUserSignature(SignTag.USER_SIGN.name(),signature);
+    }
+
+    public static String getUserSign(){
+        return LattePreference.getUserSignature(SignTag.USER_SIGN.name());
+    }
+
+    public static void setUserType(String type){
+        LattePreference.setUserType(SignTag.USER_TYPE.name(),type);
+    }
+
+    public static String getUserType(){
+        return LattePreference.getUserType(SignTag.USER_TYPE.name());
+    }
+
+
+    public static boolean isSignIn() {
         return LattePreference.getAppFlag(SignTag.SIGN_TAG.name());
     }
 
