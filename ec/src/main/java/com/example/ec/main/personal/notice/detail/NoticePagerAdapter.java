@@ -4,7 +4,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.example.core.delegate.LatteDelegate;
+import com.example.ec.main.personal.notice.NoticeDelegate;
+
 import java.util.ArrayList;
+
+import me.yokeyword.fragmentation.ISupportFragment;
 
 /**
  * @author alan
@@ -16,14 +21,11 @@ import java.util.ArrayList;
 public class NoticePagerAdapter extends FragmentStatePagerAdapter {
 
     private final ArrayList<String> TAB_TITLES = new ArrayList<>();
-    private final ArrayList<String> NOTICE_TYPE = new ArrayList<>();
+    private NoticeDelegate noticeDelegate;
 
-
-    public NoticePagerAdapter(FragmentManager fm, com.alibaba.fastjson.JSONObject data) {
+    public NoticePagerAdapter(FragmentManager fm, NoticeDelegate noticeDelegate) {
         super(fm);
-
-       NOTICE_TYPE.add(NoticeType.NOTICE_TEACHER);
-       NOTICE_TYPE.add(NoticeType.NOTICE_CLASS);
+        this.noticeDelegate = noticeDelegate;
 
         TAB_TITLES.add("老师");
         TAB_TITLES.add("班级");
@@ -31,10 +33,11 @@ public class NoticePagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        if (position == 0){
-            return new NoticeClassDelegate();
-        }else {
-            return new NoticeTeacherDelegate();
+
+        if (position == 0) {
+            return new NoticeTeacherDelegate(noticeDelegate);
+        } else {
+            return new NoticeClassDelegate(noticeDelegate);
         }
     }
 

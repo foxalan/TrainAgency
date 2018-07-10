@@ -8,8 +8,6 @@ import com.example.core.delegate.LatteDelegate;
 import com.example.ec.main.personal.footer.FooterDelegate;
 import com.example.ec.main.personal.list.ListBean;
 import com.example.ec.main.personal.notice.NoticeDelegate;
-import com.example.ec.main.personal.notice.detail.NoticeClassDelegate;
-import com.example.ui.recycler.DataConverter;
 
 /**
  * Created by 傅令杰

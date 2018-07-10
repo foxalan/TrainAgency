@@ -48,19 +48,7 @@ public class NoticeDelegate extends LatteDelegate {
 
     private void initData() {
 
-        initPager(null);
-
-//        RestClient.builder()
-//                .url("goods_detail.php")
-//                .loader(getContext())
-//                .success(response -> {
-//                    final JSONObject data =
-//                            JSON.parseObject(response).getJSONObject("data");
-//
-//                    //    setShopCartCount(data);
-//                })
-//                .build()
-//                .get();
+        initPager(this);
     }
 
     private void initTabLayout() {
@@ -75,8 +63,8 @@ public class NoticeDelegate extends LatteDelegate {
         mTabLayout.setupWithViewPager(mViewPager);
     }
 
-    private void initPager(JSONObject data) {
-        final PagerAdapter adapter = new NoticePagerAdapter(getFragmentManager(), data);
+    private void initPager(NoticeDelegate noticeDelegate) {
+        final PagerAdapter adapter = new NoticePagerAdapter(getFragmentManager(), noticeDelegate);
         mViewPager.setAdapter(adapter);
     }
 

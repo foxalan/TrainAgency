@@ -11,17 +11,28 @@ import java.io.Serializable;
 
 public class NoticeBean implements Serializable{
 
+    private int type;
     private int id;
     private String imgUrl;
     private String name;
     private String phone;
     private boolean isNotice;
 
-    public NoticeBean(int id, String imgUrl, String name, String phone, boolean isNotice) {
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public NoticeBean(int type, int id, String imgUrl, String name, String phone, boolean isNotice) {
+        this.type = type;
         this.id = id;
         this.imgUrl = imgUrl;
         this.name = name;
         this.phone = phone;
+
         this.isNotice = isNotice;
     }
 
