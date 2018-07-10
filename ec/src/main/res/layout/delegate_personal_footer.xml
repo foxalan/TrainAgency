@@ -42,6 +42,7 @@
                 tools:ignore="HardcodedText" />
 
             <com.joanzapata.iconify.widget.IconTextView
+                android:id="@+id/ic_delete"
                 android:text="{fa-trash}"
                 android:layout_marginEnd="15dp"
                 android:layout_marginRight="15dp"
@@ -58,9 +59,32 @@
     <android.support.v7.widget.RecyclerView
         android:background="@color/white"
         android:id="@+id/ryc_footer"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp">
 
     </android.support.v7.widget.RecyclerView>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_gravity="bottom"
+        android:gravity="right|bottom"
+        android:id="@+id/ll_delete"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <TextView
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:id="@+id/tv_delete"
+            android:gravity="center"
+            android:layout_gravity="right"
+            android:text="删除"
+            android:background="@color/red"
+            android:layout_width="100dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
 
 </LinearLayout>

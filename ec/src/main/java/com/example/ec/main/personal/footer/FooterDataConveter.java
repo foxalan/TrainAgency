@@ -30,6 +30,7 @@ public class FooterDataConveter extends DataConverter {
                     .setField(MultipleFields.ITEM_TYPE, PersonalType.FOOTER_DATE)
                     .setField(MultipleFields.PERSONAL_FOOTER_DATE,jsonArray.getJSONObject(0).getString("time"))
                     .setField(MultipleFields.PERSONAL_FOOTER_IS_DELETE,false)
+                    .setField(MultipleFields.PERSONAL_FOOTER_SELECT_DELETE,false)
                     .setField(MultipleFields.SPAN_SIZE,3)
                     .build();
 
@@ -45,7 +46,9 @@ public class FooterDataConveter extends DataConverter {
 
                 final MultipleItemEntity item = MultipleItemEntity.builder()
                         .setField(MultipleFields.ITEM_TYPE, PersonalType.FOOTER_ITEM)
+                        .setField(MultipleFields.PERSONAL_FOOTER_DATE,time)
                         .setField(MultipleFields.PERSONAL_FOOTER_ID,id)
+                        .setField(MultipleFields.PERSONAL_FOOTER_SELECT_DELETE_ITEM,false)
                         .setField(MultipleFields.PERSONAL_FOOTER_IMG,img)
                         .setField(MultipleFields.PERSONAL_FOOTER_IS_DELETE_ITEM,false)
                         .setField(MultipleFields.SPAN_SIZE,1)
