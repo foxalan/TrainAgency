@@ -19,6 +19,7 @@ import com.example.core.net.RestClient;
 import com.example.ec.R;
 import com.example.ec.detail.TabPagerAdapter;
 import com.example.ec.main.personal.notice.detail.NoticePagerAdapter;
+import com.joanzapata.iconify.widget.IconTextView;
 
 /**
  * @author alan
@@ -31,6 +32,7 @@ public class NoticeDelegate extends LatteDelegate {
 
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
+    private IconTextView mIctBack;
 
     @Override
     public Object setLayout() {
@@ -41,6 +43,9 @@ public class NoticeDelegate extends LatteDelegate {
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
         mTabLayout = rootView.findViewById(R.id.tab_layout_notice);
         mViewPager = rootView.findViewById(R.id.view_pager_notice);
+
+        mIctBack = rootView.findViewById(R.id.ict_back);
+        mIctBack.setOnClickListener(v -> getSupportDelegate().pop());
 
         initData();
         initTabLayout();

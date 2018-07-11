@@ -78,6 +78,14 @@ public class LimitScrollEditText extends LinearLayout {
         setTextCount();
     }
 
+    public String getText(){
+        if (content!=null){
+            return content.getText().toString();
+        }else {
+            return "";
+        }
+    }
+
     private void setTextWatcher() {
         textWatcher = new TextWatcher() {
             @Override

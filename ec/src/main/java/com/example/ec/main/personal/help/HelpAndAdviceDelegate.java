@@ -17,6 +17,7 @@ import com.example.ec.main.personal.list.ListBean;
 import com.example.ec.main.personal.list.ListItemType;
 import com.example.ec.main.personal.notice.NoticeDelegate;
 import com.example.ui.recycler.BaseDecoration;
+import com.joanzapata.iconify.widget.IconTextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,7 @@ import java.util.List;
 public class HelpAndAdviceDelegate extends LatteDelegate {
 
     private RecyclerView mRycHelp;
+    private IconTextView mIctBack;
 
     @Override
     public Object setLayout() {
@@ -40,6 +42,9 @@ public class HelpAndAdviceDelegate extends LatteDelegate {
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
         mRycHelp = rootView.findViewById(R.id.ryc_help_advice);
+
+        mIctBack = rootView.findViewById(R.id.ict_back);
+        mIctBack.setOnClickListener(v -> getSupportDelegate().pop());
 
         final ListBean notice = new ListBean.Builder()
                 .setItemType(ListItemType.ITEM_TEXT_AVATAR)

@@ -14,12 +14,11 @@ import com.chad.library.adapter.base.listener.SimpleClickListener;
 import com.example.core.app.AccountManager;
 import com.example.core.delegate.LatteDelegate;
 import com.example.ec.R;
-import com.example.ec.main.personal.follow.FollowDelegate;
 import com.example.ec.main.personal.list.ListAdapter;
 import com.example.ec.main.personal.list.ListBean;
 import com.example.ec.main.personal.list.ListItemType;
-import com.example.ec.main.personal.setting.psd.ModifyDelegate;
-import com.example.ec.main.personal.userinfo.UserInfoDelegate;
+import com.example.ec.main.personal.setting.psd.ModifyPsdDelegate;
+import com.example.ec.main.personal.setting.psd.SettingPsdDelegate;
 import com.example.ec.sign.SignInPsdDelegate;
 import com.example.ui.recycler.BaseDecoration;
 
@@ -118,8 +117,11 @@ public class SettingDelegate extends LatteDelegate {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 switch (position) {
+                    case 1:
+                        getSupportDelegate().start(new SettingPsdDelegate());
+                        break;
                     case 2:
-                        getSupportDelegate().start(new ModifyDelegate());
+                        getSupportDelegate().start(new ModifyPsdDelegate());
                         break;
                     default:
                         break;
@@ -144,14 +146,12 @@ public class SettingDelegate extends LatteDelegate {
 
         mTvLoginOut.setOnClickListener(v -> {
             AccountManager.setSignState(false);
-            getSupportDelegate().popChild();
-            getSupportDelegate().start(new SignInPsdDelegate());
+            getSupportDelegate().startWithPop(new SignInPsdDelegate());
         });
     }
 
     @Override
     public FragmentAnimator onCreateFragmentAnimator() {
         return new DefaultHorizontalAnimator();
-
     }
 }

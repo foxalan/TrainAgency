@@ -19,7 +19,8 @@
             android:layout_marginTop="10dp">
 
             <com.joanzapata.iconify.widget.IconTextView
-                android:layout_width="wrap_content"
+                android:id="@+id/ict_back"
+                android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"

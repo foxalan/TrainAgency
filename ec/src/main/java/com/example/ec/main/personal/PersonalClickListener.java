@@ -8,9 +8,11 @@ import com.example.core.delegate.LatteDelegate;
 import com.example.ec.main.personal.footer.FooterDelegate;
 import com.example.ec.main.personal.list.ListBean;
 import com.example.ec.main.personal.notice.NoticeDelegate;
+import com.example.ec.main.personal.userinfo.UserInfoDelegate;
 
 /**
- * Created by 傅令杰
+ * @author alan
+ * 点击事件
  */
 
 public class PersonalClickListener extends SimpleClickListener {
@@ -27,6 +29,7 @@ public class PersonalClickListener extends SimpleClickListener {
         int id = bean.getId();
         switch (id) {
             case 0:
+                DELEGATE.getParentDelegate().getSupportDelegate().start(new UserInfoDelegate());
                 break;
             //case 1:
             case 2:

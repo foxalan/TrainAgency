@@ -45,6 +45,7 @@ public class FooterDelegate extends LatteDelegate implements ISuccess {
     private LinearLayout linearLayout;
     private TextView mTvDelete;
     private FooterAdapter adapter;
+    private IconTextView mIctBack;
 
     @Override
     public Object setLayout() {
@@ -58,7 +59,10 @@ public class FooterDelegate extends LatteDelegate implements ISuccess {
         icDelete = rootView.findViewById(R.id.ic_delete);
         linearLayout = rootView.findViewById(R.id.ll_delete);
         mTvDelete = rootView.findViewById(R.id.tv_delete);
-        adapter = new FooterAdapter(null);
+
+        mIctBack = rootView.findViewById(R.id.ict_back);
+        mIctBack.setOnClickListener(v -> getSupportDelegate().pop());
+
         initData();
 
         icDelete.setOnClickListener(v -> {
@@ -100,7 +104,7 @@ public class FooterDelegate extends LatteDelegate implements ISuccess {
                     }
 
                 }
-                adapter.refresh(adapter.getData());
+                Latte.getHandler().post(() -> adapter.notifyDataSetChanged());
             }
         });
 
@@ -120,8 +124,6 @@ public class FooterDelegate extends LatteDelegate implements ISuccess {
 
     }
 
-
-
     @Override
     public void onSuccess(String response) {
         //设置RecyclerView
@@ -133,7 +135,6 @@ public class FooterDelegate extends LatteDelegate implements ISuccess {
 
             if (adapter != null) {
                 List<MultipleItemEntity> itemEntityList = adapter.getData();
-
                 for (int i = 0; i < itemEntityList.size(); i++) {
                     MultipleItemEntity entity = itemEntityList.get(i);
                     switch (entity.getItemType()) {
@@ -150,14 +151,8 @@ public class FooterDelegate extends LatteDelegate implements ISuccess {
                             break;
                     }
                 }
-                Latte.getHandler().post(new Runnable() {
-                    @Override
-                    public void run() {
-                        Log.e("footerdelete","after:"+date+"==="+itemEntityList.size());
-                        adapter.notifyDataSetChanged();
-                    }
-                });
 
+                Latte.getHandler().post(() -> adapter.notifyDataSetChanged());
             }
         });
     }

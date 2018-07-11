@@ -41,12 +41,6 @@ public class UserInfoDelegate extends LatteDelegate {
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
         mRycUserInfo = rootView.findViewById(R.id.rv_user_info);
 
-//        final ListBean icon = new ListBean.Builder()
-//                .setItemType(ListItemType.ITEM_AVATAR)
-//                .setText("我的")
-//                .setId(0)
-//                .build();
-
         final ListBean username = new ListBean.Builder()
                 .setItemType(ListItemType.ITEM_TEXT_TEXT)
                 .setId(1)
@@ -85,7 +79,6 @@ public class UserInfoDelegate extends LatteDelegate {
 
         final List<ListBean> data = new ArrayList<>();
 
-//        data.add(icon);
         data.add(username);
         data.add(sign);
 
