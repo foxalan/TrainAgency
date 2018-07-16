@@ -50,6 +50,7 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
 public class UserInfoDelegate extends LatteDelegate {
 
     private RecyclerView mRycUserInfo;
+    private ListAdapter adapter;
 
     @Override
     public Object setLayout() {
@@ -124,7 +125,7 @@ public class UserInfoDelegate extends LatteDelegate {
         //设置RecyclerView
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         mRycUserInfo.setLayoutManager(manager);
-        final ListAdapter adapter = new ListAdapter(data);
+        adapter = new ListAdapter(data);
         mRycUserInfo.addItemDecoration
                 (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 2));
         mRycUserInfo.setAdapter(adapter);
@@ -172,7 +173,7 @@ public class UserInfoDelegate extends LatteDelegate {
                         startCameraWithCheck();
                         break;
                     case 1:
-
+                        getSupportDelegate().start(new UserInfoAccountDelegate(refreshView));
                         break;
                     case 2:
 
@@ -202,5 +203,13 @@ public class UserInfoDelegate extends LatteDelegate {
     @Override
     public FragmentAnimator onCreateFragmentAnimator() {
         return new DefaultHorizontalAnimator();
+    }
+
+    @Override
+    public void onNewBundle(Bundle args) {
+        super.onNewBundle(args);
+
+        adapter.getData().get()
+
     }
 }
