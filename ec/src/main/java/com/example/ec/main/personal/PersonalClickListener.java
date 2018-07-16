@@ -18,9 +18,11 @@ import com.example.ec.main.personal.userinfo.UserInfoDelegate;
 public class PersonalClickListener extends SimpleClickListener {
 
     private final LatteDelegate DELEGATE;
+    private final PersonalDelegate personalDelegate;
 
-    public PersonalClickListener(LatteDelegate delegate) {
+    public PersonalClickListener(LatteDelegate delegate,PersonalDelegate personalDelegate) {
         this.DELEGATE = delegate;
+        this.personalDelegate = personalDelegate;
     }
 
     @Override
@@ -29,7 +31,7 @@ public class PersonalClickListener extends SimpleClickListener {
         int id = bean.getId();
         switch (id) {
             case 0:
-                DELEGATE.getParentDelegate().getSupportDelegate().start(new UserInfoDelegate());
+                DELEGATE.getParentDelegate().getSupportDelegate().start(new UserInfoDelegate(personalDelegate));
                 break;
             //case 1:
             case 2:
@@ -38,8 +40,10 @@ public class PersonalClickListener extends SimpleClickListener {
             case 4:
                 DELEGATE.getParentDelegate().getSupportDelegate().start(new FooterDelegate());
                 break;
-            case 5:
-            case 6:
+            case 7:
+                DELEGATE.getParentDelegate().getSupportDelegate().start(bean.getDelegate());
+                break;
+            case 8:
                 DELEGATE.getParentDelegate().getSupportDelegate().start(bean.getDelegate());
                 break;
             default:

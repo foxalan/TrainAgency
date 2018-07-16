@@ -32,23 +32,24 @@ import java.util.List;
  *         Issue :
  */
 
-public class PersonalDelegate extends BottomItemDelegate {
+public class PersonalDelegate extends BottomItemDelegate implements IRrefreshView{
 
     @Override
     public Object setLayout() {
         return R.layout.delegate_personal;
     }
 
+    private RecyclerView rvSettings;
+    private ListAdapter adapter;
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
-        final RecyclerView rvSettings = $(R.id.rv_personal_setting);
+        rvSettings = $(R.id.rv_personal_setting);
 
         final ListBean  my = new ListBean.Builder()
                 .setItemType(ListItemType.ITEM_USER_AVATAR)
                 .setUrl(AccountManager.isSignIn()?AccountManager.getUserIcon():"")
                 .setText(AccountManager.isSignIn()?AccountManager.getUserType():"")
                 .setValue(AccountManager.isSignIn()?AccountManager.getUserSign():"")
-                .setDelegate(new UserInfoDelegate())
                 .setId(0)
                 .build();
 
@@ -91,7 +92,7 @@ public class PersonalDelegate extends BottomItemDelegate {
 
         final ListBean blank1 = new ListBean.Builder()
                 .setItemType(ListItemType.ITEM_BLANK)
-                .setId(1)
+                .setId(100)
                 .build();
 
         final ListBean be = new ListBean.Builder()
@@ -103,7 +104,7 @@ public class PersonalDelegate extends BottomItemDelegate {
 
         final ListBean hlpe = new ListBean.Builder()
                 .setItemType(ListItemType.ITEM_IMAGE_TEXT_AVATAR)
-                .setId(5)
+                .setId(7)
                 .setImageUrl(R.mipmap.ic_personal_help)
                 .setValue("帮助/反馈")
                 .setDelegate(new HelpAndAdviceDelegate())
@@ -111,13 +112,11 @@ public class PersonalDelegate extends BottomItemDelegate {
 
         final ListBean setting = new ListBean.Builder()
                 .setItemType(ListItemType.ITEM_IMAGE_TEXT_AVATAR)
-                .setId(6)
+                .setId(8)
                 .setDelegate(new SettingDelegate())
                 .setImageUrl(R.mipmap.ic_personal_setting)
                 .setValue("设置")
                 .build();
-
-
 
 
         final List<ListBean> data = new ArrayList<>();
@@ -136,10 +135,31 @@ public class PersonalDelegate extends BottomItemDelegate {
         //设置RecyclerView
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         rvSettings.setLayoutManager(manager);
-        final ListAdapter adapter = new ListAdapter(data);
-        rvSettings.addItemDecoration
-                (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 2));
+        adapter = new ListAdapter(data);
+        rvSettings.addItemDecoration(BaseDecoration.create(ContextCompat.getColor(getContext(),R.color.app_background),2));
         rvSettings.setAdapter(adapter);
-        rvSettings.addOnItemTouchListener(new PersonalClickListener(this));
+        rvSettings.addOnItemTouchListener(new PersonalClickListener(this,this));
+    }
+
+    @Override
+    public void updateIcon(String url) {
+
+        Log.e("alan","update icon");
+
+        ListBean bean = adapter.getData().get(0);
+        bean.setmUrl(url);
+
+        adapter.notifyItemChanged(0);
+
+    }
+
+    @Override
+    public void updateAccount(String account) {
+
+    }
+
+    @Override
+    public void updateSign(String sign) {
+
     }
 }

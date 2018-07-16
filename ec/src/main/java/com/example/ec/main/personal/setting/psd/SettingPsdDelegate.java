@@ -70,7 +70,7 @@ public class SettingPsdDelegate extends LatteDelegate implements View.OnClickLis
 
     @Override
     public FragmentAnimator onCreateFragmentAnimator() {
-     //   return new DefaultHorizontalAnimator();
-        return new LatteAnimator();
+        return new DefaultHorizontalAnimator();
+     //   return new LatteAnimator();
     }
 }

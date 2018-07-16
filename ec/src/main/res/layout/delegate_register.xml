@@ -8,11 +8,11 @@
     <android.support.v7.widget.Toolbar
         android:background="@android:color/holo_blue_light"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="?attr/actionBarSize">
         <android.support.v7.widget.AppCompatTextView
 
             android:textSize="18sp"
-            android:text="登入"
+            android:text="注册"
             android:textColor="@android:color/white"
             android:gravity="center"
             android:layout_width="match_parent"
@@ -32,11 +32,12 @@
             android:paddingRight="24dp"
             android:paddingTop="56dp">
 
+
             <!--ICON-->
             <android.support.v7.widget.AppCompatImageView
                 android:src="@mipmap/avatar"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="24dp"
                 />
@@ -58,7 +59,7 @@
 
                     <EditText
                         android:maxLength="11"
-                        android:id="@+id/et_phone_number"
+                        android:id="@+id/et_phone_register"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
@@ -96,7 +97,7 @@
                     <EditText
                         android:maxLength="6"
                         android:gravity="center_vertical"
-                        android:id="@+id/et_password"
+                        android:id="@+id/et_password_register"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
@@ -109,16 +110,37 @@
                         android:textColorHint="@android:color/darker_gray"
                         android:textSize="16sp" />
 
-                    <ImageButton
-                        android:padding="2dp"
-                        android:layout_gravity="center"
-                        android:id="@+id/delete_prove"
-                        android:layout_width="wrap_content"
+
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <EditText
+                        android:maxLength="11"
+                        android:id="@+id/et_password_register_again"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
                         android:background="@android:color/transparent"
-                        android:src="@mipmap/ic_edittext_clear"
-                        android:layout_marginRight="15dp"
-                        android:visibility="invisible" />
+                        android:hint="确定密码"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:textColor="@android:color/darker_gray"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textSize="16sp" />
+
 
 
                 </LinearLayout>
@@ -129,9 +151,12 @@
                     android:background="@android:color/darker_gray" />
             </LinearLayout>
 
+
+
+
             <android.support.v7.widget.AppCompatButton
 
-                android:id="@+id/btn_sign_in_psd"
+                android:id="@+id/btn_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
@@ -141,22 +166,11 @@
                 android:padding="12dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:text="登录"
+                android:text="注册"
                 android:textColor="@android:color/white"
                 tools:ignore="HardcodedText" />
 
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/tv_register"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_gravity="right"
-                android:text="还没有帐号请先注册"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
         </android.support.v7.widget.LinearLayoutCompat>
-
-
 
     </android.support.v4.widget.NestedScrollView>
 

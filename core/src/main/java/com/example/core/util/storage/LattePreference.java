@@ -78,6 +78,14 @@ public final class LattePreference {
         getAppPreference().edit().putString(key,url).apply();
     }
 
+    public static void setUserPsd(String key,String psd){
+        getAppPreference().edit().putString(key,psd).apply();
+    }
+
+    public static String getUserPsd(String key){
+        return getAppPreference().getString(key,"");
+    }
+
     public static String getUserIcon(String key){
         return getAppPreference().getString(key,"");
     }

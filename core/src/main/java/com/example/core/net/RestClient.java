@@ -105,11 +105,20 @@ public final class RestClient {
                 call = service.delete(URL, PARAMS);
                 break;
             case UPLOAD:
+//                final RequestBody requestBody =
+//                        RequestBody.create(MediaType.parse(MultipartBody.FORM.toString()), FILE);
+//                final MultipartBody.Part body =
+//                        MultipartBody.Part.createFormData("file", FILE.getName(), requestBody);
+//                call = service.upload(URL, body);
+
+
                 final RequestBody requestBody =
                         RequestBody.create(MediaType.parse(MultipartBody.FORM.toString()), FILE);
                 final MultipartBody.Part body =
                         MultipartBody.Part.createFormData("file", FILE.getName(), requestBody);
-                call = service.upload(URL, body);
+                MultipartBody.Part formData = MultipartBody.Part.createFormData("ID", (String) PARAMS.get("ID"));
+                call = service.upload(URL, body, formData);
+
                 break;
             default:
                 break;

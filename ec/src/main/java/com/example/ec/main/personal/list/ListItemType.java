@@ -13,4 +13,5 @@ public class ListItemType {
     public static final int ITEM_TEXT_TEXT= 23;
     public static final int ITEM_TEXT_AVATAR = 24;
     public static final int ITEM_CHECK = 25;
+    public static final int ITEM_TEXT_IMG_AVATAR = 26;
 }

@@ -16,6 +16,7 @@ public class AccountManager {
         USER_ICON,
         USER_SIGN,
         USER_TYPE,
+        USER_PSD,
     }
 
     /**
@@ -38,6 +39,14 @@ public class AccountManager {
     }
 
 
+
+    public static void setUserPsd(String psd){
+        LattePreference.setUserPsd(SignTag.USER_PSD.name(),psd);
+    }
+
+    public static String getUserPsd(){
+        return LattePreference.getUserPsd(SignTag.USER_PSD.name());
+    }
 
 
     public static void setUserIcon(String url){

@@ -3,6 +3,7 @@ package com.example.ec.sign;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,7 @@ import com.example.core.delegate.LatteDelegate;
 import com.example.core.net.RestClient;
 import com.example.ec.R;
 import com.example.ec.main.EcBottomDelegate;
+import com.example.ec.sign.register.RegisterDelegate;
 
 /**
  * @author alan
@@ -35,6 +37,8 @@ public class SignInPsdDelegate extends LatteDelegate{
     private String phone;
     private String password;
 
+    private AppCompatTextView mTvRegister;
+
     @Override
     public Object setLayout() {
         return R.layout.delegate_sign_in_psd;
@@ -49,6 +53,10 @@ public class SignInPsdDelegate extends LatteDelegate{
         mEtPhone = rootView.findViewById(R.id.et_phone_number);
         mEtPassword = rootView.findViewById(R.id.et_password);
         mBtSign = rootView.findViewById(R.id.btn_sign_in_psd);
+
+        mTvRegister = rootView.findViewById(R.id.tv_register);
+
+        mTvRegister.setOnClickListener(v -> getSupportDelegate().start(new RegisterDelegate(),SINGLETASK));
 
         mBtSign.setOnClickListener(v -> {
             phone = mEtPhone.getText().toString();
@@ -100,7 +108,7 @@ public class SignInPsdDelegate extends LatteDelegate{
 
                         Log.e("login","login:ID"+signature+"::"+memberType);
 
-
+                        AccountManager.setUserPsd(password);
                         AccountManager.setUserIcon(url);
                         AccountManager.setUserSign(signature);
                         AccountManager.setUserType(memberType);

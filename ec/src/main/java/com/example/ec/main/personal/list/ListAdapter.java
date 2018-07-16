@@ -2,6 +2,7 @@ package com.example.ec.main.personal.list;
 
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.AppCompatTextView;
+import android.util.Log;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 
@@ -14,6 +15,8 @@ import com.example.ec.R;
 
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * @author alan
@@ -34,11 +37,25 @@ public class ListAdapter extends BaseMultiItemQuickAdapter<ListBean, BaseViewHol
         addItemType(ListItemType.ITEM_TEXT_TEXT, R.layout.arrow_item_text_text);
         addItemType(ListItemType.ITEM_TEXT_AVATAR, R.layout.arrow_item_text_avatar);
         addItemType(ListItemType.ITEM_CHECK, R.layout.arrow_item_check_text);
+        addItemType(ListItemType.ITEM_TEXT_IMG_AVATAR,R.layout.arrow_item_text_img_avatar);
     }
 
     @Override
     protected void convert(BaseViewHolder helper, ListBean item) {
         switch (helper.getItemViewType()) {
+            case ListItemType.ITEM_TEXT_IMG_AVATAR:
+
+                Log.e("alan","update item");
+
+                if (!item.getmUrl().equals("")){
+
+                    Glide.with(mContext)
+                            .load(String.valueOf(item.getmUrl()) )
+                            .apply(OPTIONS)
+                            .into((CircleImageView) helper.getView(R.id.tv_arrow_image));
+                }
+
+                break;
             case ListItemType.ITEM_IMAGE_TEXT_AVATAR:
                 helper.setImageResource(R.id.tv_arrow_image, item.getImageUrl());
                 helper.setText(R.id.tv_arrow_value, item.getValue());

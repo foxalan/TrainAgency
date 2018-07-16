@@ -5,13 +5,20 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.example.core.app.AccountManager;
 import com.example.core.app.Latte;
 import com.example.core.delegate.LatteDelegate;
+import com.example.core.net.RestClient;
+import com.example.core.net.callback.ISuccess;
 import com.example.ec.R;
+import com.example.ec.sign.SignInPsdDelegate;
 import com.joanzapata.iconify.widget.IconTextView;
 
 import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
@@ -73,8 +80,35 @@ public class ModifyPsdDelegate extends LatteDelegate implements View.OnClickList
         }
 
 
+
+        updatePassWord(mNewPsd);
+
         //todo
 
+    }
+
+    /**
+     * http://192.168.1.186/Update/updateuserinfo?ID=1&改什么就传什么 改图片传文件和ID
+        我:
+     account { get; set; }//用户名   password { get; set; }//密码  signature { get; set; }//个性签名
+     * @param mNewPsd
+     */
+    private void updatePassWord(String mNewPsd) {
+        RestClient.builder()
+                .url("http://192.168.1.186/Update/updateuserinfo")
+                .params("ID", AccountManager.getUserId())
+                .params("password",mNewPsd)
+                .success(response -> {
+                    final JSONObject object = JSON.parseObject(response);
+                    Log.e("modify","modify:"+response.toString());
+                    String msg = object.getString("msg");
+                    Toast.makeText(getContext(),msg,Toast.LENGTH_SHORT).show();
+                    if ("更改密码成功".equals(msg)){
+                        getSupportDelegate().start(new SignInPsdDelegate(),SINGLETASK);
+                    }
+                })
+                .build()
+                .post();
     }
 
     @Override
