@@ -3,6 +3,9 @@ package com.example.ec.main.personal;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -32,7 +35,7 @@ import java.util.List;
  *         Issue :
  */
 
-public class PersonalDelegate extends BottomItemDelegate implements IRrefreshView{
+public class PersonalDelegate extends BottomItemDelegate implements IRrefreshView {
 
     @Override
     public Object setLayout() {
@@ -41,19 +44,20 @@ public class PersonalDelegate extends BottomItemDelegate implements IRrefreshVie
 
     private RecyclerView rvSettings;
     private ListAdapter adapter;
+
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
         rvSettings = $(R.id.rv_personal_setting);
 
-        final ListBean  my = new ListBean.Builder()
+        final ListBean my = new ListBean.Builder()
                 .setItemType(ListItemType.ITEM_USER_AVATAR)
-                .setUrl(AccountManager.isSignIn()?AccountManager.getUserIcon():"")
-                .setText(AccountManager.isSignIn()?AccountManager.getUserType():"")
-                .setValue(AccountManager.isSignIn()?AccountManager.getUserSign():"")
+                .setUrl(AccountManager.isSignIn() ? AccountManager.getUserIcon() : "")
+                .setText(AccountManager.isSignIn() ? AccountManager.getUserType() : "")
+                .setValue(AccountManager.isSignIn() ? AccountManager.getUserSign() : "")
                 .setId(0)
                 .build();
 
-        Log.e("accountmanager",AccountManager.getUserSign()+"==========");
+        Log.e("accountmanager", AccountManager.getUserSign() + "==========");
 
         final ListBean blank = new ListBean.Builder()
                 .setItemType(ListItemType.ITEM_BLANK)
@@ -76,7 +80,7 @@ public class PersonalDelegate extends BottomItemDelegate implements IRrefreshVie
                 .setValue("我的评论")
                 .build();
 
-        final ListBean  footer = new ListBean.Builder()
+        final ListBean footer = new ListBean.Builder()
                 .setItemType(ListItemType.ITEM_IMAGE_TEXT_AVATAR)
                 .setId(4)
                 .setImageUrl(R.mipmap.ic_personal_footer)
@@ -136,30 +140,53 @@ public class PersonalDelegate extends BottomItemDelegate implements IRrefreshVie
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         rvSettings.setLayoutManager(manager);
         adapter = new ListAdapter(data);
-        rvSettings.addItemDecoration(BaseDecoration.create(ContextCompat.getColor(getContext(),R.color.app_background),2));
+        rvSettings.addItemDecoration(BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 2));
         rvSettings.setAdapter(adapter);
-        rvSettings.addOnItemTouchListener(new PersonalClickListener(this,this));
+        rvSettings.addOnItemTouchListener(new PersonalClickListener(this, this));
     }
 
     @Override
     public void updateIcon(String url) {
 
-        Log.e("alan","update icon");
-
+        Log.e("alan", "update icon");
         ListBean bean = adapter.getData().get(0);
         bean.setmUrl(url);
-
         adapter.notifyItemChanged(0);
 
     }
 
     @Override
     public void updateAccount(String account) {
+        ListBean bean = adapter.getData().get(0);
+        bean.setmText(AccountManager.getUserType());
 
+        adapter.notifyItemChanged(0);
     }
 
     @Override
     public void updateSign(String sign) {
 
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            boolean isSupportHidden = savedInstanceState.getBoolean("STATE_SAVE_IS_HIDDEN");
+
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            if (isSupportHidden) {
+                ft.hide(this);
+            } else {
+                ft.show(this);
+            }
+            ft.commit();
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean("STATE_SAVE_IS_HIDDEN", isHidden());
     }
 }

@@ -32,17 +32,12 @@ import java.util.List;
 
 public class FooterAdapter extends MultipleRecyclerAdapter {
 
-    private IFooterDateListener footerDateListener;
 
     protected FooterAdapter(List<MultipleItemEntity> data) {
         super(data);
 
         addItemType(PersonalType.FOOTER_DATE, R.layout.item_personal_footer);
         addItemType(PersonalType.FOOTER_ITEM, R.layout.item_personal_footer_grid);
-    }
-
-    public void setFooterDateListener(IFooterDateListener footerDateListener) {
-        this.footerDateListener = footerDateListener;
     }
 
     @Override
@@ -56,7 +51,18 @@ public class FooterAdapter extends MultipleRecyclerAdapter {
                 AppCompatCheckBox mCheckFooter = holder.getView(R.id.cb_footer);
 
                 mCheckFooter.setVisibility(isDelete ? View.VISIBLE : View.GONE);
+                mCheckFooter.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked) {
+                            entity.setField(MultipleFields.PERSONAL_FOOTER_SELECT_DELETE, true);
+                        } else {
+                            entity.setField(MultipleFields.PERSONAL_FOOTER_SELECT_DELETE, false);
+                        }
+                    }
+                });
                 mCheckFooter.setChecked(isSelect);
+
 
                 String dateTime = entity.getField(MultipleFields.PERSONAL_FOOTER_DATE);
                 Date date = getDateByTime(dateTime);
@@ -71,13 +77,7 @@ public class FooterAdapter extends MultipleRecyclerAdapter {
                     textView.setText((date.getMonth() + 1) + "月" + date.getDate() + "日");
                 }
 
-                mCheckFooter.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                    entity.setField(MultipleFields.PERSONAL_FOOTER_SELECT_DELETE,isChecked);
-                    if (footerDateListener != null) {
-                        footerDateListener.onDateClick(isChecked, dateTime);
-                    }
-                });
-
+                holder.addOnClickListener(R.id.cb_footer);
                 break;
             case PersonalType.FOOTER_ITEM:
 
@@ -87,14 +87,25 @@ public class FooterAdapter extends MultipleRecyclerAdapter {
                 AppCompatCheckBox mCheckFooterItem = holder.getView(R.id.cb_grid_footer_item);
 
                 mCheckFooterItem.setVisibility(isDeleteItem ? View.VISIBLE : View.GONE);
+                mCheckFooterItem.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked) {
+                            entity.setField(MultipleFields.PERSONAL_FOOTER_SELECT_DELETE, true);
+                        } else {
+                            entity.setField(MultipleFields.PERSONAL_FOOTER_SELECT_DELETE, false);
+                        }
+                    }
+                });
+
                 mCheckFooterItem.setChecked(isSelectItem);
-                Log.e("footerdelete","isSelect"+isSelectItem);
+                Log.e("footerdelete", "isSelect" + isSelectItem);
 
                 ImageView imageView = holder.getView(R.id.iv_grid_footer_item);
                 String img = entity.getField(MultipleFields.PERSONAL_FOOTER_IMG);
 
                 mCheckFooterItem.setOnCheckedChangeListener((buttonView, isChecked) ->
-                        entity.setField(MultipleFields.PERSONAL_FOOTER_SELECT_DELETE_ITEM,isChecked));
+                        entity.setField(MultipleFields.PERSONAL_FOOTER_SELECT_DELETE_ITEM, isChecked));
 
                 Glide.with(mContext).load(img).apply(RECYCLER_OPTIONS).into(imageView);
 
@@ -105,7 +116,7 @@ public class FooterAdapter extends MultipleRecyclerAdapter {
     }
 
 
-    private Date getDateByTime(String time){
+    private Date getDateByTime(String time) {
 
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");

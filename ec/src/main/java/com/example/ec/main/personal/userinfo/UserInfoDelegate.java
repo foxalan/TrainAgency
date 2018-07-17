@@ -37,6 +37,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
+import me.yokeyword.fragmentation.anim.DefaultNoAnimator;
+import me.yokeyword.fragmentation.anim.DefaultVerticalAnimator;
 import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
 /**
@@ -58,10 +60,12 @@ public class UserInfoDelegate extends LatteDelegate {
     }
 
 
-
     private IRrefreshView refreshView;
+
+    public UserInfoDelegate(){}
+
     @SuppressLint("ValidFragment")
-    public UserInfoDelegate(IRrefreshView rrefreshView){
+    public UserInfoDelegate(IRrefreshView rrefreshView) {
         this.refreshView = rrefreshView;
     }
 
@@ -147,21 +151,20 @@ public class UserInfoDelegate extends LatteDelegate {
                                                 .load(args)
                                                 .into(avatar);
 
-                                        Log.e("alan",args.getPath());
-
+                                        Log.e("alan", args.getPath());
 
 
                                         RestClient.builder()
                                                 .url("http://192.168.1.186/Update/updateuserinfo")
-                                                .params("ID",AccountManager.getUserId())
+                                                .params("ID", AccountManager.getUserId())
                                                 .loader(getContext())
                                                 .file(args.getPath())
                                                 .success(response -> {
                                                     final JSONObject object = JSON.parseObject(response);
                                                     String msg = object.getString("msg");
-                                                    Latte.getHandler().post(() -> Toast.makeText(getContext(),msg,Toast.LENGTH_LONG).show()) ;
-                                                    Log.e("alan","msg"+msg);
-                                                    if ("更改头像成功！".equals(msg)){
+                                                    Latte.getHandler().post(() -> Toast.makeText(getContext(), msg, Toast.LENGTH_LONG).show());
+                                                    Log.e("alan", "msg" + msg);
+                                                    if ("更改头像成功！".equals(msg)) {
                                                         AccountManager.setUserIcon(args.getPath());
                                                         refreshView.updateIcon(args.getPath());
                                                     }
@@ -173,7 +176,7 @@ public class UserInfoDelegate extends LatteDelegate {
                         startCameraWithCheck();
                         break;
                     case 1:
-                        getSupportDelegate().start(new UserInfoAccountDelegate(refreshView));
+                        getSupportDelegate().start(new UserInfoAccountDelegate());
                         break;
                     case 2:
 
@@ -202,14 +205,22 @@ public class UserInfoDelegate extends LatteDelegate {
 
     @Override
     public FragmentAnimator onCreateFragmentAnimator() {
-        return new DefaultHorizontalAnimator();
+        return new DefaultVerticalAnimator();
     }
 
     @Override
     public void onNewBundle(Bundle args) {
         super.onNewBundle(args);
 
-        adapter.getData().get()
+        if (getArguments() != null) {
+            Bundle bundle = getArguments();
 
+            String msg = bundle.getString("update");
+            Log.e("alan","msg========="+msg+"bundle"+bundle.toString());
+
+                adapter.getData().get(1).setmValue(AccountManager.getUserType());
+                adapter.notifyItemChanged(1);
+                refreshView.updateAccount("");
+        }
     }
 }

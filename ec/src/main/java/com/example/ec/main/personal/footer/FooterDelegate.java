@@ -26,6 +26,7 @@ import com.example.ui.recycler.MultipleItemEntity;
 import com.joanzapata.iconify.widget.IconTextView;
 
 import java.lang.invoke.LambdaConversionException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -78,36 +79,107 @@ public class FooterDelegate extends LatteDelegate implements ISuccess {
                     if (entity.getField(MultipleFields.PERSONAL_FOOTER_IS_DELETE) != null) {
                         itemEntityList.get(i).setField(MultipleFields.PERSONAL_FOOTER_IS_DELETE, true);
                     }
+                    adapter.notifyItemChanged(i);
                 }
-                adapter.notifyDataSetChanged();
             }
         });
 
+        List<MultipleItemEntity> deleteList = new ArrayList<>();
+
         mTvDelete.setOnClickListener(v -> {
             if (adapter != null) {
-
+                deleteList.clear();
                 List<MultipleItemEntity> itemEntityList = adapter.getData();
-                for (int i = 0; i < itemEntityList.size(); i++) {
+                for (int i = (itemEntityList.size()-1); i >=0; i = i -1) {
                     MultipleItemEntity entity = itemEntityList.get(i);
                     switch (entity.getItemType()) {
                         case PersonalType.FOOTER_DATE:
-
+                            if (entity.getField(MultipleFields.PERSONAL_FOOTER_SELECT_DELETE)){
+                                adapter.remove(i);
+                            }
                             break;
                         case PersonalType.FOOTER_ITEM:
-                            if(entity.getField(MultipleFields.PERSONAL_FOOTER_SELECT_DELETE_ITEM)){
-                                Log.e("footerdelete",entity.getField(MultipleFields.PERSONAL_FOOTER_DATE)+"===");
-                                Log.e("footerdelete",entity.getField(MultipleFields.PERSONAL_FOOTER_ID)+"===");
+                            if (entity.getField(MultipleFields.PERSONAL_FOOTER_SELECT_DELETE_ITEM)) {
+                                deleteList.add(entity);
+                                adapter.remove(i);
                             }
                             break;
                         default:
                             break;
                     }
 
+                    adapter.notifyItemChanged(i);
                 }
-                Latte.getHandler().post(() -> adapter.notifyDataSetChanged());
+
+                String jsonData = getJsonData(deleteList);
+
+                Log.e("browse",jsonData);
+
+                RestClient.builder()
+                        .url("http://192.168.1.186/Remove/DelBrowsingHistory")
+                        .loader(getContext())
+                        .params("heatlist",jsonData)
+                        .success(new ISuccess() {
+                            @Override
+                            public void onSuccess(String response) {
+                                Log.e("browse",response);
+                            }
+                        })
+                        .build()
+                        .post();
+
+                //
+
+                linearLayout.setVisibility(View.GONE);
+                if (adapter != null) {
+                    List<MultipleItemEntity> itemEntityLists = adapter.getData();
+                    for (int i = 0; i < itemEntityLists.size(); i++) {
+                        MultipleItemEntity entity = itemEntityList.get(i);
+                        if (entity.getField(MultipleFields.PERSONAL_FOOTER_IS_DELETE_ITEM) != null) {
+                            itemEntityList.get(i).setField(MultipleFields.PERSONAL_FOOTER_IS_DELETE_ITEM, false);
+                        }
+
+                        if (entity.getField(MultipleFields.PERSONAL_FOOTER_IS_DELETE) != null) {
+                            itemEntityList.get(i).setField(MultipleFields.PERSONAL_FOOTER_IS_DELETE, false);
+                        }
+                        adapter.notifyItemChanged(i);
+                    }
+                }
+
             }
         });
 
+    }
+
+    /**
+     *  {"heatlist": [{"heatTarget":0,"heatType":1,"targerID":0,"memberID":1,"time":"2018-07-10"}]}
+     * @param deleteList
+     * @return
+     */
+
+    private String getJsonData(List<MultipleItemEntity> deleteList) {
+
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append("{"+"\""+"heatlist"+"\""+":");
+
+        stringBuffer.append("[");
+        for(int i = 0 ;i<deleteList.size();i++){
+            MultipleItemEntity entity = deleteList.get(i);
+            stringBuffer.append("{");
+            stringBuffer.append("\""+"heatTarget"+"\""+":"+entity.getField(MultipleFields.PERSONAL_FOOTER_HEATTARGET)+",");
+            stringBuffer.append("\""+"heatType"+"\""+":"+1+",");
+            stringBuffer.append("\""+"targetID"+"\""+":"+entity.getField(MultipleFields.PERSONAL_FOOTER_TARGERID)+",");
+            stringBuffer.append("\""+"time"+"\""+":"+entity.getField(MultipleFields.PERSONAL_FOOTER_DATE));
+
+            stringBuffer.append("}");
+            if (i != (deleteList.size()-1)){
+                stringBuffer.append(",");
+            }
+        }
+        stringBuffer.append("]");
+
+        stringBuffer.append("}");
+        return stringBuffer.toString();
     }
 
     /**
@@ -131,28 +203,25 @@ public class FooterDelegate extends LatteDelegate implements ISuccess {
         mRycFooter.setLayoutManager(manager);
         adapter = new FooterAdapter(new FooterDataConveter().setJsonData(response).convert());
         mRycFooter.setAdapter(adapter);
-        adapter.setFooterDateListener((isCheck, date) -> {
 
-            if (adapter != null) {
-                List<MultipleItemEntity> itemEntityList = adapter.getData();
-                for (int i = 0; i < itemEntityList.size(); i++) {
-                    MultipleItemEntity entity = itemEntityList.get(i);
-                    switch (entity.getItemType()) {
-                        case PersonalType.FOOTER_DATE:
-                            break;
-                        case PersonalType.FOOTER_ITEM:
-                            String dateTime = entity.getField(MultipleFields.PERSONAL_FOOTER_DATE);
-                            if (date.equals(dateTime)) {
-                                Log.e("footerdelete","after:"+date+"==="+dateTime);
-                                entity.setField(MultipleFields.PERSONAL_FOOTER_SELECT_DELETE_ITEM, isCheck);
-                            }
-                            break;
-                        default:
-                            break;
+        adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                List<MultipleItemEntity> entities = adapter.getData();
+                int size = entities.size();
+                boolean isCheck = entities.get(position).getField(MultipleFields.PERSONAL_FOOTER_SELECT_DELETE);
+                entities.get(position).setField(MultipleFields.PERSONAL_FOOTER_SELECT_DELETE, isCheck);
+                adapter.notifyItemChanged(position);
+
+                for (int i = position + 1; i < size; i++) {
+                    MultipleItemEntity entity = entities.get(i);
+                    if (entity.getItemType() == PersonalType.FOOTER_ITEM) {
+                        entity.setField(MultipleFields.PERSONAL_FOOTER_SELECT_DELETE_ITEM, isCheck);
+                        adapter.notifyItemChanged(i);
+                    } else {
+                        break;
                     }
                 }
-
-                Latte.getHandler().post(() -> adapter.notifyDataSetChanged());
             }
         });
     }

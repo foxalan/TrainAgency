@@ -10,6 +10,8 @@ import com.example.ec.main.personal.list.ListBean;
 import com.example.ec.main.personal.notice.NoticeDelegate;
 import com.example.ec.main.personal.userinfo.UserInfoDelegate;
 
+import static me.yokeyword.fragmentation.ISupportFragment.SINGLETASK;
+
 /**
  * @author alan
  * 点击事件
@@ -31,7 +33,7 @@ public class PersonalClickListener extends SimpleClickListener {
         int id = bean.getId();
         switch (id) {
             case 0:
-                DELEGATE.getParentDelegate().getSupportDelegate().start(new UserInfoDelegate(personalDelegate));
+                DELEGATE.getParentDelegate().getSupportDelegate().start(new UserInfoDelegate(personalDelegate),SINGLETASK);
                 break;
             //case 1:
             case 2:

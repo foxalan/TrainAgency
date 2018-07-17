@@ -35,10 +35,7 @@ public class UserInfoAccountDelegate extends LatteDelegate {
 
     private IRrefreshView refreshView;
 
-    public UserInfoAccountDelegate(IRrefreshView refreshView) {
-        super();
-        this.refreshView = refreshView;
-    }
+    public UserInfoAccountDelegate(){}
 
     @Override
     public Object setLayout() {
@@ -78,11 +75,11 @@ public class UserInfoAccountDelegate extends LatteDelegate {
                                 Log.e("alan","msg"+msg);
                                 if ("更改名称成功！".equals(msg)){
                                     AccountManager.setUserType(account);
-                                    UserInfoDelegate userInfoDelegate = new UserInfoDelegate(refreshView);
+                                    UserInfoDelegate userInfoDelegate = new UserInfoDelegate();
                                     Bundle bundle = new Bundle();
-//                                    bundle.putString("");
-//                                    userInfoDelegate.setArguments();
-                                    getSupportDelegate().start(new UserInfoAccountDelegate(refreshView),SINGLETASK);
+                                    bundle.putString("update","account");
+                                    userInfoDelegate.setArguments(bundle);
+                                    getSupportDelegate().start(userInfoDelegate,SINGLETASK);
                                 }
 
                             }

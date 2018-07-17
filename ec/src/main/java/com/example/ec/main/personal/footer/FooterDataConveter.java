@@ -48,6 +48,8 @@ public class FooterDataConveter extends DataConverter {
                         .setField(MultipleFields.ITEM_TYPE, PersonalType.FOOTER_ITEM)
                         .setField(MultipleFields.PERSONAL_FOOTER_DATE,time)
                         .setField(MultipleFields.PERSONAL_FOOTER_ID,id)
+                        .setField(MultipleFields.PERSONAL_FOOTER_HEATTARGET,heatTarget)
+                        .setField(MultipleFields.PERSONAL_FOOTER_TARGERID,targetId)
                         .setField(MultipleFields.PERSONAL_FOOTER_SELECT_DELETE_ITEM,false)
                         .setField(MultipleFields.PERSONAL_FOOTER_IMG,img)
                         .setField(MultipleFields.PERSONAL_FOOTER_IS_DELETE_ITEM,false)

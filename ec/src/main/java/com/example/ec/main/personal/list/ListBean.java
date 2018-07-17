@@ -17,6 +17,39 @@ public class ListBean implements MultiItemEntity {
     private int mItemType = 0;
     private int mImageUrl;
     private String mUrl;
+
+    public int getmImageUrl() {
+        return mImageUrl;
+    }
+
+    public void setmImageUrl(int mImageUrl) {
+        this.mImageUrl = mImageUrl;
+    }
+
+    public String getmText() {
+        return mText;
+    }
+
+    public void setmText(String mText) {
+        this.mText = mText;
+    }
+
+    public String getmValue() {
+        return mValue;
+    }
+
+    public void setmValue(String mValue) {
+        this.mValue = mValue;
+    }
+
+    public int getmId() {
+        return mId;
+    }
+
+    public void setmId(int mId) {
+        this.mId = mId;
+    }
+
     private String mText = null;
     private String mValue = null;
     private boolean isCheck = false;
